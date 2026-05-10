@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import VideoGrid from '../../components/VideoGrid.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const base = import.meta.env.BASE_URL;
+
+const pubDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={`${post.data.title} | Anthony Entertains`}
+  description={post.data.description ?? `Read ${post.data.title} on Anthony Entertains' blog.`}
+>
+  <!-- Post Header -->
+  <section class="post-hero section--dark">
+    <div class="container">
+      <div class="post-header" data-reveal="fade-up">
+        <a href={`${base}blog/`} class="back-link">← Back to Blog</a>
+        {post.data.category && (
+          <span class="post-category">{post.data.category}</span>
+        )}
+        <h1 class="post-title">{post.data.title}</h1>
+        <div class="post-meta">
+          <span class="post-author">By {post.data.author}</span>
+          <span class="post-separator">·</span>
+          <time class="post-date" datetime={post.data.pubDate}>{pubDate}</time>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Post Content -->
+  <section class="section post-content-section">
+    <div class="container">
+      <div class="post-content prose" data-reveal="fade-up">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--dark post-cta">
+    <div class="container">
+      <h2 class="section-title" data-reveal="fade-up">Ready to Book Anthony?</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <p class="section-sub" data-reveal="fade-up">Make your next event unforgettable with Dallas' favorite magician and mentalist.</p>
+      <div class="post-cta-btns" data-reveal="fade-up">
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Get a Free Quote</a>
+        <a href={`${base}blog`} class="btn btn--outline">More Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <VideoGrid />
+</BaseLayout>
+
+<style>
+.post-hero {
+  padding: 120px 0 60px;
+  background: linear-gradient(180deg, rgba(123,47,247,0.06) 0%, transparent 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.post-header { max-width: 800px; }
+
+.back-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color var(--transition-fast);
+}
+.back-link:hover { color: var(--color-accent); }
+
+.post-category {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  background: rgba(123,47,247,0.12);
+  border: 1px solid rgba(123,47,247,0.2);
+  border-radius: var(--radius-full);
+  padding: 3px 12px;
+  margin-bottom: 16px;
+}
+
+.post-title {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+.post-separator { opacity: 0.4; }
+
+.post-content-section .container {
+  max-width: 820px;
+}
+
+.prose {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.85;
+}
+.prose :global(h2) {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin: 40px 0 16px;
+}
+.prose :global(h3) {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin: 32px 0 12px;
+}
+.prose :global(p) { margin-bottom: 20px; max-width: none; }
+.prose :global(ul), .prose :global(ol) {
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+.prose :global(li) { margin-bottom: 8px; }
+.prose :global(strong) { color: var(--color-text); }
+.prose :global(a) { color: var(--color-accent-light); text-decoration: underline; }
+.prose :global(blockquote) {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 20px;
+  margin: 24px 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.post-cta { text-align: center; }
+.post-cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+</style>

@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import AboutSection from '../components/AboutSection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { homepageTestimonials } from '../data/testimonials';
+import { generalFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Dallas Magician | Corporate Event Entertainment | Anthony Entertains"
+  canonicalUrl="https://anthonyentertains.com/"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Award-Winning Dallas Magician & Mentalist"
+    headline="Dallas Magician &amp; Mentalist<br><em>Anthony Dempsey</em>"
+    subheadline="An Award-Winning Magician & Mentalist For Any Party Or Event"
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Services Overview -->
+  <section class="section home-services-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Services</span>
+      <h2 class="section-title" data-reveal="fade-up">More Information</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="home-services-grid" data-reveal-stagger>
+        <article class="home-service-card">
+          <div class="home-service-img-wrap">
+            <img
+              src={`${base}images/services/private-parties.jpg`}
+              alt="Dallas Magician Entertainment"
+              loading="lazy"
+              width="540"
+              height="380"
+            />
+          </div>
+          <div class="home-service-body">
+            <h2 class="home-service-heading">Private Parties</h2>
+            <p>Make your party stand out from the rest! After all, what's a party without unforgettable entertainment? From Strolling Magic &amp; Mentalism amongst the guests to a full living room Stage Show, Anthony will make your party a night that guests will NEVER forget! Serving Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, and more.</p>
+          </div>
+        </article>
+
+        <article class="home-service-card">
+          <div class="home-service-img-wrap">
+            <img
+              src={`${base}images/services/stage-shows.jpg`}
+              alt="Dallas Texas Magician and Mentalist Private Event Entertainment"
+              loading="lazy"
+              width="540"
+              height="380"
+            />
+          </div>
+          <div class="home-service-body">
+            <h2 class="home-service-heading">Stage Shows</h2>
+            <p>Put your guests and company in the spotlight! With a completely customizable Magic &amp; Mind Reading Stage Show, your guests will experience the hilariously impossible and be the stars of the show! With over 20 years of experience on stage, Anthony will be able to captivate your party guests with his comedy magic and mentalism show, as well as with his charismatic skills as an event MC!</p>
+          </div>
+        </article>
+
+        <article class="home-service-card">
+          <div class="home-service-img-wrap">
+            <img
+              src={`${base}images/services/corporate-events.jpg`}
+              alt="Holiday magician for corporate events"
+              loading="lazy"
+              width="540"
+              height="380"
+            />
+          </div>
+          <div class="home-service-body">
+            <h2 class="home-service-heading">Corporate Events</h2>
+            <p>Connect your employees in a whole new way! Whether it's an intimate cocktail hour or your yearly sales meeting, Anthony is the secret to helping your employees build new friendships. They'll have an unforgettable evening, all thanks to you! Dallas Magician Anthony Dempsey can't wait to make your event a hit with his corporate entertainment!</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="The Magician Dallas Trusts For Events Like These"
+    note="Dallas Magician Anthony Dempsey will make your event unforgettable. Click on the options above for further information on event types."
+  />
+
+  <!-- Three Guarantees -->
+  <ThreeGuarantees
+    label="The Recipe for a Truly Memorable Event in Dallas TX"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- About -->
+  <AboutSection />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={homepageTestimonials}
+    title="Clients Who Love Anthony's Corporate Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- Contact -->
+  <ContactForm />
+
+  <!-- FAQ -->
+  <FAQSection faqs={generalFaqs} />
+</BaseLayout>
+
+<style>
+.home-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.home-service-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--transition-mid), box-shadow var(--transition-mid);
+}
+.home-service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.home-service-img-wrap {
+  width: 100%;
+  aspect-ratio: 16/11;
+  overflow: hidden;
+}
+.home-service-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.home-service-card:hover .home-service-img-wrap img {
+  transform: scale(1.04);
+}
+
+.home-service-body { padding: 28px; }
+
+.home-service-heading {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.home-service-body p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .home-services-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+}
+</style>

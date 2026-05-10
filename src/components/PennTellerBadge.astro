@@ -1,0 +1,50 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="penn-teller-section section--dark">
+  <div class="container">
+    <div class="penn-teller-inner" data-reveal="fade-up">
+      <div class="penn-teller-text">
+        <span class="section-label">As Seen On</span>
+        <h2 class="penn-teller-heading">Check out Anthony on Penn &amp; Teller: FOOL US!</h2>
+      </div>
+      <div class="penn-teller-cta">
+        <a
+          href="https://www.youtube.com/watch?v=jwnaezj134Q"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--outline"
+        >
+          Watch the Episode
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.penn-teller-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, rgba(123,47,247,0.08) 0%, rgba(8,8,8,0) 60%);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.penn-teller-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.penn-teller-heading {
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .penn-teller-inner { flex-direction: column; text-align: center; }
+}
+</style>

@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ServiceIntroSection from '../components/ServiceIntroSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import ServiceBenefits from '../components/ServiceBenefits.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { corporateTestimonials } from '../data/testimonials';
+import { privateFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+
+const privateEvents = [
+  'Holiday Parties', 'Anniversaries', 'Corporate Events', 'Cocktail Hours',
+  'Weddings', 'Adult Birthdays', 'Surprise Entertainment', 'Private Parties',
+];
+
+const serviceOptions = [
+  {
+    heading: 'Intimate Private Parties',
+    body: "Make your private, in-home party unforgettable with amazing entertainment! From mind-blowing magic tricks and mentalism performed right in front of your guests to a captivating living room stage show, Anthony will create a night that your guests will never forget.",
+    useCases: ['In-Home Parties', 'Dinner Parties', 'Small Groups', 'Surprise Entertainment'],
+  },
+  {
+    heading: 'Stage Shows for Larger Events',
+    body: "Make your private party unforgettable with a totally customizable Magic & Mind Reading Stage Show! Watch as your guests witness the impossible and become the ultimate stars of the show.",
+    useCases: ['Large Private Events', 'Venue Parties', 'Milestone Celebrations', 'Corporate Events'],
+  },
+];
+
+const benefits = [
+  {
+    title: 'Guest Interaction',
+    body: "Ever attend a party where people seemed disengaged and bored? Not YOUR party! Anthony will personally ensure your guests are having fun!",
+  },
+  {
+    title: 'An Amped Up Party',
+    body: "Anthony's been trusted to elevate parties of 4, as well as parties of 1,000. He'll make your party, THE party.",
+  },
+  {
+    title: 'Peace of Mind',
+    body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good! So relax and enjoy the party.",
+  },
+];
+---
+
+<BaseLayout
+  title="The #1 Magician & Mentalist For Your Private Party"
+  description="Dallas' favorite private party magician Anthony Dempsey transforms ordinary gatherings into unforgettable experiences with close-up magic, mentalism, and stage shows."
+  canonicalUrl="https://anthonyentertains.com/private-party-magician"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Private Party Magician & Mentalist"
+    headline="Dallas' Favorite Magician &amp; Mentalist<br>For Private Parties"
+    subheadline="Anthony's Sought-After Performance Will Transform Your Private Party Into An Unforgettable Experience."
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="Anthony Is The Magician Dallas Trusts For Events Like These"
+    events={privateEvents}
+  />
+
+  <!-- Service Options -->
+  <ServiceIntroSection
+    label="Services"
+    title="Private Party Entertainment Options"
+    options={serviceOptions}
+  />
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="The Recipe for Success"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Benefits -->
+  <ServiceBenefits benefits={benefits} />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={corporateTestimonials}
+    title="Clients Who Love Anthony's Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- About -->
+  <AboutSection />
+
+  <!-- Contact -->
+  <ContactForm
+    title="Tell Us About Your Event"
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection faqs={privateFaqs} />
+</BaseLayout>

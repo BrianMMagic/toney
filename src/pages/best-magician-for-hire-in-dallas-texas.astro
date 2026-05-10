@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { corporateTestimonials } from '../data/testimonials';
+import { generalFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+
+const eventTypes = [
+  'Holiday Parties', 'Anniversaries', 'Corporate Events', 'Cocktail Hours',
+  'Weddings', 'Adult Birthdays', 'Surprise Entertainment',
+];
+---
+
+<BaseLayout
+  title="The BEST Magician to Hire in Dallas, Texas"
+  description="Looking for the best magician to hire in Dallas, Texas? Anthony Dempsey is Dallas' favorite magician and mentalist for corporate events, private parties, and more."
+  canonicalUrl="https://anthonyentertains.com/best-magician-for-hire-in-dallas-texas"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Anthony Dempsey"
+    headline="Dallas' Favorite Magician<br>&amp; Mentalist"
+    subheadline="Reach Out Today To Find Out How Anthony Can Transform Your Event Into An Unforgettable Experience."
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="Anthony Is The Magician Dallas Trusts For Events Like These"
+    events={eventTypes}
+    note="Reach out today to find out how to take your party to the next level."
+  />
+
+  <!-- Services Overview -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Services</span>
+      <h2 class="section-title" data-reveal="fade-up">Make your event unforgettable with Dallas Magician Anthony Dempsey</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="best-services-grid" data-reveal-stagger>
+        <article class="best-service-card">
+          <h3>Corporate Events</h3>
+          <p>Connect your employees in a whole new way! Whether it's an intimate cocktail hour or your yearly sales meeting, Anthony is the secret to helping your employees build new friendships. They'll have an unforgettable evening all thanks to you! Dallas Magician Anthony Dempsey can't wait to make your event a hit with his corporate entertainment!</p>
+          <a href={`${base}corporate-magician`} class="service-link">Learn More →</a>
+        </article>
+
+        <article class="best-service-card">
+          <h3>Private Parties</h3>
+          <p>Make your party stand out from the rest! After all, what's a party without unforgettable entertainment? From Strolling Magic &amp; Mentalism amongst the guests to a full living room Stage Show, Anthony will make your party a night that guests will NEVER forget! Serving Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, and more.</p>
+          <a href={`${base}private-party-magician`} class="service-link">Learn More →</a>
+        </article>
+
+        <article class="best-service-card">
+          <h3>Stage Shows</h3>
+          <p>Put your guests and company in the spotlight! With a completely customizable Magic &amp; Mind Reading Stage Show, your guests will not only experience the impossible, but also be the stars of the show! With over 20 years' experience on stage, Anthony will truly captivate your party guests with his magic show.</p>
+          <a href={`${base}services`} class="service-link">Learn More →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="Unlock the Secrets of a Truly Memorable Event"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={corporateTestimonials}
+    title="Client Testimonials"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- About -->
+  <AboutSection />
+
+  <!-- Contact -->
+  <ContactForm />
+
+  <!-- FAQ -->
+  <FAQSection faqs={generalFaqs} />
+</BaseLayout>
+
+<style>
+.best-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.best-service-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  transition: border-color var(--transition-mid), transform var(--transition-mid);
+}
+.best-service-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+}
+
+.best-service-card h3 {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 14px;
+}
+
+.best-service-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  max-width: none;
+  margin-bottom: 20px;
+}
+
+.service-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.service-link:hover { color: var(--color-accent); }
+
+@media (max-width: 900px) {
+  .best-services-grid { grid-template-columns: 1fr; }
+}
+</style>

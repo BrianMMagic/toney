@@ -1,0 +1,89 @@
+---
+export interface ServiceOption {
+  heading: string;
+  body: string;
+  useCases?: string[];
+}
+
+export interface Props {
+  title?: string;
+  label?: string;
+  intro?: string;
+  options: ServiceOption[];
+}
+
+const { title = 'Service Options', label = 'How Anthony Performs', intro, options } = Astro.props;
+---
+
+<section class="section service-intro-section">
+  <div class="container">
+    <span class="section-label" data-reveal="fade-up">{label}</span>
+    <h2 class="section-title" data-reveal="fade-up">{title}</h2>
+    <div class="divider" data-reveal="fade-up"></div>
+    {intro && <p class="section-sub" data-reveal="fade-up">{intro}</p>}
+
+    <div class="service-options" data-reveal-stagger>
+      {options.map((opt) => (
+        <div class="service-option-card">
+          <h3 class="service-option-heading">{opt.heading}</h3>
+          <p class="service-option-body">{opt.body}</p>
+          {opt.useCases && opt.useCases.length > 0 && (
+            <ul class="service-option-uses">
+              {opt.useCases.map(uc => <li>{uc}</li>)}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.service-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.service-option-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 36px 30px;
+  transition: border-color var(--transition-mid), transform var(--transition-mid), box-shadow var(--transition-mid);
+}
+.service-option-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.service-option-heading {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: 14px;
+}
+
+.service-option-body {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: none;
+}
+
+.service-option-uses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.service-option-uses li {
+  background: rgba(123,47,247,0.1);
+  border: 1px solid rgba(123,47,247,0.2);
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  color: var(--color-accent-light);
+  font-weight: 500;
+}
+</style>

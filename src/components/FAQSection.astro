@@ -1,0 +1,102 @@
+---
+import type { FAQ } from '../data/faqs';
+
+export interface Props {
+  faqs: FAQ[];
+  title?: string;
+}
+
+const { faqs, title = 'Frequently Asked Questions' } = Astro.props;
+---
+
+<section class="section section--darker" id="faq">
+  <div class="container">
+    <span class="section-label" data-reveal="fade-up">FAQ</span>
+    <h2 class="section-title" data-reveal="fade-up">{title}</h2>
+    <div class="divider" data-reveal="fade-up"></div>
+
+    <div class="faq-list" data-reveal="fade-up">
+      {faqs.map((faq, i) => (
+        <details class="faq-item" name="faq-group">
+          <summary class="faq-question">
+            <span>{faq.question}</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.faq-list {
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+.faq-item[open] {
+  border-color: var(--color-accent);
+}
+.faq-item + .faq-item { margin-top: 8px; }
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--transition-fast);
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question:hover { color: var(--color-accent-light); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.faq-answer {
+  padding: 0 24px 22px;
+}
+.faq-answer p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: none;
+}
+</style>

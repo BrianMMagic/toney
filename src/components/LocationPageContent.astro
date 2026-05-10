@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { corporateTestimonials } from '../data/testimonials';
+import type { FAQ } from '../data/faqs';
+
+export interface Props {
+  pageTitle: string;
+  metaDescription: string;
+  canonicalUrl?: string;
+  heroEyebrow: string;
+  heroHeadline: string;
+  heroSubheadline?: string;
+  intro?: string;
+  corporateHeading?: string;
+  corporateBody: string;
+  privateHeading?: string;
+  privateBody: string;
+  stageHeading?: string;
+  stageBody: string;
+  servingAreas: string;
+  eventTypes?: string[];
+  faqs: FAQ[];
+  guaranteesLabel?: string;
+}
+
+const base = import.meta.env.BASE_URL;
+
+const {
+  pageTitle,
+  metaDescription,
+  canonicalUrl,
+  heroEyebrow,
+  heroHeadline,
+  heroSubheadline,
+  intro,
+  corporateHeading = 'Corporate Events',
+  corporateBody,
+  privateHeading = 'Private Parties',
+  privateBody,
+  stageHeading = 'Stage Shows',
+  stageBody,
+  servingAreas,
+  eventTypes = [
+    'Holiday Parties', 'Anniversaries', 'Corporate Events', 'Cocktail Hours',
+    'Weddings', 'Adult Birthdays', 'Surprise Entertainment', 'Private Parties',
+  ],
+  faqs,
+  guaranteesLabel = 'The Key to a Truly Memorable Event',
+} = Astro.props;
+---
+
+<BaseLayout title={pageTitle} description={metaDescription} canonicalUrl={canonicalUrl}>
+  <!-- Hero -->
+  <Hero
+    eyebrow={heroEyebrow}
+    headline={heroHeadline}
+    subheadline={heroSubheadline}
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title={`Anthony Is The Magician ${heroEyebrow.replace(' Magician & Mentalist', '').replace(' Magician', '').replace(' Entertainer', '').trim()} Trusts For Events Like These`}
+    events={eventTypes}
+  />
+
+  <!-- Services -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Services</span>
+      <h2 class="section-title" data-reveal="fade-up">Make your event unforgettable with Anthony Dempsey</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      {intro && <p class="section-sub" data-reveal="fade-up">{intro}</p>}
+
+      <div class="loc-services-grid" data-reveal-stagger>
+        <article class="loc-service-card">
+          <h3 class="loc-service-heading">{corporateHeading}</h3>
+          <p>{corporateBody}</p>
+        </article>
+
+        <article class="loc-service-card">
+          <h3 class="loc-service-heading">{privateHeading}</h3>
+          <p>{privateBody}</p>
+        </article>
+
+        <article class="loc-service-card">
+          <h3 class="loc-service-heading">{stageHeading}</h3>
+          <p>{stageBody}</p>
+        </article>
+      </div>
+
+      <p class="serving-note" data-reveal="fade-up">{servingAreas}</p>
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label={guaranteesLabel}
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={corporateTestimonials}
+    title="Clients Who Love Anthony's Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- About -->
+  <AboutSection />
+
+  <!-- Contact -->
+  <ContactForm
+    title="Tell us about your event"
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection faqs={faqs} />
+</BaseLayout>
+
+<style>
+.loc-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.loc-service-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  transition: border-color var(--transition-mid), transform var(--transition-mid);
+}
+.loc-service-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+}
+
+.loc-service-heading {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 14px;
+}
+
+.loc-service-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: none;
+}
+
+.serving-note {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .loc-services-grid { grid-template-columns: 1fr; }
+}
+</style>

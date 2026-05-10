@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const downloadables = [
+  { title: 'Stage Show Poster', file: 'stage-show-poster' },
+  { title: 'Poster with Blank Space', file: 'poster-blank-space' },
+  { title: 'Instagram Graphic', file: 'instagram-graphic' },
+  { title: '16:9 Screen Graphic', file: 'screen-graphic-16x9' },
+  { title: 'Comedy Flyer', file: 'comedy-flyer' },
+  { title: 'Serious Flyer', file: 'serious-flyer' },
+  { title: 'Logo — Black', file: 'logo-black' },
+  { title: 'Logo — Purple', file: 'logo-purple' },
+  { title: 'Cut Out Promo', file: 'cut-out-promo' },
+  { title: 'Promotional Photo 1', file: 'promo-photo-1' },
+  { title: 'Promotional Photo 2', file: 'promo-photo-2' },
+  { title: 'Promotional Photo 3', file: 'promo-photo-3' },
+  { title: 'Promotional Photo 4', file: 'promo-photo-4' },
+  { title: 'Promotional Photo 5', file: 'promo-photo-5' },
+];
+---
+
+<BaseLayout
+  title="Downloadable Material | anthonyentertains"
+  description="Download promotional materials for Dallas Magician Anthony Dempsey — posters, flyers, logos, and promotional photos for event planners and media."
+  canonicalUrl="https://anthonyentertains.com/downloadable-content"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Press & Media Kit"
+    headline="Downloadable Material"
+    subheadline="Hover over the desired item and click the download icon."
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.65)"
+    minHeight="45vh"
+  />
+
+  <!-- Downloads Section -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Promotional Materials</span>
+      <h2 class="section-title" data-reveal="fade-up">Downloadable Material</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <p class="section-sub" data-reveal="fade-up">Hover over the desired item and click the 'download' icon.</p>
+
+      <div class="downloads-grid" data-reveal-stagger>
+        {downloadables.map((item) => (
+          <div class="download-card">
+            <div class="download-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </div>
+            <h3 class="download-title">{item.title}</h3>
+            <a
+              href={`${base}downloadables/${item.file}`}
+              class="download-btn"
+              download
+              aria-label={`Download ${item.title}`}
+            >
+              Download
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Short Bio Section -->
+  <section class="section section--dark bio-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">For Event Planners & Media</span>
+      <h2 class="section-title" data-reveal="fade-up">Short Bio</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <p class="section-sub" data-reveal="fade-up">Just copy and paste the paragraph below if a bio is needed.</p>
+
+      <div class="bio-box" data-reveal="fade-up">
+        <blockquote class="bio-text">
+          Award-winning comedy magician and mentalist Anthony Dempsey has thrilled corporate and celebrity audiences across the globe. Anthony has been seen by millions of people on film and television; most recently appearing on Penn and Teller's Fool Us!
+        </blockquote>
+        <button class="btn btn--outline copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent.trim()).then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy to Clipboard', 2000); })">
+          Copy to Clipboard
+        </button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.downloads-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.download-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: border-color var(--transition-mid), transform var(--transition-mid);
+}
+.download-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+}
+
+.download-icon { color: var(--color-accent); }
+
+.download-title {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.download-btn {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-full);
+  padding: 6px 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.download-btn:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.bio-box {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bio-text {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.85;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 24px;
+  margin: 0;
+  font-style: italic;
+  max-width: none;
+}
+
+.copy-btn { align-self: flex-start; }
+
+@media (max-width: 1024px) {
+  .downloads-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .downloads-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 400px) {
+  .downloads-grid { grid-template-columns: 1fr; }
+}
+</style>

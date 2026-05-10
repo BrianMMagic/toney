@@ -1,0 +1,23 @@
+---
+title: "Magic By Candlelight in Southlake"
+pubDate: "2023-10-30"
+author: "Anthony Dempsey"
+category: "Magician"
+description: "Anthony Dempsey performs an improvised magic show during a power outage at a private birthday party in Southlake, Texas, adapting his performance to candlelit conditions."
+---
+
+This has been such a busy month! I had a pretty interesting magic and mentalism performance in Southlake, Texas this past weekend. It was a private party of 8 people, in a private home. The client, Lindsey, requested a stage performance as a surprise for her husband's 40th birthday party entertainment. Yes, I can do my magic and mentalism stage show in a private home! Small in-home parties have been pretty popular here lately. I usually set up in front of the fireplace, or another area that provides a nice view for guests, and I can customize my show to fit within their allotted time frame and available space. Need 30, 45, 60 minutes of private party entertainment in your living room or den? No problem!
+
+I left my home with clear skies, but on my way into Southlake, a terrible storm was raging. As I turned onto Lindsey and Brad's street, the storm was finally letting up. The wind died down; the rain was subsiding. I noticed several downed trees in the neighborhood, including a giant part of a tree in their yard! I always arrive about an hour early to my shows, and I knew they were having dinner at this point in time. As I sat in my car reading an e-book, I noticed the streetlights flickering. They seemed fine after that, but then all of a sudden they went completely out... along with the whole neighborhood! Not a great scenario when you're having after dinner party entertainment, right? Well, when you hire Dallas Magician Anthony Dempsey, no challenge is too great! This happened about 5 minutes before I was going to head inside- weird timing.
+
+Lindsey met me outside with a flashlight and informed me of the situation- the power was obviously out and there was no update as to when it would be back on. I think she was expecting me to run the other way! Nope. No power? No problem, I'll make it work! I'm good at improvising, making quick decisions, and reacting to last-minute changes. When I walked into Brad and Lindsey's beautiful home, it was adorned with countless candles! Guests were so surprised to see a random guy walking in, and they excitedly shouted, "What is he!?", to which I replied, "I'm the electrician!"
+
+My setup time is pretty short- it typically only takes me about 5 minutes to set everything up, which is ample time for guests to take a bathroom break and mix another drink! As I set up in front of the fireplace, I quickly changed the set list into an entirely new incredible magic and mentalism stage show that could be done with the given circumstances. Due to the poor quality of light, I wasn't going to be able to perform my originally planned stage show. Thankfully I always carry an additional hour's worth of stage material with me. I do this because my clients will often hire me for additional time because their guests are having so much fun! Thanks to Lindsey's quick thinking with the candles, there was enough light for us to see one another, and for the 8 guests to enjoy the show. With my 5 minutes of planning, I even came up with an awesome finale trick! It involved everyone standing up around the candles, as a prediction magically appeared from the flames. Talk about when life hands you lemons... or should I say, candles!
+
+The show was fantastic! Everyone was so nice and we really enjoyed each other's company. My performance style is very relaxed and I treat everyone as if we've known each other for a long time, which helps guests feel comfortable and actually excited to participate during the interactive parts of the show. There was a LOT of laughter and fun that evening, and plenty of silent _"how could he have known that"_ moments, which, I might add, were dramatized by the candlelight! For the grand finale, everyone was standing up around the candles. When you end the show with everyone already standing, it makes a standing ovation a lot easier!
+
+If you're planning a 40th birthday party, or looking for dinner party ideas, you should consider hiring a Southlake Magician who is versatile and can help solve problems that may arise. Magician and Mentalist Anthony Dempsey is a professional magician with the drive and experience to ensure the perfect party no matter the unusual circumstances!
+
+That was certainly one of the most unique parties I've ever entertained at, but believe it or not, I've had crazier things happen!
+
+*A special thanks to Lindsey for sending me these photos of my performance!*

@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ServiceIntroSection from '../components/ServiceIntroSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import ServiceBenefits from '../components/ServiceBenefits.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { corporateTestimonials } from '../data/testimonials';
+import { holidayFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+
+const holidayEvents = [
+  'Holiday Parties', 'Team Building', 'Corporate Events', 'Cocktail Hours',
+  'Trade Shows', 'Hospitality Suites', 'Surprise Entertainment',
+];
+
+const serviceOptions = [
+  {
+    heading: 'Magic Up Close',
+    body: "Many holiday events have some sort of welcome reception or cocktail hour. This is the perfect time for Anthony to stroll around the room and mingle with the guests, captivating them with unique and entertaining mentalism and sleight of hand magic.",
+    useCases: ['Holiday Parties', 'Cocktail Hours', 'Corporate Events', 'Client Appreciation Events', 'Company Anniversaries', 'Hospitality Suites'],
+  },
+  {
+    heading: 'Stage Shows',
+    body: "Looking for a formal after-dinner show? Anthony's magic and mentalism stage show uses audience participation from start to finish. It's absolutely hilarious and mind-blowing! A perfect mixture of comedy, mystery, and 'What just happened?' Flexible duration: 20 to 60 minutes.",
+    useCases: ['Banquets', 'Corporate Events', 'Holiday Parties', 'Client Appreciation Events', 'Team Building', 'Surprise Entertainment'],
+  },
+];
+
+const benefits = [
+  {
+    title: 'Guest Interaction',
+    body: "Ever attend a party where people seemed disengaged and bored? Not YOUR party! Anthony will personally ensure your guests are having fun!",
+  },
+  {
+    title: 'An Amped Up Party',
+    body: "Anthony's been trusted to elevate parties of 4, as well as parties of 1,000. He'll make your party, THE party.",
+  },
+  {
+    title: 'Peace of Mind',
+    body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good!",
+  },
+];
+---
+
+<BaseLayout
+  title="Holiday Party Magician | Event Entertainment | Anthony Entertains"
+  description="Anthony Dempsey is a holiday party magician for people who like to have fun. Book the best holiday entertainment in Dallas, Fort Worth, and across Texas."
+  canonicalUrl="https://anthonyentertains.com/holiday"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Holiday Party Magician & Mentalist Anthony Dempsey"
+    headline="A Holiday Party Magician<br>For People Who Like To Have Fun"
+    subheadline="Reach Out Today To Find Out How Anthony Dempsey Can Help You Take Your Event To The Next Level"
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="Anthony Is The Magician Companies Trust For Events Like These"
+    events={holidayEvents}
+  />
+
+  <!-- Service Options -->
+  <ServiceIntroSection
+    label="How Anthony Performs"
+    title="Holiday Party Entertainment Services"
+    options={serviceOptions}
+  />
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="Give The Gift of a Truly Memorable Holiday Party"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Benefits -->
+  <ServiceBenefits benefits={benefits} />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={corporateTestimonials}
+    title="Clients Who Love Anthony's Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- Contact -->
+  <ContactForm
+    title="Tell us about your event"
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection faqs={holidayFaqs} />
+</BaseLayout>

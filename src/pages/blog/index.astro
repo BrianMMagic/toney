@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+---
+
+<BaseLayout
+  title="Blog | Anthony Entertains"
+  description="Read Anthony Dempsey's blog for tips on corporate entertainment, wedding magic, trade show magic, and more from Dallas' favorite magician and mentalist."
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Anthony's Blog"
+    headline="Magic, Mentalism &amp;<br>Event Entertainment Tips"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.65)"
+    minHeight="45vh"
+  />
+
+  <!-- Blog Listing -->
+  <section class="section blog-listing">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Latest Articles</span>
+      <h2 class="section-title" data-reveal="fade-up">Anthony's Blog</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      {posts.length === 0 && (
+        <p class="no-posts">Blog posts coming soon. Check back shortly!</p>
+      )}
+
+      <div class="blog-grid" data-reveal-stagger>
+        {posts.map((post) => (
+          <article class="blog-card">
+            <div class="blog-card-body">
+              <div class="blog-meta">
+                <time class="blog-date" datetime={post.data.pubDate}>
+                  {new Date(post.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+                {post.data.category && (
+                  <span class="blog-category">{post.data.category}</span>
+                )}
+              </div>
+              <h2 class="blog-card-title">
+                <a href={`${base}post/${post.id}`}>{post.data.title}</a>
+              </h2>
+              {post.data.description && (
+                <p class="blog-card-excerpt">{post.data.description}</p>
+              )}
+              <a href={`${base}post/${post.id}`} class="blog-read-more">Read More →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.blog-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--transition-mid), box-shadow var(--transition-mid), border-color var(--transition-mid);
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.blog-card-body { padding: 28px; }
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.blog-date {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.blog-category {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(123,47,247,0.12);
+  color: var(--color-accent-light);
+  border: 1px solid rgba(123,47,247,0.2);
+  border-radius: var(--radius-full);
+  padding: 2px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.blog-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.blog-card-title a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.blog-card-title a:hover { color: var(--color-accent-light); }
+
+.blog-card-excerpt {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: none;
+  margin-bottom: 20px;
+}
+
+.blog-read-more {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.blog-read-more:hover { color: var(--color-accent); }
+
+.no-posts {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  text-align: center;
+  padding: 60px 0;
+}
+
+@media (max-width: 900px) {
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .blog-grid { grid-template-columns: 1fr; }
+}
+</style>

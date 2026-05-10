@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { corporateTestimonials } from '../data/testimonials';
+import { grapevineFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+
+const grapevineEvents = [
+  'Dinner Parties', 'Cocktail Hours', 'Weddings', 'Adult Birthdays',
+  'Corporate Events', 'Graduations', 'Anniversaries', 'Holiday Parties',
+  'Proms', 'Hospitality', 'Banquets', 'Trade Shows',
+  'House Parties', 'Festivals', 'Team Building Events', 'Large Dinner Parties',
+  'Sales Presentations', 'Surprise Entertainment',
+];
+---
+
+<BaseLayout
+  title="Grapevine Magician | Corporate Event Entertainment | Anthony Entertains"
+  description="Grapevine magician and mentalist Anthony Dempsey elevates corporate events, private parties, and wine tours in Grapevine, TX and the Dallas-Fort Worth area."
+  canonicalUrl="https://anthonyentertains.com/magician-grapevine-texas"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Grapevine Magician & Mentalist"
+    headline="Grapevine Magician and Mentalist<br>Anthony Dempsey Wants to Help You<br>Elevate Your Next Event."
+    subheadline=""
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- About Grapevine -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Grapevine, Texas</span>
+      <h2 class="section-title" data-reveal="fade-up">Hire an experienced magician who can curate unforgettable moments with your guests.</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="grapevine-intro" data-reveal="fade-up">
+        <p>Grapevine, Texas is the ultimate tourist and conference destination. It has several beautiful hotels (I recommend the Gaylord Texan), unique shopping and dining, and so many wineries to visit! If you're planning a national conference, business meeting, or family getaway, Grapevine Magician Anthony Dempsey is the perfect choice for adding some magic and mentalism to your event. His performances are versatile and he can easily adapt to the audience and available space. While planning your event, consider hiring a magician to entertain guests during the hours where there may be a lack of activity. Keep the event's energy going by hiring Grapevine's go-to magician!</p>
+      </div>
+
+      <div class="grapevine-services" data-reveal-stagger>
+        <div class="grapevine-card">
+          <h3>Strolling Magic</h3>
+          <p>Who says you can't mix wine with magic? 'Strolling' magic and mentalism is the most popular option. Anthony will mix and mingle with your guests while they enjoy the party. He'll spend time with each group of people and help break the ice for those who don't know anyone! Strolling magic is great for: Dinner Parties, Cocktail Hours, Weddings, Adult Birthdays, Corporate Events, Graduations, Anniversaries, Holiday Parties, Proms, and Hospitality.</p>
+        </div>
+        <div class="grapevine-card">
+          <h3>Stage Magic Shows</h3>
+          <p>Hosting your Grapevine event somewhere with a stage? Another great option is a fast-paced magic and mentalism stage show that uses members of the audience from start to finish. This show is a perfect mixture of comedy, mystery, and 'what the heck?' Stage Magic is great for: Banquets, Corporate Events, Trade Shows, House Parties, Festivals, Team Building Events, Large Dinner Parties, Sales Presentations, and Surprise Entertainment.</p>
+        </div>
+      </div>
+
+      <p class="serving-note" data-reveal="fade-up">
+        Serving the Dallas–Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, & more.
+      </p>
+    </div>
+  </section>
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="Anthony Is The Magician Grapevine Trusts For Events Like These"
+    events={grapevineEvents}
+    note="Plan your event with guest experience in mind."
+  />
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="The Key to a Truly Memorable Grapevine Event"
+    title="Anthony Guarantees:"
+    items={[
+      {
+        heading: 'Guest Interaction',
+        body: "People won't be sitting around on their phones all night. Your guests will be up and about, having a great time with one another!",
+      },
+      {
+        heading: 'An Amped Up Party',
+        body: "Anthony's been trusted to elevate both intimate and massive events. He'll make yours one to remember.",
+      },
+      {
+        heading: 'Peace of Mind',
+        body: "Rest easy knowing you've hired a professional. You won't have to worry about inappropriate language or a late arrival. Anthony wants to make you look good!",
+      },
+    ]}
+  />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={corporateTestimonials}
+    title="Clients Who Love Anthony's Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- About -->
+  <AboutSection />
+
+  <!-- Contact -->
+  <ContactForm
+    title="Tell us about your event"
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection faqs={grapevineFaqs} />
+</BaseLayout>
+
+<style>
+.grapevine-intro p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.85;
+  max-width: 860px;
+  margin-bottom: 48px;
+}
+
+.grapevine-services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.grapevine-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  transition: border-color var(--transition-mid), transform var(--transition-mid);
+}
+.grapevine-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+}
+
+.grapevine-card h3 {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 14px;
+}
+
+.grapevine-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: none;
+}
+
+.serving-note {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .grapevine-services { grid-template-columns: 1fr; }
+}
+</style>

@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ServiceIntroSection from '../components/ServiceIntroSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import ServiceBenefits from '../components/ServiceBenefits.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { corporateTestimonials } from '../data/testimonials';
+import { birthdayFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+
+const birthdayEvents = [
+  'Holiday Parties', 'Anniversaries', 'Corporate Events', 'Cocktail Hours',
+  'Weddings', 'Adult Birthdays', 'Surprise Entertainment',
+];
+
+const serviceOptions = [
+  {
+    heading: 'Social Gatherings',
+    body: "Looking to make that 50th birthday party extra special? Anthony's sought-after strolling magic and mentalism is very popular for adult birthday parties. He'll mix and mingle with your guests, showing small groups close-up magic and mentalism. Anthony's charm, quick wit, and technical skill makes him the best choice when hiring a magician, and it's a great way for the evening to be more interactive!",
+    useCases: ['Adult Birthdays', 'Milestone Celebrations', 'Cocktail Hours', 'Dinner Parties'],
+  },
+  {
+    heading: 'Intimate Birthday Parties',
+    body: "Make your birthday party stand out from the rest! After all, what's a birthday party without unforgettable entertainment? From Strolling Magic & Mentalism amongst the guests to a full living room Stage Show, Anthony will make your party a night that guests will NEVER forget! Serving Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, and more.",
+    useCases: ['Private Homes', 'Small Venues', 'In-Home Parties', 'Surprise Entertainment'],
+  },
+  {
+    heading: 'Stage Shows For Large Birthday Parties',
+    body: "Put your birthday party guests in the spotlight with a completely customizable Magic & Mind Reading Stage Show. Your guests will experience the hilariously impossible and be the stars of the show! With over 20 years of experience on stage, Anthony will truly captivate your birthday party guests with this interactive magic and mentalism show.",
+    useCases: ['Large Parties', 'Venue Events', 'Corporate Birthdays', 'Milestone Events'],
+  },
+];
+
+const benefits = [
+  {
+    title: 'Guest Interaction',
+    body: "Ever attend a party where people seemed disengaged and bored? Not YOUR party! Anthony will personally ensure your guests are having fun!",
+  },
+  {
+    title: 'An Amped Up Party',
+    body: "Anthony's been trusted to elevate parties of 4, as well as parties of 1,000. He'll make your party, THE party.",
+  },
+  {
+    title: 'Peace of Mind',
+    body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good! So relax and enjoy the celebration.",
+  },
+];
+---
+
+<BaseLayout
+  title="The BEST Birthday Party Magician & Mentalist"
+  description="Hire Dallas' favorite birthday party magician and mentalist Anthony Dempsey for an unforgettable celebration. Strolling magic, mentalism, and stage shows for any size party."
+  canonicalUrl="https://anthonyentertains.com/birthday-party-magician-and-mentalist"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Birthday Party Magician & Mentalist"
+    headline="Dallas' Favorite Magician &amp; Mentalist<br>For Birthday Parties"
+    subheadline="Reach Out Today To Find Out How Anthony Can Transform Your Birthday Party Into An Unforgettable Experience."
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="Anthony Is The Magician Dallas Trusts For Events Like These"
+    events={birthdayEvents}
+    note="Magic can enhance a variety of events!"
+  />
+
+  <!-- Service Options -->
+  <ServiceIntroSection
+    label="Services"
+    title="Make your event unforgettable with Dallas Magician Anthony Dempsey"
+    options={serviceOptions}
+  />
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="The Key to a Truly Memorable Event"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Benefits -->
+  <ServiceBenefits benefits={benefits} />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={corporateTestimonials}
+    title="Clients Who Love Anthony's Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- About -->
+  <AboutSection />
+
+  <!-- Contact -->
+  <ContactForm
+    title="Tell Us About Your Event"
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection faqs={birthdayFaqs} />
+</BaseLayout>

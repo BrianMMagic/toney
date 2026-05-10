@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { corporateTestimonials } from '../data/testimonials';
+import { planoFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Plano Magician | Corporate Event Entertainment | Anthony Entertains"
+  description="Plano's favorite magician and mentalist Anthony Dempsey delivers mind-blowing entertainment for corporate events, private parties, and stage shows in Plano, TX."
+  canonicalUrl="https://anthonyentertains.com/plano-magician"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Plano Magician & Mentalist"
+    headline="Plano's Favorite<br>Magician &amp; Mentalist"
+    subheadline="Anthony Will Transform Your Next Event Into An Unbelievable Experience."
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="Anthony Is The Magician Plano Trusts For Events Like These"
+  />
+
+  <!-- Services -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Services</span>
+      <h2 class="section-title" data-reveal="fade-up">Mind Blowing Entertainment in Plano for People Who Like to Have Fun</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="plano-grid" data-reveal-stagger>
+        <div class="plano-card">
+          <h3>Strolling Magic &amp; Mentalism</h3>
+          <p>Strolling magic and mentalism is the perfect opportunity for Anthony to mix and mingle with your guests. He'll spend time with each cluster of people and help break the ice for those who don't know anyone! Strolling magic is ideal for: Dinner Parties, Cocktail Hours, Weddings, Adult Birthdays, Corporate Events, Graduations, Anniversaries, Holiday Parties, Proms, and Hospitality.</p>
+        </div>
+        <div class="plano-card">
+          <h3>Stage Shows</h3>
+          <p>Plan on having a stage at your event? Anthony's got you covered with a mind-blowing magic and mentalism stage show that uses audience participation from start to finish. This show is a perfect mixture of comedy, mystery, and 'what just happened?' Stage Magic is great for: Banquets, Corporate Events, Trade Shows, House Parties, Festivals, Team Building Events, Large Dinner Parties, Sales Presentations, and Surprise Entertainment.</p>
+        </div>
+      </div>
+
+      <p class="serving-note" data-reveal="fade-up">
+        Serving the Dallas-Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, & more.
+      </p>
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="The Key to a Truly Memorable Event"
+    title="Anthony Guarantees:"
+    items={[
+      {
+        heading: 'Guest Interaction',
+        body: "Your guests won't be sitting around on their phones all night. They will be up and about, having a great time with one another!",
+      },
+      {
+        heading: 'An Amped Up Party',
+        body: "Anthony's been trusted to elevate both intimate and large events in Plano. He'll make sure that your event is one to remember.",
+      },
+      {
+        heading: 'Peace of Mind',
+        body: "Rest easy knowing you've hired a professional who wants you to look your best! You won't have to worry about inappropriate language or a late arrival.",
+      },
+    ]}
+  />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={corporateTestimonials}
+    title="Clients Who Love Anthony's Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- About -->
+  <AboutSection />
+
+  <!-- Contact -->
+  <ContactForm
+    title="We will provide an accurate quote with a simple, quick phone call."
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection faqs={planoFaqs} />
+</BaseLayout>
+
+<style>
+.plano-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.plano-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  transition: border-color var(--transition-mid), transform var(--transition-mid);
+}
+.plano-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+}
+
+.plano-card h3 {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 14px;
+}
+
+.plano-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: none;
+}
+
+.serving-note {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .plano-grid { grid-template-columns: 1fr; }
+}
+</style>

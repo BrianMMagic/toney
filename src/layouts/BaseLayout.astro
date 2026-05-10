@@ -1,0 +1,66 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import '../styles/animations.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'Dallas Magician & Mentalist Anthony Dempsey — Award-winning corporate entertainment, private parties, weddings, and trade shows. Serving Dallas-Fort Worth and nationwide.',
+  canonicalUrl,
+  ogImage = '/images/hero/anthony-dempsey-hero.jpg',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const fullOg = ogImage.startsWith('http') ? ogImage : `https://brianmmagic.github.io${base}${ogImage.replace(/^\//, '')}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#14151d" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOg} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOg} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href={`${base}favicon.ico`} />
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      import { initReveal } from '../utils/reveal';
+      document.addEventListener('DOMContentLoaded', initReveal);
+    </script>
+  </body>
+</html>

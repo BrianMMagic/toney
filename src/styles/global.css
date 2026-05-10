@@ -1,0 +1,280 @@
+/* ─── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ─── Design Tokens ────────────────────────────────────────── */
+:root {
+  /* ── Color Palette (reference: aventuradentalarts.com) ─────── */
+  --c-black:            #000000;
+  --c-white:            #ffffff;
+  --c-brand-navy:       #14151d;       /* Primary dark — near-black navy */
+  --c-brand-gold:       #b38c61;       /* Accent — warm bronze-gold */
+  --c-light-base:       #eae8e8;       /* Primary light — warm off-white */
+  --c-light-beige:      #d6d1d0;       /* Secondary light — slightly warmer */
+  --c-dark-base:        #424346;       /* Body text — medium dark gray */
+  --c-dark-brown:       #6f6968;       /* Muted/tertiary text */
+  --c-error:            #ff3c3c;
+
+  /* ── Opacity Variants ──────────────────────────────────────── */
+  --c-light-40:         hsla(0, 5%, 91%, 0.4);
+  --c-light-15:         hsla(0, 5%, 91%, 0.15);
+  --c-dark-40:          rgba(66, 67, 70, 0.4);
+  --c-dark-10:          rgba(66, 67, 70, 0.1);
+
+  /* ── Gradient Tokens ───────────────────────────────────────── */
+  --c-brand-navy-linear: linear-gradient(180deg, #2a2b35, #010203);
+  --c-brand-gold-gradient: linear-gradient(270deg, #b38b61, #dac8b7);
+
+  /* ── Legacy aliases (keep for backward compat with existing components) */
+  --color-bg:           var(--c-brand-navy);
+  --color-surface:      #1c1d26;
+  --color-surface-2:    #21222d;
+  --color-accent:       var(--c-brand-gold);
+  --color-accent-light: #dac8b7;
+  --color-gold:         var(--c-brand-gold);
+  --color-gold-light:   #dac8b7;
+  --color-text:         var(--c-light-base);
+  --color-text-muted:   var(--c-light-40);
+  --color-text-dim:     var(--c-dark-40);
+  --color-border:       var(--c-light-15);
+  --color-border-light: hsla(0, 5%, 91%, 0.25);
+
+  /* ── Typography ────────────────────────────────────────────── */
+  --font-heading: 'Instrument Serif', Georgia, serif;
+  --font-body:    'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ── Border Radius ─────────────────────────────────────────── */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-pill: 4rem;           /* Reference: 4rem for buttons */
+  --radius-full: 9999px;         /* Keep for backward compat */
+
+  /* ── Shadows — eliminate box-shadows per reference aesthetic ─ */
+  --shadow-card:  none;
+  --shadow-hover: none;
+
+  /* ── Easing Tokens ────────────────────────────────────────── */
+  --ease-default:     ease-in-out;
+  --ease-out-quint:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-menu:        cubic-bezier(0.6, 0.14, 0, 1);
+  --ease-theatrical:  cubic-bezier(0.24, 0.43, 0.15, 0.97);
+
+  /* ── Transitions ───────────────────────────────────────────── */
+  --transition-fast: 0.18s var(--ease-default);
+  --transition-mid:  0.30s var(--ease-default);
+  --transition-slow: 0.90s var(--ease-theatrical);
+
+  /* ── Layout ─────────────────────────────────────────────────  */
+  --section-pad-y: 120px;
+  --section-pad-x: clamp(20px, 5vw, 80px);
+  --max-width:     1200px;
+}
+
+/* ─── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--c-brand-navy);
+  color: var(--c-light-base);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ─── Typography ───────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 400;              /* InstrumentSerif is editorial at 400 */
+  line-height: 1.1;
+  letter-spacing: -0.02em;       /* Reference: negative tracking on headings */
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.7rem); }
+h4 { font-size: 1.1rem; }
+
+p { max-width: 72ch; }
+
+/* ─── Layout Utilities ─────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+}
+
+.section {
+  padding: var(--section-pad-y) 0;
+}
+
+.section--dark {
+  background: var(--color-surface);
+}
+
+.section--darker {
+  background: var(--color-surface-2);
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-brand-gold);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title {
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  color: var(--c-light-40);
+  font-size: 1.05rem;
+  margin-bottom: 56px;
+  max-width: 60ch;
+}
+
+/* ─── Buttons ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);   /* 4rem — full pill shape */
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+}
+
+.btn--primary {
+  background: var(--c-brand-gold);
+  color: var(--c-brand-navy);
+}
+.btn--primary:hover {
+  background: var(--c-light-base);
+  transform: translateY(-2px);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--c-light-base);
+  border: 1.5px solid var(--c-light-15);
+}
+.btn--outline:hover {
+  border-color: var(--c-brand-gold);
+  color: var(--c-brand-gold);
+  transform: translateY(-2px);
+}
+
+.btn--gold {
+  background: var(--c-brand-gold);
+  color: var(--c-brand-navy);
+}
+.btn--gold:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+
+.btn--dark {
+  background: var(--c-brand-navy);
+  color: var(--c-light-base);
+  border: 1.5px solid var(--c-light-15);
+}
+.btn--dark:hover {
+  background: #21222d;
+  transform: translateY(-2px);
+}
+
+/* ─── Dividers ─────────────────────────────────────────────── */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--c-brand-gold);
+  border-radius: 2px;
+  margin: 20px 0 40px;
+}
+
+/* ─── Grid Utilities ───────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+@media (max-width: 900px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  :root { --section-pad-y: 64px; }
+}
+
+/* ─── Stars ────────────────────────────────────────────────── */
+.stars {
+  color: var(--c-brand-gold);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* ─── Section light variant ─────────────────────────────────── */
+.section--light {
+  background: var(--c-light-base);
+  color: var(--c-dark-base);
+}
+.section--light .section-label { color: var(--c-dark-brown); }
+.section--light .section-title { color: var(--c-brand-navy); }
+.section--light .section-sub   { color: var(--c-dark-base); }
+.section--light p               { color: var(--c-dark-base); }
+
+/* ─── No box-shadows (reference aesthetic) ─────────────────── */
+.guarantee-card:hover,
+.home-service-card:hover,
+.wedding-detail-card:hover,
+.plano-card:hover {
+  box-shadow: none;
+  border-color: var(--c-brand-gold);
+}

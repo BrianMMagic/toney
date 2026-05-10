@@ -1,0 +1,75 @@
+---
+export interface Props {
+  title?: string;
+  label?: string;
+  items?: { heading: string; body?: string }[];
+}
+
+const defaults = [
+  { heading: 'Hilarious & Jaw-Dropping Magic' },
+  { heading: 'Interactive Fun' },
+  { heading: 'Memories That Will Last A Lifetime' },
+];
+
+const {
+  title = 'Anthony Guarantees',
+  label = 'Why Anthony',
+  items = defaults,
+} = Astro.props;
+---
+
+<section class="section section--darker guarantees-section">
+  <div class="container">
+    <span class="section-label" data-reveal="fade-up">{label}</span>
+    <h2 class="section-title" data-reveal="fade-up">{title}</h2>
+    <div class="divider" data-reveal="fade-up"></div>
+
+    <div class="guarantees-grid" data-reveal-stagger>
+      {items.map((item) => (
+        <div class="guarantee-card">
+          <h3 class="guarantee-heading">{item.heading}</h3>
+          {item.body && <p class="guarantee-body">{item.body}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.guarantees-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.guarantee-card {
+  background: var(--color-surface);
+  border: 1px solid var(--c-light-15, var(--color-border));
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  text-align: center;
+  transition: transform var(--transition-mid), box-shadow var(--transition-mid), border-color var(--transition-mid);
+}
+.guarantee-card:hover {
+  transform: translateY(-4px);
+  box-shadow: none;
+  border-color: var(--c-brand-gold, var(--color-accent));
+}
+
+.guarantee-heading {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.guarantee-body {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .guarantees-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+</style>

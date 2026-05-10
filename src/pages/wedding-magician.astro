@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { weddingTestimonials } from '../data/testimonials';
+import { weddingFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Wedding Magician | Anthony Entertains | Wedding Entertainment"
+  description="Dallas' favorite wedding magician and mentalist Anthony Dempsey creates magical moments for your guests during cocktail hours and receptions. Serving Texas and beyond."
+  canonicalUrl="https://anthonyentertains.com/wedding-magician"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Wedding Magician & Mentalist"
+    headline="Dallas' Favorite<br>Wedding Magician"
+    subheadline="For the most magical day of your life!"
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Why Hire Section -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Wedding Entertainment</span>
+      <h2 class="section-title" data-reveal="fade-up">Why should we hire a wedding magician?</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="wedding-intro" data-reveal="fade-up">
+        <p>Imagine this. You walk into your wedding venue and see your best friend trying to help your coworkers stump a mind reader. You are startled by a scream of delight from your cousin who just had something vanish from his hands!</p>
+        <p>Wedding surveys show that after "I do", <strong>81% of guests say that the entertainment is what they remember most</strong> about the wedding they attended.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Does a Wedding Magician Do -->
+  <section class="section section--dark">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">The Experience</span>
+      <h2 class="section-title" data-reveal="fade-up">What does a wedding magician do?</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="wedding-intro" data-reveal="fade-up">
+        <p>A wedding magician is essentially an entertaining ice breaker. A wedding magician will go from group to group, performing close-up magic and mentalism in a more intimate setting.</p>
+        <h2 class="section-title" style="margin-top: 48px; margin-bottom: 16px;">When does a wedding magician perform?</h2>
+        <p>The cocktail hour is typically the time when the bridal party is off taking photos, leaving the guests to play the waiting game while having drinks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="The Key to a Truly Memorable Wedding"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={weddingTestimonials}
+    title="Couples Who Loved Anthony's Wedding Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- Contact -->
+  <ContactForm
+    title="Tell us about your wedding"
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection
+    title="When choosing a Wedding Magician, I know you have questions. I have answers."
+    faqs={weddingFaqs}
+  />
+</BaseLayout>
+
+<style>
+.wedding-intro {
+  max-width: 800px;
+}
+.wedding-intro p {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.85;
+  margin-bottom: 20px;
+  max-width: none;
+}
+.wedding-intro strong {
+  color: var(--color-gold);
+}
+
+@media (max-width: 900px) {
+  .wedding-intro { max-width: 100%; }
+}
+</style>

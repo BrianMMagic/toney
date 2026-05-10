@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ServiceIntroSection from '../components/ServiceIntroSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import ServiceBenefits from '../components/ServiceBenefits.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { corporateTestimonials } from '../data/testimonials';
+import { corporateFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+
+const corporateEvents = [
+  'Holiday Parties', 'Team Building', 'Corporate Events', 'Cocktail Hours',
+  'Trade Shows', 'Hospitality Suites', 'Surprise Entertainment',
+];
+
+const serviceOptions = [
+  {
+    heading: 'Magic Up Close',
+    body: 'Many corporate events have some sort of welcome reception or something along the lines of a cocktail hour. This is the perfect time for Anthony to stroll around the room and mingle with the guests, captivating them with unique and entertaining mentalism and sleight of hand magic. Strolling magic and mentalism is a more casual, relaxed approach to entertainment. Anthony treats guests like old friends so they can loosen up and laugh. Anthony can provide a mixture of magic and mentalism for your guests. If you prefer one over the other, no problem! Just specify your preference during the booking process.',
+    useCases: ['Corporate Events', 'Dinner Parties', 'Cocktail Hours', 'Client Appreciation Events', 'Company Anniversaries', 'Holiday Parties', 'Product Launches', 'Hospitality'],
+  },
+  {
+    heading: 'Stage Shows',
+    body: "Looking for a formal after-dinner show? Anthony's magic and mentalism stage show uses audience participation from start to finish. It's absolutely hilarious and mind-blowing! Anthony is also a sought-after corporate event MC! He's the friendly face who will guide guests through the evening, present awards, and keep the energy high.",
+    useCases: ['Banquets', 'Corporate Events', 'Festivals', 'Trade Shows', 'Client Appreciation Events', 'Team Building', 'Symposiums', 'Surprise Entertainment'],
+  },
+];
+
+const benefits = [
+  {
+    title: 'Guest Interaction',
+    body: "Ever attend a party where people seemed disengaged and bored? Not YOUR party! Anthony will personally ensure your guests are having fun!",
+  },
+  {
+    title: 'An Amped Up Party',
+    body: "Anthony's been trusted to elevate parties of 4, as well as parties of 1,000. He'll make your party, THE party.",
+  },
+  {
+    title: 'Peace of Mind',
+    body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good! So relax and enjoy some time with your colleagues.",
+  },
+];
+---
+
+<BaseLayout
+  title="Corporate Magician | Corporate Event Entertainment | Anthony Entertains"
+  description="Award-winning corporate magician and mentalist Anthony Dempsey delivers unforgettable entertainment for corporate events, holiday parties, trade shows, and more in Dallas and beyond."
+  canonicalUrl="https://anthonyentertains.com/corporate-magician"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Magician & Mentalist Anthony Dempsey"
+    headline="Award-Winning Corporate Entertainment<br>for Companies Who Like to Have Fun"
+    subheadline="Reach Out Today To Find Out How Corporate Magician and Mentalist Anthony Dempsey Can Help You Take Your Corporate Event To The Next Level"
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="Anthony Is The Corporate Magician Companies Trust For Events Like These"
+    events={corporateEvents}
+  />
+
+  <!-- Service Options -->
+  <ServiceIntroSection
+    label="How Anthony Performs"
+    title="Corporate Entertainment Services"
+    options={serviceOptions}
+  />
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="The Key to a Truly Memorable Corporate Event"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Benefits -->
+  <ServiceBenefits benefits={benefits} />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={corporateTestimonials}
+    title="Clients Who Love Anthony's Corporate Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- Contact -->
+  <ContactForm
+    title="Tell us about your event"
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection faqs={corporateFaqs} />
+</BaseLayout>

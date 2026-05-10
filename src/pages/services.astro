@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import EventTypesSection from '../components/EventTypesSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { homepageTestimonials } from '../data/testimonials';
+import { generalFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+
+const allEvents = [
+  'Team Building', 'Sales Meetings', 'Conventions', 'Trade Shows',
+  'Film and Television', 'Banquets', 'Colleges and Theaters', 'Graduations',
+  'Prom', 'Country Clubs', 'Award Ceremonies', 'Hotel Guest Entertainment',
+  'Birthday Parties', 'Special Events', 'Corporate Functions',
+];
+---
+
+<BaseLayout
+  title="The Best Magician in Dallas, TX | Anthony Entertains"
+  description="Dallas Magician Anthony Dempsey offers private parties, corporate entertainment, close-up magic, stage shows, and wedding entertainment. Serving Dallas, Fort Worth, and all of Texas."
+  canonicalUrl="https://anthonyentertains.com/services"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Dallas Magician & Mentalist"
+    headline="The Best Magician<br>in Dallas, TX"
+    subheadline="ANTHONY DEMPSEY"
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.60)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Services Grid -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Services</span>
+      <h2 class="section-title" data-reveal="fade-up">What Anthony Offers</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="services-grid" data-reveal-stagger>
+        <article class="service-card">
+          <div class="service-card-body">
+            <h3 class="service-card-heading">Private Parties</h3>
+            <p>I'll make your guests feel like they're the ones being celebrated. They will laugh, gasp, and they might just try to steal me away from the other guests.</p>
+            <a href={`${base}private-party-magician`} class="service-card-link">Learn More →</a>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card-body">
+            <h3 class="service-card-heading">Corporate Entertainment</h3>
+            <p>Enhancing guest experiences, creating connections, and blowing minds. As DFW's preferred Corporate Magician and Mentalist, Anthony Dempsey will ensure that your event is a success!</p>
+            <a href={`${base}corporate-magician`} class="service-card-link">Learn More →</a>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card-body">
+            <h3 class="service-card-heading">Close-up Magic and Mind Reading</h3>
+            <p>Dallas Magician Anthony Dempsey works his way amongst the crowd, showing them unbelievable feats.</p>
+            <a href={`${base}corporate-magician`} class="service-card-link">Learn More →</a>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card-body">
+            <h3 class="service-card-heading">Stage Shows</h3>
+            <p>Entertain your Brain! Influencing crowd decisions, reading strangers' thoughts and predicting the future…</p>
+            <a href={`${base}corporate-magician`} class="service-card-link">Learn More →</a>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card-body">
+            <h3 class="service-card-heading">Wedding Entertainment</h3>
+            <p>Your wedding is one of the most important days of your life, and Anthony makes sure your guests feel just as valued and important.</p>
+            <a href={`${base}wedding-magician`} class="service-card-link">Learn More →</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="service-area-note" data-reveal="fade-up">
+        Dallas Magician Anthony Dempsey Services Events all over Texas. Including Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, as well as all over the United States.
+      </p>
+    </div>
+  </section>
+
+  <!-- Event Types -->
+  <EventTypesSection
+    title="The Magician Dallas Trusts For Events Like These"
+    events={allEvents}
+    note="Anthony is the highest rated Magician and Mentalist in Texas."
+  />
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="The Recipe for a Truly Memorable Event"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={homepageTestimonials}
+    title="Clients Who Love Anthony's Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- Contact -->
+  <ContactForm />
+
+  <!-- FAQ -->
+  <FAQSection faqs={generalFaqs} />
+</BaseLayout>
+
+<style>
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.service-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--transition-mid), box-shadow var(--transition-mid), border-color var(--transition-mid);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.service-card-body { padding: 32px; }
+
+.service-card-heading {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.service-card-body p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  max-width: none;
+  margin-bottom: 20px;
+}
+
+.service-card-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.service-card-link:hover { color: var(--color-accent); }
+
+.service-area-note {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .services-grid { grid-template-columns: 1fr; }
+}
+</style>

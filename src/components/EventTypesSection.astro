@@ -1,0 +1,91 @@
+---
+const base = import.meta.env.BASE_URL;
+
+export interface Props {
+  title?: string;
+  events?: string[];
+  note?: string;
+}
+
+const defaultEvents = [
+  'Anniversaries', 'Corporate Events', 'Holiday Parties', 'Adult Birthdays',
+  'Weddings', 'Cocktail Hours', 'Graduations', 'Surprise Entertainment',
+];
+
+const {
+  title = 'The Magician Dallas Trusts For Events Like These',
+  events = defaultEvents,
+  note,
+} = Astro.props;
+---
+
+<section class="section section--dark event-types-section">
+  <div class="container">
+    <h2 class="section-title" data-reveal="fade-up">{title}</h2>
+    <div class="divider" data-reveal="fade-up"></div>
+
+    <ul class="event-types-grid" data-reveal-stagger>
+      {events.map((event) => (
+        <li class="event-type-item">
+          <span class="event-type-dot" aria-hidden="true">◆</span>
+          {event}
+        </li>
+      ))}
+    </ul>
+
+    {note && <p class="event-types-note" data-reveal="fade-up">{note}</p>}
+
+    <div class="event-types-cta" data-reveal="fade-up">
+      <a href={`${base}get-a-quote`} class="btn btn--primary">Get a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<style>
+.event-types-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.event-type-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+.event-type-item:hover {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+  background: rgba(123,47,247,0.08);
+}
+
+.event-type-dot {
+  color: var(--color-accent);
+  font-size: 0.55rem;
+  flex-shrink: 0;
+}
+
+.event-types-note {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+
+.event-types-cta { margin-top: 8px; }
+
+@media (max-width: 900px) {
+  .event-types-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .event-types-grid { grid-template-columns: 1fr; }
+}
+</style>

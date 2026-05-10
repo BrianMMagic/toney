@@ -1,0 +1,221 @@
+---
+import { videos } from '../data/videos';
+---
+
+<section class="section section--dark" id="media">
+  <div class="container">
+    <span class="section-label" data-reveal="fade-up">Media</span>
+    <h2 class="section-title" data-reveal="fade-up">All Videos</h2>
+    <div class="divider" data-reveal="fade-up"></div>
+
+    <div class="video-grid" data-reveal-stagger>
+      {videos.map((video) => (
+        <div class="video-card">
+          <button
+            class="video-card__thumb"
+            data-video-id={video.id}
+            aria-label={`Play: ${video.title}`}
+          >
+            <img
+              src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
+              alt={video.title}
+              loading="lazy"
+              width="320"
+              height="180"
+            />
+            <span class="video-card__play" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="24" fill="rgba(123,47,247,0.85)"/>
+                <polygon points="19,16 35,24 19,32" fill="#fff"/>
+              </svg>
+            </span>
+            <span class="video-card__duration">{video.duration}</span>
+          </button>
+          <p class="video-card__title">{video.title}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- YouTube embed modal -->
+<div class="yt-modal" id="yt-modal" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <div class="yt-modal__backdrop"></div>
+  <div class="yt-modal__content">
+    <button class="yt-modal__close" id="yt-modal-close" aria-label="Close video">✕</button>
+    <div class="yt-modal__embed">
+      <iframe
+        id="yt-iframe"
+        width="100%"
+        height="100%"
+        src=""
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<style>
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.video-card__thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  background: #1a1a1a;
+  border: 1px solid var(--color-border);
+  transition: transform var(--transition-mid), box-shadow var(--transition-mid);
+}
+.video-card__thumb:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.video-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition-fast);
+}
+.video-card__thumb:hover img { opacity: 0.85; }
+
+.video-card__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.video-card__thumb:hover .video-card__play {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.video-card__duration {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.video-card__title {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: none;
+}
+
+/* Modal */
+.yt-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.yt-modal[hidden] { display: none; }
+
+.yt-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  cursor: pointer;
+}
+
+.yt-modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  background: #111;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.yt-modal__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+  z-index: 2;
+}
+.yt-modal__close:hover { background: rgba(255,255,255,0.1); }
+
+.yt-modal__embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+@media (max-width: 900px) {
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+const modal = document.getElementById('yt-modal') as HTMLElement;
+const iframe = document.getElementById('yt-iframe') as HTMLIFrameElement;
+const closeBtn = document.getElementById('yt-modal-close');
+const backdrop = modal?.querySelector('.yt-modal__backdrop');
+
+function openVideo(videoId: string) {
+  if (!modal || !iframe) return;
+  iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideo() {
+  if (!modal || !iframe) return;
+  modal.hidden = true;
+  iframe.src = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.video-card__thumb').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const id = (btn as HTMLElement).dataset.videoId;
+    if (id) openVideo(id);
+  });
+});
+
+closeBtn?.addEventListener('click', closeVideo);
+backdrop?.addEventListener('click', closeVideo);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVideo(); });
+</script>

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PennTellerBadge from '../components/PennTellerBadge.astro';
+import ServiceIntroSection from '../components/ServiceIntroSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import ServiceBenefits from '../components/ServiceBenefits.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import VideoGrid from '../components/VideoGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { homepageTestimonials } from '../data/testimonials';
+import { tradeShowFaqs } from '../data/faqs';
+
+const base = import.meta.env.BASE_URL;
+
+const serviceOptions = [
+  {
+    heading: 'VIP Close-up Magic',
+    body: "Need to impress some VIPs? Anthony can provide his sought-after strolling magic and mentalism to a designated group, perhaps during a welcome reception or after a VIP dinner. Strolling magic and mentalism is a more casual, relaxed approach to entertainment. Anthony treats guests like old friends so they can loosen up and laugh. Anthony can provide a mixture of magic and mentalism for your guests. If you prefer one over the other, no problem! Just specify your preference during the booking process.",
+    useCases: ['VIP Receptions', 'Welcome Events', 'Client Appreciation', 'Hospitality Suites', 'Private Dinners'],
+  },
+  {
+    heading: 'Trade Show Floor Magic',
+    body: "Anthony understands that every minute counts on the trade show floor. He'll work your company's products, services, and message into an engaging, mind-blowing set that is guaranteed to draw people towards your booth. In between sets, he will do some one-on-one magic for attendees who may be waiting to chat with you. There's so much riding on the success of a trade show. Hire an excellent trade show mentalist to keep your booth's momentum going all day!",
+    useCases: ['Trade Shows', 'Conventions', 'Product Launches', 'Booth Traffic', 'Brand Messaging', 'Lead Generation'],
+  },
+];
+
+const benefits = [
+  {
+    title: 'Attendee Interaction',
+    body: "It's frustrating when people glance at the booth you worked so hard on, and just keep moving. People will actually stop at your trade show booth when they see Anthony performing!",
+  },
+  {
+    title: 'Increased Traffic',
+    body: "All it takes are a few quality leads to make or break your trade show. Anthony will bring those important people right to your booth using dynamic magic and mentalism.",
+  },
+  {
+    title: 'Peace of Mind',
+    body: "Never worry about inappropriate language or a late arrival. Anthony wants to make you and your company look good, and he takes professionalism very seriously.",
+  },
+];
+
+const tradeShowGoals = [
+  'Have a crowd gathered around your booth',
+  'Promote your products and services',
+  'Generate leads',
+  'Clearly deliver your company\'s message',
+  'Make meaningful connections',
+  'Make your booth stand out from the rest',
+];
+---
+
+<BaseLayout
+  title="Trade Show Entertainment That Delivers Results"
+  description="Trade show magician and mentalist Anthony Dempsey draws crowds to your booth, promotes your message, and generates quality leads. Serving trade shows across the US."
+  canonicalUrl="https://anthonyentertains.com/trade-show-magician"
+>
+  <!-- Hero -->
+  <Hero
+    eyebrow="Trade Show Magician & Mentalist"
+    headline="Trade Show Entertainment<br>That Is Iconic &amp; Unforgettable"
+    subheadline="Generate Enthusiasm That Builds Quality Leads"
+    ctaText="Get a Free Quote"
+    ctaHref={`${base}get-a-quote`}
+    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryHref="#media"
+    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    overlay="rgba(0,0,0,0.62)"
+  />
+
+  <!-- Penn & Teller -->
+  <PennTellerBadge />
+
+  <!-- Trade Show Goals -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Why It Works</span>
+      <h2 class="section-title" data-reveal="fade-up">Make the most out of your trade show investment with Anthony Dempsey</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <p class="section-sub" data-reveal="fade-up">
+        Anthony Dempsey is a sought-after trade show magician and mentalist who understands that a lot is riding on the success of your trade show experience. The bottom line: if people aren't stopping at your booth, you're not getting the best return on your investment. He can significantly increase traffic to your trade show exhibit, while promoting your products and services in a uniquely entertaining way, allowing you to generate quality leads.
+      </p>
+
+      <ul class="goals-list" data-reveal-stagger>
+        {tradeShowGoals.map((goal) => (
+          <li class="goal-item">
+            <span class="goal-dot" aria-hidden="true">◆</span>
+            {goal}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Service Options -->
+  <ServiceIntroSection
+    label="How Anthony Performs"
+    title="Trade Show Entertainment Services"
+    options={serviceOptions}
+  />
+
+  <!-- Guarantees -->
+  <ThreeGuarantees
+    label="The Key to a Truly Memorable Trade Show"
+    title="Anthony Guarantees:"
+  />
+
+  <!-- Benefits -->
+  <ServiceBenefits benefits={benefits} />
+
+  <!-- Testimonials -->
+  <TestimonialsSection
+    testimonials={homepageTestimonials}
+    title="Clients Who Love Anthony's Entertainment"
+  />
+
+  <!-- Videos -->
+  <VideoGrid />
+
+  <!-- Contact -->
+  <ContactForm
+    title="Tell us about your event"
+    label="Contact"
+    showFullForm={true}
+  />
+
+  <!-- FAQ -->
+  <FAQSection faqs={tradeShowFaqs} />
+</BaseLayout>
+
+<style>
+.goals-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.goal-dot {
+  color: var(--color-accent);
+  font-size: 0.55rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .goals-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .goals-list { grid-template-columns: 1fr; }
+}
+</style>

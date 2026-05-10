@@ -1,0 +1,160 @@
+---
+export interface Props {
+  headline: string;
+  subheadline?: string;
+  eyebrow?: string;
+  bgImage?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  ctaSecondaryText?: string;
+  ctaSecondaryHref?: string;
+  minHeight?: string;
+  overlay?: string;
+  align?: 'center' | 'left';
+}
+
+const {
+  headline,
+  subheadline,
+  eyebrow,
+  bgImage = '/images/hero/anthony-dempsey-hero.jpg',
+  ctaText = 'Get a Free Quote',
+  ctaHref,
+  ctaSecondaryText,
+  ctaSecondaryHref,
+  minHeight = '92vh',
+  overlay = 'rgba(0,0,0,0.58)',
+  align = 'center',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const resolvedCta = ctaHref ?? `${base}get-a-quote`;
+const resolvedBg = bgImage.startsWith('http') ? bgImage : `${base}${bgImage.replace(/^\//, '')}`;
+---
+
+<section
+  class={`hero hero--${align}`}
+  style={`min-height:${minHeight}; --hero-bg: url('${resolvedBg}'); --hero-overlay: ${overlay};`}
+>
+  <div class="hero__content">
+    {eyebrow && <span class="hero__eyebrow hero-animate">{eyebrow}</span>}
+    <h1 class="hero__headline hero-animate hero-animate--delay-1" set:html={headline} />
+    {subheadline && <p class="hero__sub hero-animate hero-animate--delay-2">{subheadline}</p>}
+    <div class="hero__actions hero-animate hero-animate--delay-3">
+      <a href={resolvedCta} class="btn btn--primary btn--lg">{ctaText}</a>
+      {ctaSecondaryText && ctaSecondaryHref && (
+        <a href={ctaSecondaryHref} class="btn btn--outline btn--lg">{ctaSecondaryText}</a>
+      )}
+    </div>
+  </div>
+  <div class="hero__scroll-hint" aria-hidden="true">
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<style>
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hero-bg) center / cover no-repeat var(--color-bg);
+  overflow: hidden;
+  padding: 120px var(--section-pad-x) 80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  z-index: 1;
+}
+
+/* Subtle bottom gradient for smooth transition */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg));
+  z-index: 2;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 3;
+  max-width: 860px;
+  width: 100%;
+}
+
+.hero--center .hero__content { text-align: center; margin: 0 auto; }
+.hero--left .hero__content { text-align: left; }
+
+.hero__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-brand-gold, var(--color-gold));
+  margin-bottom: 16px;
+}
+
+.hero__headline {
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.08;
+}
+
+.hero__sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--c-light-40, rgba(255,255,255,0.78));
+  margin-bottom: 36px;
+  max-width: 56ch;
+  line-height: 1.7;
+}
+.hero--center .hero__sub { margin-left: auto; margin-right: auto; }
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.hero--center .hero__actions { justify-content: center; }
+
+.btn--lg { padding: 16px 40px; font-size: 0.9rem; }
+
+/* Scroll hint */
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero__scroll-line {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  animation: scroll-line 1.8s ease infinite;
+}
+@keyframes scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+@media (max-width: 640px) {
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .btn--lg { text-align: center; justify-content: center; }
+}
+</style>

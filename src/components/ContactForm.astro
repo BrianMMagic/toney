@@ -1,0 +1,229 @@
+---
+export interface Props {
+  title?: string;
+  label?: string;
+  showFullForm?: boolean;
+}
+
+const {
+  title = 'Drop Me a Line',
+  label = 'Contact',
+  showFullForm = false,
+} = Astro.props;
+---
+
+<section class="section section--dark" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info" data-reveal="fade-right">
+        <span class="section-label">{label}</span>
+        <h2 class="section-title">{title}</h2>
+        <div class="divider"></div>
+
+        <p class="contact-area">
+          Serving the Dallas - Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, & more.
+        </p>
+
+        <div class="contact-details">
+          <a href="mailto:Anthony@AnthonyEntertains.com" class="contact-detail-link">
+            <span class="contact-detail-icon" aria-hidden="true">✉</span>
+            Anthony@AnthonyEntertains.com
+          </a>
+          <a href="tel:+19406540699" class="contact-detail-link">
+            <span class="contact-detail-icon" aria-hidden="true">✆</span>
+            940-654-0699
+          </a>
+          <div class="contact-detail-link">
+            <span class="contact-detail-icon" aria-hidden="true">◷</span>
+            Business Hours: Always Open
+          </div>
+        </div>
+
+        <p class="contact-note">Anthony will be in touch within 24 hours. Please be sure to check your junk mail for his reply.</p>
+      </div>
+
+      <div class="contact-form-wrap" data-reveal="fade-left">
+        <form class="contact-form" name="contact" data-netlify="true" netlify-honeypot="bot-field" method="POST" aria-label="Contact form">
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          {showFullForm ? (
+            <>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="first-name">First Name <span aria-hidden="true">*</span></label>
+                  <input class="form-input" type="text" id="first-name" name="first-name" required autocomplete="given-name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="last-name">Last Name <span aria-hidden="true">*</span></label>
+                  <input class="form-input" type="text" id="last-name" name="last-name" required autocomplete="family-name" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="email">Email <span aria-hidden="true">*</span></label>
+                  <input class="form-input" type="email" id="email" name="email" required autocomplete="email" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone <span aria-hidden="true">*</span></label>
+                  <input class="form-input" type="tel" id="phone" name="phone" required autocomplete="tel" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="company">Company</label>
+                <input class="form-input" type="text" id="company" name="company" autocomplete="organization" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="event-date">Event Date</label>
+                  <input class="form-input" type="date" id="event-date" name="event-date" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="budget">Entertainment Budget <span aria-hidden="true">*</span></label>
+                  <select class="form-input form-select" id="budget" name="budget" required>
+                    <option value="">Select a range...</option>
+                    <option value="under-1000">Under $1,000</option>
+                    <option value="1000-2000">$1,000 – $2,000</option>
+                    <option value="2000-3500">$2,000 – $3,500</option>
+                    <option value="3500-5000">$3,500 – $5,000</option>
+                    <option value="5000-plus">$5,000+</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="message-full">Tell us about your event <span aria-hidden="true">*</span></label>
+                <textarea class="form-input form-textarea" id="message-full" name="message" rows="5" required></textarea>
+              </div>
+            </>
+          ) : (
+            <>
+              <div class="form-group">
+                <label class="form-label" for="contact-email">Your Email <span aria-hidden="true">*</span></label>
+                <input class="form-input" type="email" id="contact-email" name="email" required autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-message">Message <span aria-hidden="true">*</span></label>
+                <textarea class="form-input form-textarea" id="contact-message" name="message" rows="5" required></textarea>
+              </div>
+            </>
+          )}
+
+          <button type="submit" class="btn btn--primary form-submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-area {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.contact-detail-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+a.contact-detail-link:hover { color: var(--color-accent-light); }
+
+.contact-detail-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: rgba(123,47,247,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.contact-note {
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  font-style: italic;
+}
+
+/* Form */
+.contact-form-wrap {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.form-label span { color: var(--color-accent); }
+
+.form-input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(123,47,247,0.15);
+}
+.form-input::placeholder { color: var(--color-text-dim); }
+
+.form-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.form-textarea { resize: vertical; min-height: 120px; }
+
+.form-submit { align-self: flex-start; margin-top: 4px; }
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .contact-form-wrap { padding: 24px; }
+}
+</style>
