@@ -1,11 +1,18 @@
 ---
-import { videos } from '../data/videos';
+import { videos as allVideos } from '../data/videos';
+import type { Video } from '../data/videos';
+
+export interface Props {
+  videos?: Video[];
+}
+
+const { videos = allVideos } = Astro.props;
 ---
 
 <section class="section section--dark" id="media">
   <div class="container">
-    <span class="section-label" data-reveal="fade-up">Media</span>
-    <h2 class="section-title" data-reveal="fade-up">All Videos</h2>
+    <h2 class="section-title" data-reveal="fade-up">MEDIA</h2>
+    <p class="video-filter-tab" data-reveal="fade-up">All Videos</p>
     <div class="divider" data-reveal="fade-up"></div>
 
     <div class="video-grid" data-reveal-stagger>
@@ -25,7 +32,7 @@ import { videos } from '../data/videos';
             />
             <span class="video-card__play" aria-hidden="true">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <circle cx="24" cy="24" r="24" fill="rgba(123,47,247,0.85)"/>
+                <circle cx="24" cy="24" r="24" fill="rgba(20,21,29,0.75)"/>
                 <polygon points="19,16 35,24 19,32" fill="#fff"/>
               </svg>
             </span>
@@ -59,6 +66,16 @@ import { videos } from '../data/videos';
 </div>
 
 <style>
+.video-filter-tab {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 24px;
+  max-width: none;
+}
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -75,16 +92,18 @@ import { videos } from '../data/videos';
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   cursor: pointer;
   background: #1a1a1a;
-  border: 1px solid var(--color-border);
-  transition: transform var(--transition-mid), box-shadow var(--transition-mid);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform var(--transition-mid), border-color var(--transition-fast);
 }
 .video-card__thumb:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.video-card__thumb:hover {
+  transform: translateY(-3px);
 }
 
 .video-card__thumb img {
@@ -123,7 +142,7 @@ import { videos } from '../data/videos';
 
 .video-card__title {
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.6);
   line-height: 1.5;
   max-width: none;
 }
@@ -154,7 +173,7 @@ import { videos } from '../data/videos';
   background: #111;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: none;
 }
 
 .yt-modal__close {
@@ -180,10 +199,10 @@ import { videos } from '../data/videos';
   aspect-ratio: 16/9;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .video-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   .video-grid { grid-template-columns: 1fr; }
 }
 </style>

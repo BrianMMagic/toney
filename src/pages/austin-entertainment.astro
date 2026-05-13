@@ -1,19 +1,46 @@
 ---
 import LocationPageContent from '../components/LocationPageContent.astro';
 import { austinHoustonFaqs } from '../data/faqs';
+import type { Testimonial } from '../data/testimonials';
+
+const austinTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of 'reading' the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+  },
+  {
+    quote:
+      "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away. The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling. He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+  },
+];
 ---
 
 <LocationPageContent
   pageTitle="Austin Entertainment | Magic & Mentalism That Thrills"
-  metaDescription="Austin magician and mentalist Anthony Dempsey delivers mind-blowing entertainment for corporate events, private parties, and stage shows in Austin, TX."
+  metaDescription="Say goodbye to boring office parties and hello to funny and high-energy gatherings with Austin Magician Anthony Dempsey. Magic and mentalism for corporate and private events."
   canonicalUrl="https://anthonyentertains.com/austin-entertainment"
   heroEyebrow="Austin Magician & Mentalist"
   heroHeadline="Mind-Blowing Entertainment<br>For Austin, Texas"
   heroSubheadline="Reach Out Today to Find Out How Anthony Can Transform Your Austin Corporate Event or Private Party"
-  corporateBody="Are you looking to bring something fun and unique to your next work party? Say goodbye to awkward office gatherings and hello to unforgettable evenings with Austin Magician Anthony Dempsey! Whether it's a casual cocktail hour or a large annual sales meeting, Anthony's performance will bring your employees together in a uniquely entertaining way. Anthony has extensive experience in the corporate sector, making him the best performing corporate magician in Texas."
+  corporateBody="Say goodbye to awkward office gatherings and hello to unforgettable evenings with Austin Magician Anthony Dempsey! Whether it's a casual cocktail hour or a large annual sales meeting, Anthony's performance will bring your employees together in a uniquely entertaining way. Anthony has extensive experience in the corporate sector, making him the best performing corporate magician in Texas."
   privateBody="Are you planning a private event that needs to be spiced up? Look no further! Anthony will impress your guests with strolling magic and mentalism. Moving from group to group delivers a personalized experience to each guest. If you're looking for something on a grander scale, consider Anthony's Comedy Magic & Mind Reading Stage Show. For private events in your home, he performs a modified version of his stage show in your living room, which is always a big hit."
   stageBody="Get ready to be amazed, Austin! Anthony's Comedy Magic & Mind Reading Stage Show will put your guests and company in the spotlight. This completely customizable stage show guarantees an unforgettable experience where your guests become the stars. Anthony can include your logo, guest names, and more within his show. With Anthony's 20+ years of stage experience, prepare to be captivated by his hilarious, incredible magic and mentalism show."
-  servingAreas="Serving the Austin Area, Round Rock, Waco, Temple, San Marcos, Pflugerville, and more."
+  servingAreas="Serving the <a href='https://www.austintexas.org/' target='_blank' rel='noopener noreferrer'>Austin Area</a>, <a href='https://www.roundrocktexas.gov/' target='_blank' rel='noopener noreferrer'>Round Rock</a>, <a href='https://www.stayinwacotx.com/' target='_blank' rel='noopener noreferrer'>Waco</a>, <a href='https://www.templetx.gov/' target='_blank' rel='noopener noreferrer'>Temple</a>, <a href='https://www.sanmarcostx.gov/' target='_blank' rel='noopener noreferrer'>San Marcos</a>, <a href='https://www.pflugervilletx.gov/' target='_blank' rel='noopener noreferrer'>Pflugerville</a>, and more."
+  eventTypesTagline="Anthony provides magic & mentalism entertainment for a variety of event types."
+  promoVideoId="97DXKp72C-w"
+  promoVideoTitle="Austin Magician and Mentalist Anthony Dempsey"
   faqs={austinHoustonFaqs}
   guaranteesLabel="Plan Your Event Around Guest Experience"
+  testimonialsTitle="CLIENTS WHO LOVE ANTHONY'S AUSTIN, TX ENTERTAINMENT"
+  testimonials={austinTestimonials}
 />

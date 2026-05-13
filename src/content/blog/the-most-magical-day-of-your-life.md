@@ -4,6 +4,8 @@ pubDate: "2025-12-30"
 author: "Anthony Dempsey"
 category: "Magician"
 description: "Wedding magician Anthony Dempsey discusses common misconceptions about hiring magicians for adult wedding receptions and when performances work best."
+heroImage: "https://static.wixstatic.com/media/40084f_8022de117a584acabde88df4f838e4ff~mv2.jpg"
+readTime: "4 min"
 ---
 
 To piggyback off my last blog post, I'm going to talk about wedding magic a little more. There are some common misconceptions about wedding magicians, as well as some gray area in terms of what I actually do at weddings. This post should hopefully clear all that up!

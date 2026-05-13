@@ -4,6 +4,8 @@ pubDate: "2025-09-24"
 author: "Anthony Dempsey"
 category: "Magician"
 description: "Anthony Dempsey, a Dallas-based magician and mentalist, discusses why hiring magic entertainment is ideal for corporate events and holiday parties, highlighting unique experiences, professionalism, and guest satisfaction."
+heroImage: "https://static.wixstatic.com/media/40084f_31583f170f4943078f09c4f6e3bb4a2b~mv2.png"
+readTime: "4 min"
 ---
 
 Wow, what a year it's been! It started out strong and it's been nonstop all year so far! It's safe to say that private parties and corporate events are in full swing again, and there's clearly a demand for a Dallas magician and mentalist! It feels so great to be back to work, performing magic and mentalism across the country. Last night I had a show in Oklahoma, tonight I have one in Austin, and next week I have one in Las Vegas. I guess it's a good thing I just got new tires? I'm putting a lot of miles on my car here lately and life's pretty good now. With the holiday season fast-approaching, I thought I'd talk about how magic and mentalism is the perfect idea for corporate events! But why should you consider hiring a Dallas magician for your corporate event?

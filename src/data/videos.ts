@@ -50,4 +50,19 @@ export const videos: Video[] = [
     title: 'Magician Dallas Tx 2026 - Anthony Dempsey Television Appearance',
     duration: '2:27',
   },
+  {
+    id: 'bd8aWl1f_6A',
+    title: 'Holiday Party Magician Anthony Dempsey — Featured Performance',
+    duration: '',
+  },
+  {
+    id: 'ELVb9yqLJZ0',
+    title: 'Anthony Dempsey on Penn and Teller: Fool Us!',
+    duration: '',
+  },
+  {
+    id: 'sn-iE1P1pNE',
+    title: 'Corporate Magician and Mentalist Anthony Dempsey',
+    duration: '',
+  },
 ];

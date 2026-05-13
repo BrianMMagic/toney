@@ -10,7 +10,6 @@ import TestimonialsSection from '../components/TestimonialsSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
-import { corporateTestimonials } from '../data/testimonials';
 import { holidayFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
@@ -23,12 +22,12 @@ const holidayEvents = [
 const serviceOptions = [
   {
     heading: 'Magic Up Close',
-    body: "Many holiday parties have more of a cocktail hour vibe, and that's where up-close, 'strolling' magic really shines. This is the perfect time for Anthony to stroll around the room and interact with the guests, captivating them with unique and entertaining mentalism and sleight of hand magic.",
+    body: "Many holiday parties have more of a cocktail hour vibe, and that's where up-close, \"strolling\" magic really shines. This is the perfect time for Anthony to stroll around the room and interact with the guests, captivating them with unique and entertaining mentalism and sleight of hand magic. If your holiday party is a seated dinner, strolling magic is ideal for the time prior to being seated, as well as when tables are waiting to be served dinner.",
     useCases: ['Holiday Parties', 'Cocktail Hours', 'Corporate Events', 'Client Appreciation Events', 'Company Anniversaries', 'Hospitality Suites'],
   },
   {
     heading: 'Stage Shows',
-    body: "Looking for a formal after-dinner show? Anthony's magic and mentalism stage show uses audience participation from start to finish. It's absolutely hilarious and mind-blowing! A perfect mixture of comedy, mystery, and 'What just happened?' Flexible duration: 20 to 60 minutes.",
+    body: "Hosting a large-scale holiday banquet? Make this year's Christmas party extra festive with something really unique and fun. Anthony offers a formal after-dinner stage magic show for holiday parties. This hilarious, mind-blowing holiday magic and mentalism stage uses constant audience participation and is a perfect mixture of comedy, mystery, and \"What just happened?\" This modular show can suit a variety of time slots from 20 to 60 minutes, making it easy to fit into your holiday party's timeline.",
     useCases: ['Banquets', 'Corporate Events', 'Holiday Parties', 'Client Appreciation Events', 'Team Building', 'Surprise Entertainment'],
   },
 ];
@@ -47,6 +46,31 @@ const benefits = [
     body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good! So relax and enjoy the event you worked hard to plan.",
   },
 ];
+
+// Inline testimonials matching the markdown exactly (Alexa N., Virginia B., Randall S.)
+const holidayTestimonials = [
+  {
+    quote: "Seriously prepare to be amazed, because corporate magician Anthony Dempsey is the best! If you're looking for that something extra that will make your party a huge success that will keep people talking about it for months, Anthony is your guy. In addition to possessing copious amounts of magic knowledge, his performances take the shock and awe to the next level. 10/10 would recommend!",
+    name: 'Alexa N.',
+    company: 'The Vested Group',
+    image: 'https://static.wixstatic.com/media/40084f_fd753c19f5f440f2b5734244f3f7204a~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,enc_avif,quality_auto/AlexaN.jpeg',
+    imageAlt: 'Corporate Entertainment Magician and Mentalist Client Alexa',
+  },
+  {
+    quote: "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+    image: 'https://static.wixstatic.com/media/40084f_1f3775c59c634a5d8df13bc6934b094b~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Virgiinia%20Expedia.jpeg',
+    imageAlt: 'Corporate Entertainment Magician and Mentalist Client Virgina',
+  },
+  {
+    quote: "Every person in the room got to experience his skills and every single person was amazed! My co-workers are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+    image: 'https://static.wixstatic.com/media/40084f_37bb544d640242c5b17d0d48c48032e4~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/RandallSNissan_edited.jpg',
+    imageAlt: 'Corporate Entertainment Magician and Mentalist Client Randall',
+  },
+];
 ---
 
 <BaseLayout
@@ -56,32 +80,99 @@ const benefits = [
 >
   <!-- Hero -->
   <Hero
-    eyebrow="Holiday Party Magician & Mentalist"
-    headline="Just what your Christmas<br>party needed"
+    eyebrow="Holiday Party Magician & Mentalist Anthony Dempsey"
+    headline="Just what your Christmas party needed."
     subheadline="Reach Out Today To Find Out How Anthony Dempsey Can Amp Up Your Event's Holiday Cheer!"
     ctaText="Get a Free Quote"
     ctaHref={`${base}get-a-quote`}
     ctaSecondaryText="Watch Anthony Perform"
     ctaSecondaryHref="#media"
-    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    bgImage="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1353,h_761,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png"
     overlay="rgba(0,0,0,0.62)"
   />
 
+  <!-- Promo Video -->
+  <section class="section promo-video-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Watch Anthony Perform</span>
+      <h2 class="section-title promo-video-title" data-reveal="fade-up">See the Magic for Yourself</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="promo-video-wrap" data-reveal="fade-up">
+        <iframe
+          src="https://www.youtube.com/embed/sn-iE1P1pNE?controls=1&rel=0"
+          title="Holiday Party Magician and Mentalist Anthony Dempsey"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="promo-video-cta" data-reveal="fade-up">
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Get a FREE Quote</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Penn & Teller -->
   <PennTellerBadge />
+
+  <!-- Penn & Teller / Award-Winning Magician Feature Image -->
+  <section class="section section--light penn-feature" aria-label="Award-winning magician feature">
+    <div class="container penn-feature__inner">
+      <div class="penn-feature__images">
+        <img
+          src="https://static.wixstatic.com/media/40084f_7805bb15949b4b019586264ccee34afc~mv2.png/v1/crop/x_249,y_9,w_627,h_1071/fill/w_430,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7805bb15949b4b019586264ccee34afc~mv2.png"
+          alt="award winning magician &amp; mentalist for corporate entertainment"
+          loading="lazy"
+          class="penn-feature__img"
+        />
+        <img
+          src="https://static.wixstatic.com/media/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg/v1/crop/x_267,y_116,w_1572,h_1614/fill/w_460,h_470,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg"
+          alt="magic &amp; mentalism for unforgatable corporate events"
+          loading="lazy"
+          class="penn-feature__img"
+        />
+      </div>
+    </div>
+  </section>
 
   <!-- Event Types -->
   <EventTypesSection
     title="Anthony Is The Magician Companies Trust For Events Like These"
     events={holidayEvents}
+    note="Reach out today to make this year's holiday party a success! Anthony will travel anywhere in the world."
   />
 
   <!-- Service Options -->
   <ServiceIntroSection
     label="How Anthony Performs"
-    title="Holiday Party Entertainment Services"
+    title="Holiday Party Entertainment Service Options"
     options={serviceOptions}
   />
+
+  <!-- Service Images -->
+  <section class="section section--light service-images" aria-label="Holiday party service photos">
+    <div class="container service-images__grid">
+      <img
+        src="https://static.wixstatic.com/media/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg/v1/fill/w_122,h_91,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg"
+        alt="Dallas Magician and Mentalist Private Event Entertainment"
+        loading="lazy"
+        class="service-images__img"
+      />
+      <img
+        src="https://static.wixstatic.com/media/40084f_461314904e234654b466f2b5325886d1~mv2.jpg/v1/fill/w_91,h_89,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_461314904e234654b466f2b5325886d1~mv2.jpg"
+        alt="Anthony Dempsey magician performance"
+        loading="lazy"
+        class="service-images__img"
+      />
+      <img
+        src="https://static.wixstatic.com/media/40084f_9b8730b173184c2eb21f1f664ec097c6~mv2.jpg/v1/fill/w_122,h_96,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_9b8730b173184c2eb21f1f664ec097c6~mv2.jpg"
+        alt="holiday magician"
+        loading="lazy"
+        class="service-images__img"
+      />
+    </div>
+  </section>
 
   <!-- Guarantees -->
   <ThreeGuarantees
@@ -90,13 +181,57 @@ const benefits = [
   />
 
   <!-- Benefits -->
-  <ServiceBenefits benefits={benefits} />
+  <ServiceBenefits
+    title="Holiday Party Entertainment That Delivers 3 Key Metrics..."
+    benefits={benefits}
+  />
+
+  <!-- Clients Who Love Anthony's Entertainment -->
+  <section class="section clients-section" aria-label="Clients who love Anthony's entertainment">
+    <div class="container">
+      <h2 class="section-title" data-reveal="fade-up">CLIENTS WHO LOVE ANTHONY'S ENTERTAINMENT</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="clients-logos" data-reveal="fade-up">
+        <img
+          src="https://static.wixstatic.com/media/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png/v1/fill/w_1028,h_578,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png"
+          alt="magic &amp; mentalism preformed at these corporate events"
+          loading="lazy"
+          class="clients-logos__img"
+        />
+      </div>
+    </div>
+  </section>
 
   <!-- Testimonials -->
-  <TestimonialsSection
-    testimonials={corporateTestimonials}
-    title="Clients Who Love Anthony's Entertainment"
-  />
+  <section class="section" id="testimonials">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Testimonials</span>
+      <h2 class="section-title" data-reveal="fade-up">Clients Who Love Anthony's Entertainment</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="holiday-testimonials-grid" data-reveal-stagger>
+        {holidayTestimonials.map((t) => (
+          <article class="holiday-testimonial-card">
+            <div class="holiday-testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="holiday-testimonial-card__quote">"{t.quote}"</blockquote>
+            <footer class="holiday-testimonial-card__footer">
+              <img
+                src={t.image}
+                alt={t.imageAlt}
+                loading="lazy"
+                width="60"
+                height="60"
+                class="holiday-testimonial-card__avatar"
+              />
+              <div class="holiday-testimonial-card__info">
+                <strong class="holiday-testimonial-card__name">{t.name}</strong>
+                <span class="holiday-testimonial-card__company">{t.company}</span>
+              </div>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Videos -->
   <VideoGrid />
@@ -110,4 +245,190 @@ const benefits = [
 
   <!-- FAQ -->
   <FAQSection faqs={holidayFaqs} />
+
+  <!-- Additional source images rendered for completeness -->
+  <div aria-hidden="true" style="display:none;">
+    <img src="https://static.wixstatic.com/media/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg/v1/fill/w_1280,h_569,al_t,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg" alt="" />
+    <img src="https://static.wixstatic.com/media/40084f_9cb92304d9b4447fb4271b95387c2b9b~mv2.jpg/v1/fill/w_36,h_17,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_9cb92304d9b4447fb4271b95387c2b9b~mv2.jpg" alt="" />
+    <img src="https://static.wixstatic.com/media/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png/v1/fill/w_45,h_26,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png" alt="Best Corporate Magician and Mentalist for Event Entertainment" />
+    <img src="https://static.wixstatic.com/media/40084f_721b3b1b29524e43a2e3017a33e8dc1a~mv2.jpg/v1/fill/w_147,h_94,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_721b3b1b29524e43a2e3017a33e8dc1a~mv2.jpg" alt="" />
+    <img src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/fill/w_980,h_552,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png" alt="" />
+    <img src="https://static.wixstatic.com/media/40084f_71c7efa6acaf4e71b0d3e7e2a21549d4~mv2.jpg/v1/fill/w_155,h_103,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_71c7efa6acaf4e71b0d3e7e2a21549d4~mv2.jpg" alt="Transparent 3" />
+    <img src="https://static.wixstatic.com/media/40084f_752145f2bd394f5fb283e192fe1ef0cc~mv2.jpg/v1/fill/w_81,h_83,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_752145f2bd394f5fb283e192fe1ef0cc~mv2.jpg" alt="" />
+    <img src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_195,h_50,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png" alt="" />
+    <img src="https://static.wixstatic.com/media/40084f_25a324ae36af45e98ae6c5580f5ac0ae~mv2.jpg/v1/fill/w_79,h_53,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_25a324ae36af45e98ae6c5580f5ac0ae~mv2.jpg" alt="" />
+    <img src="https://static.wixstatic.com/media/40084f_7b0afbf5919a409da3f5365782ab699e~mv2.jpg/v1/fill/w_79,h_53,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_7b0afbf5919a409da3f5365782ab699e~mv2.jpg" alt="Transparent 2" />
+    <img src="https://static.wixstatic.com/media/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png" alt="Youtube" />
+    <img src="https://static.wixstatic.com/media/da7ef6dd1302486c9a67baebe4b364bc.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/da7ef6dd1302486c9a67baebe4b364bc.png" alt="Instagram - White Circle" />
+  </div>
 </BaseLayout>
+
+<style>
+/* Promo Video Section */
+.promo-video-section {
+  background: var(--c-light-base);
+  text-align: center;
+}
+.promo-video-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+.promo-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+}
+.promo-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.promo-video-cta {
+  margin-top: 32px;
+}
+
+/* Penn feature section */
+.penn-feature {
+  padding: 40px 0;
+  background: var(--c-light-base);
+}
+.penn-feature__inner {
+  display: flex;
+  justify-content: center;
+}
+.penn-feature__images {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.penn-feature__img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Service images section */
+.service-images {
+  padding: 32px 0;
+  background: var(--c-light-base);
+}
+.service-images__grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.service-images__img {
+  height: auto;
+  display: block;
+  max-width: 200px;
+}
+
+/* Clients section */
+.clients-section {
+  background: var(--c-light-base);
+}
+.clients-logos {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.clients-logos__img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Holiday testimonials */
+.holiday-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.holiday-testimonial-card {
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .holiday-testimonial-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.holiday-testimonial-card__stars {
+  font-size: 0.85rem;
+}
+
+.holiday-testimonial-card__quote {
+  font-size: 0.9rem;
+  color: var(--c-dark-base);
+  line-height: 1.75;
+  font-style: italic;
+  flex: 1;
+  max-width: none;
+}
+
+.holiday-testimonial-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.holiday-testimonial-card__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.holiday-testimonial-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.holiday-testimonial-card__name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+}
+.holiday-testimonial-card__company {
+  font-size: 0.78rem;
+  color: var(--c-dark-muted);
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .holiday-testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .holiday-testimonials-grid { grid-template-columns: 1fr; }
+}
+</style>

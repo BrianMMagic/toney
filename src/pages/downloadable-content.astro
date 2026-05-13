@@ -2,37 +2,110 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 
-const base = import.meta.env.BASE_URL;
-
 const downloadables = [
-  { title: 'Stage Show Poster', file: 'stage-show-poster' },
-  { title: 'Poster with Blank Space', file: 'poster-blank-space' },
-  { title: 'Instagram Graphic', file: 'instagram-graphic' },
-  { title: '16:9 Screen Graphic', file: 'screen-graphic-16x9' },
-  { title: 'Comedy Flyer', file: 'comedy-flyer' },
-  { title: 'Serious Flyer', file: 'serious-flyer' },
-  { title: 'Logo — Black', file: 'logo-black' },
-  { title: 'Logo — Purple', file: 'logo-purple' },
-  { title: 'Cut Out Promo', file: 'cut-out-promo' },
-  { title: 'Promotional Photo 1', file: 'promo-photo-1' },
-  { title: 'Promotional Photo 2', file: 'promo-photo-2' },
-  { title: 'Promotional Photo 3', file: 'promo-photo-3' },
-  { title: 'Promotional Photo 4', file: 'promo-photo-4' },
-  { title: 'Promotional Photo 5', file: 'promo-photo-5' },
+  {
+    title: 'Stage Show Poster',
+    thumb: 'https://static.wixstatic.com/media/40084f_715d6eaf4b894e7e89af8ad230509dae~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_715d6eaf4b894e7e89af8ad230509dae~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_715d6eaf4b894e7e89af8ad230509dae~mv2.png',
+  },
+  {
+    title: 'Poster with Blank Space',
+    thumb: 'https://static.wixstatic.com/media/40084f_5d3e703bd36a494eb9b8bcec71753b78~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_5d3e703bd36a494eb9b8bcec71753b78~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_5d3e703bd36a494eb9b8bcec71753b78~mv2.png',
+  },
+  {
+    title: 'Instagram Graphic',
+    thumb: 'https://static.wixstatic.com/media/40084f_11b47db81a7a442e80206b2b36356ed3~mv2.png/v1/fit/w_226,h_226,q_75,enc_avif,quality_auto/40084f_11b47db81a7a442e80206b2b36356ed3~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_11b47db81a7a442e80206b2b36356ed3~mv2.png',
+  },
+  {
+    title: '16:9 Screen Graphic',
+    thumb: 'https://static.wixstatic.com/media/40084f_c64a7798b4e6420994a7b47c1f5bd3a3~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_c64a7798b4e6420994a7b47c1f5bd3a3~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_c64a7798b4e6420994a7b47c1f5bd3a3~mv2.png',
+  },
+  {
+    title: '16:9 Screen Graphic',
+    thumb: 'https://static.wixstatic.com/media/40084f_ab223d6e9a2341c48aeea798a26baca7~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_ab223d6e9a2341c48aeea798a26baca7~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_ab223d6e9a2341c48aeea798a26baca7~mv2.png',
+  },
+  {
+    title: 'Comedy Flyer',
+    thumb: 'https://static.wixstatic.com/media/40084f_2aa8e72dc89f4dbb977e376be8de0ce3~mv2.png/v1/fit/w_226,h_226,q_75,enc_avif,quality_auto/40084f_2aa8e72dc89f4dbb977e376be8de0ce3~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_2aa8e72dc89f4dbb977e376be8de0ce3~mv2.png',
+  },
+  {
+    title: 'Serious Flyer',
+    thumb: 'https://static.wixstatic.com/media/40084f_8daea4f62264462ebf1eb33d0c54c56f~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_8daea4f62264462ebf1eb33d0c54c56f~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_8daea4f62264462ebf1eb33d0c54c56f~mv2.png',
+  },
+  {
+    title: 'Logo Black',
+    thumb: 'https://static.wixstatic.com/media/40084f_8c01076c18aa4f458454ddd4f6dba910~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_8c01076c18aa4f458454ddd4f6dba910~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_8c01076c18aa4f458454ddd4f6dba910~mv2.png',
+  },
+  {
+    title: 'Logo Purple',
+    thumb: 'https://static.wixstatic.com/media/40084f_7446c4baaaf64990b1171ed26f19143f~mv2.png/v1/fit/w_226,h_226,q_75,enc_avif,quality_auto/40084f_7446c4baaaf64990b1171ed26f19143f~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_7446c4baaaf64990b1171ed26f19143f~mv2.png',
+  },
+  {
+    title: 'Cut Out Promo',
+    thumb: 'https://static.wixstatic.com/media/40084f_c0877be83e2042ac9dd2070888cb0d9d~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_c0877be83e2042ac9dd2070888cb0d9d~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_c0877be83e2042ac9dd2070888cb0d9d~mv2.png',
+  },
+  {
+    title: 'Promotional Photo',
+    thumb: 'https://static.wixstatic.com/media/40084f_67469f0e17954c0aaef0fad3e12dbbf5~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_67469f0e17954c0aaef0fad3e12dbbf5~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_67469f0e17954c0aaef0fad3e12dbbf5~mv2.png',
+  },
+  {
+    title: 'Promotional Photo',
+    thumb: 'https://static.wixstatic.com/media/40084f_d15ac61222784f31934674aa1bc27496~mv2.png/v1/fit/w_226,h_226,q_75,enc_avif,quality_auto/40084f_d15ac61222784f31934674aa1bc27496~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_d15ac61222784f31934674aa1bc27496~mv2.png',
+  },
+  {
+    title: 'Promotional Photo',
+    thumb: 'https://static.wixstatic.com/media/40084f_76ec009dce7c4d1d8e705ca7845cee00~mv2.jpeg/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_76ec009dce7c4d1d8e705ca7845cee00~mv2.jpeg',
+    full:  'https://static.wixstatic.com/media/40084f_76ec009dce7c4d1d8e705ca7845cee00~mv2.jpeg',
+  },
+  {
+    title: 'Promotional Photo',
+    thumb: 'https://static.wixstatic.com/media/40084f_18431805d6cc46ed9a719bd0923aa66a~mv2.png/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_18431805d6cc46ed9a719bd0923aa66a~mv2.png',
+    full:  'https://static.wixstatic.com/media/40084f_18431805d6cc46ed9a719bd0923aa66a~mv2.png',
+  },
+  {
+    title: 'Promotional Photo',
+    thumb: 'https://static.wixstatic.com/media/40084f_225566f30e754c419b153d05c1e45031~mv2.jpg/v1/fit/w_226,h_226,q_75,enc_avif,quality_auto/40084f_225566f30e754c419b153d05c1e45031~mv2.jpg',
+    full:  'https://static.wixstatic.com/media/40084f_225566f30e754c419b153d05c1e45031~mv2.jpg',
+  },
+  {
+    title: 'Promotional Photo',
+    thumb: 'https://static.wixstatic.com/media/40084f_499459eb2bad4dbc97e4b672f8c37c75~mv2.jpg/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_499459eb2bad4dbc97e4b672f8c37c75~mv2.jpg',
+    full:  'https://static.wixstatic.com/media/40084f_499459eb2bad4dbc97e4b672f8c37c75~mv2.jpg',
+  },
+  {
+    title: 'Promotional Photo',
+    thumb: 'https://static.wixstatic.com/media/40084f_99ac3a489a9344cfa97094563beb4610~mv2.jpg/v1/fit/w_227,h_226,q_75,enc_avif,quality_auto/40084f_99ac3a489a9344cfa97094563beb4610~mv2.jpg',
+    full:  'https://static.wixstatic.com/media/40084f_99ac3a489a9344cfa97094563beb4610~mv2.jpg',
+  },
+  {
+    title: 'Promotional Photo',
+    thumb: 'https://static.wixstatic.com/media/40084f_94f94d479da64d81847b695965ac2120~mv2.jpg/v1/fit/w_226,h_226,q_75,enc_avif,quality_auto/40084f_94f94d479da64d81847b695965ac2120~mv2.jpg',
+    full:  'https://static.wixstatic.com/media/40084f_94f94d479da64d81847b695965ac2120~mv2.jpg',
+  },
 ];
 ---
 
 <BaseLayout
   title="Downloadable Material | anthonyentertains"
-  description="Download promotional materials for Dallas Magician Anthony Dempsey — posters, flyers, logos, and promotional photos for event planners and media."
+  description="This page contains promotional photos, posters, and flyers for clients to use when promoting their events."
   canonicalUrl="https://anthonyentertains.com/downloadable-content"
 >
   <!-- Hero -->
   <Hero
-    eyebrow="Press & Media Kit"
     headline="Downloadable Material"
-    subheadline="Hover over the desired item and click the download icon."
-    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    subheadline={`Hover over the desired item and click the "download" icon.`}
+    bgImage="https://static.wixstatic.com/media/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg/v1/fill/w_1280,h_720,al_t,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg"
     overlay="rgba(0,0,0,0.65)"
     minHeight="45vh"
   />
@@ -40,27 +113,34 @@ const downloadables = [
   <!-- Downloads Section -->
   <section class="section">
     <div class="container">
-      <span class="section-label" data-reveal="fade-up">Promotional Materials</span>
-      <h2 class="section-title" data-reveal="fade-up">Downloadable Material</h2>
-      <div class="divider" data-reveal="fade-up"></div>
-      <p class="section-sub" data-reveal="fade-up">Hover over the desired item and click the 'download' icon.</p>
-
       <div class="downloads-grid" data-reveal-stagger>
         {downloadables.map((item) => (
           <div class="download-card">
-            <div class="download-icon" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
+            <div class="download-thumb">
+              <img src={item.thumb} alt={item.title} loading="lazy" width="227" height="226" />
+              <a
+                href={item.full}
+                class="download-overlay"
+                download
+                aria-label={`Download ${item.title}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </a>
             </div>
             <h3 class="download-title">{item.title}</h3>
             <a
-              href={`${base}downloadables/${item.file}`}
+              href={item.full}
               class="download-btn"
               download
               aria-label={`Download ${item.title}`}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Download
             </a>
@@ -73,14 +153,13 @@ const downloadables = [
   <!-- Short Bio Section -->
   <section class="section section--dark bio-section">
     <div class="container">
-      <span class="section-label" data-reveal="fade-up">For Event Planners & Media</span>
       <h2 class="section-title" data-reveal="fade-up">Short Bio</h2>
       <div class="divider" data-reveal="fade-up"></div>
       <p class="section-sub" data-reveal="fade-up">Just copy and paste the paragraph below if a bio is needed.</p>
 
       <div class="bio-box" data-reveal="fade-up">
         <blockquote class="bio-text">
-          Award-winning comedy magician and mentalist Anthony Dempsey has thrilled corporate and celebrity audiences across the globe. Anthony has been seen by millions of people on film and television; most recently appearing on Penn and Teller's Fool Us!
+          Award-winning comedy magician and mentalist Anthony Dempsey has thrilled corporate and celebrity audiences across the globe. Anthony has been seen by millions of people on film and television; most recently appearing on Penn and Teller&#8217;s Fool Us!
         </blockquote>
         <button class="btn btn--outline copy-btn" onclick="navigator.clipboard.writeText(this.previousElementSibling.textContent.trim()).then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy to Clipboard', 2000); })">
           Copy to Clipboard
@@ -98,45 +177,83 @@ const downloadables = [
 }
 
 .download-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
   border-radius: var(--radius-md);
-  padding: 28px 20px;
+  box-shadow: var(--shadow-card);
+  padding: 0 0 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  transition: border-color var(--transition-mid), transform var(--transition-mid);
+  overflow: hidden;
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
 }
-.download-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .download-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
 }
 
-.download-icon { color: var(--color-accent); }
+.download-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #ddd;
+}
+
+.download-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.download-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+}
+.download-thumb:hover .download-overlay {
+  opacity: 1;
+}
 
 .download-title {
   font-size: 0.9rem;
-  color: var(--color-text);
+  color: var(--c-dark-base);
   font-weight: 500;
+  padding: 0 12px;
 }
 
 .download-btn {
   display: inline-block;
   background: transparent;
-  border: 1px solid var(--color-accent);
-  border-radius: var(--radius-full);
+  border: 1.5px solid rgba(20, 21, 29, 0.25);
   padding: 6px 18px;
   font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--color-accent-light);
+  font-weight: 500;
+  color: var(--c-dark-muted);
   text-decoration: none;
-  transition: background var(--transition-fast), color var(--transition-fast);
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
 .download-btn:hover {
-  background: var(--color-accent);
-  color: #fff;
+  background: var(--c-brand-navy);
+  color: var(--c-light-base);
+  border-color: var(--c-brand-navy);
 }
 
 .bio-box {
@@ -148,9 +265,9 @@ const downloadables = [
 
 .bio-text {
   font-size: 1rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
   line-height: 1.85;
-  border-left: 3px solid var(--color-accent);
+  border-left: 2px solid rgba(20, 21, 29, 0.2);
   padding-left: 24px;
   margin: 0;
   font-style: italic;

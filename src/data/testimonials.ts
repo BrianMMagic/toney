@@ -32,6 +32,48 @@ export const corporateTestimonials: Testimonial[] = [
   },
 ];
 
+export const fortWorthTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+  },
+  {
+    quote:
+      "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away. The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling. He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+  },
+];
+
+export const planoTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Seriously prepare to be amazed, because Plano magician Anthony Dempsey is the best! If you're looking for that something extra that will make your party a huge success that will keep people talking about it for months, Anthony is your guy. In addition to possessing copious amounts of magic knowledge, his performances take the shock and awe to the next level. 10/10 would recommend!",
+    name: 'Alexa N.',
+    company: 'The Vested Group',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event in Plano. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+  },
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! My co-workers are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+  },
+];
+
 export const homepageTestimonials: Testimonial[] = [
   {
     quote: "He kept everyone laughing and actually excited to be at our party. The only Dallas magician we trust is Anthony!",

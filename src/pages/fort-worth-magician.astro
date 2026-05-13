@@ -1,18 +1,44 @@
 ---
 import LocationPageContent from '../components/LocationPageContent.astro';
 import { generalLocationFaqs } from '../data/faqs';
+import type { Testimonial } from '../data/testimonials';
+
+const fortWorthPageTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+  },
+  {
+    quote:
+      "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away. The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling. He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+  },
+];
 ---
 
 <LocationPageContent
   pageTitle="Fort Worth Magician | Corporate Event Entertainment"
-  metaDescription="Fort Worth's premier magician and mentalist Anthony Dempsey delivers unforgettable magic for corporate events, private parties, and stage shows in Fort Worth, TX."
+  metaDescription="Fort Worth's Premier Magician & Mentalist. Plan your corporate or private event with guest experience in mind! As seen on FOX, NBC, & CW's Penn & Teller Fool Us."
   canonicalUrl="https://anthonyentertains.com/fort-worth-magician"
   heroEyebrow="Fort Worth Magician & Mentalist"
   heroHeadline="Fort Worth's Premier<br>Magician &amp; Mentalist"
   heroSubheadline="Plan your corporate or private event with guest experience in mind. Anthony's unmatched skill and quick wit will impress even the toughest of critics."
-  corporateBody="Are you looking to bring your Fort Worth team together in a whole new way? Say goodbye to awkward office gatherings and hello to unforgettable evenings with Fort Worth Magician Anthony Dempsey! Whether it's a casual cocktail hour or a large annual sales meeting, Anthony is the secret ingredient to helping your employees make new connections and feel valued. His unique style of entertainment makes him the best magician & mentalist in Fort Worth, and your guests will see that instantly. Anthony has successfully executed over 2,000 events, which means you can hire with confidence."
+  corporateBody="Are you looking to bring your Fort Worth team together in a whole new way? Say goodbye to awkward office gatherings and hello to unforgettable evenings with Fort Worth Magician Anthony Dempsey! Whether it's a casual cocktail hour or a large annual sales meeting, Anthony is the secret ingredient to helping your employees make new connections and feel valued. His unique style of entertainment makes him the best magician & mentalist in Fort Worth, and your guests will see that instantly. Anthony has successfully executed over 2,000 events, which means you can hire with confidence. His communication skills, charisma, and performance are unmatched, making him the best choice for a corporate magician or event MC."
   privateBody="Want to throw a party in Fort Worth that people will be talking about for years to come? Look no further! Anthony is here to bring unforgettable entertainment to your event. Whether it's jaw-dropping magic tricks performed right before your eyes or a mind-bending mentalism act, Anthony will ensure your guests are blown away. And if you're looking for something on a grander scale, he can even put on a full-stage show in your living room! Give your party the wow factor it deserves with Anthony as your entertainer."
   stageBody="Get ready to be amazed in Fort Worth! Anthony's Magic & Mind Reading Stage Show will put your guests and company in the spotlight. This utterly customizable stage show guarantees an unforgettable experience where your guests become the stars. With Anthony's 20 years of stage experience, prepare to be captivated by his incredible magic show. Make sure to make your party truly magical!"
-  servingAreas="Serving the Dallas-Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, & more."
+  servingAreas="Serving the Dallas- Fort Worth Area, <a href='https://www.visitdallas.com' target='_blank' rel='noopener noreferrer'>Dallas</a>, <a href='https://www.fortworth.com' target='_blank' rel='noopener noreferrer'>Fort Worth</a>, <a href='https://addisontexas.net' target='_blank' rel='noopener noreferrer'>Addison</a>, <a href='https://www.plano.gov/' target='_blank' rel='noopener noreferrer'>Plano</a>, <a href='https://visitmckinney.com' target='_blank' rel='noopener noreferrer'>McKinney</a>, <a href='https://www.grapevinetexasusa.com' target='_blank' rel='noopener noreferrer'>Grapevine</a>, &amp; more."
+  promoVideoId="0bJoci2DGQ8"
+  promoVideoTitle="Corporate Magician and Mentalist Anthony Dempsey"
   faqs={generalLocationFaqs('Fort Worth', 'TX')}
+  testimonialsTitle="CLIENTS WHO LOVE ANTHONY'S FORT WORTH ENTERTAINMENT"
+  testimonials={fortWorthPageTestimonials}
 />

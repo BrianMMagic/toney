@@ -1,19 +1,60 @@
 ---
 import LocationPageContent from '../components/LocationPageContent.astro';
 import { generalLocationFaqs } from '../data/faqs';
+import type { Testimonial } from '../data/testimonials';
+
+const nyFaqs = generalLocationFaqs('New York', 'NY').map((faq, i) => {
+  if (i === 0) {
+    return {
+      ...faq,
+      question: "I'm thinking about booking a party or event in New York. How can I check your availability?",
+    };
+  }
+  if (i === 1) {
+    return {
+      ...faq,
+      question: "What can I expect when I hire you for my New York party or event?",
+    };
+  }
+  return faq;
+});
+
+const nyTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+  },
+  {
+    quote:
+      "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away. The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling. He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+  },
+];
 ---
 
 <LocationPageContent
   pageTitle="New York Magician | Corporate Event Entertainment"
-  metaDescription="New York magician and mentalist Anthony Dempsey delivers mind-blowing magic for corporate events, private parties, and stage shows in New York, NY."
+  metaDescription="Hire NYC's premier magician & mentalist for unforgettable entertainment at corporate events, trade shows, galas & private parties. World-class magic that captivates."
   canonicalUrl="https://anthonyentertains.com/new-york-ny-magician"
   heroEyebrow="New York Magician & Mentalist"
   heroHeadline="Mind-Blowing Magic &amp; Mentalism<br>In New York, NY"
   heroSubheadline="Reach Out Today To Find Out How Anthony Can Transform Your New York Corporate Event Or Private Party Into An Unforgettable Experience."
-  intro="Events should be fun- not a place for people to stare at their phones all night!"
   corporateBody="Are you looking to bring your New York team together in a whole new way? Say goodbye to awkward office gatherings and hello to unforgettable evenings with New York Magician Anthony Dempsey! Whether it's a casual cocktail hour or a large annual sales meeting, Anthony's coveted strolling entertainment is the secret ingredient to helping your employees build new friendships. He'll mix and mingle with guests, making sure everyone feels appreciated and included. Anthony also offers MC services, so your guests have a friendly, entertaining guide throughout the evening."
   privateBody="Want to throw a party in New York that people will be talking about for years to come? Look no further! Anthony is here to bring unforgettable entertainment to your event. Whether it's jaw-dropping magic tricks performed right before your eyes or a mind-bending mentalism act, Anthony will ensure your guests are blown away. And if you're looking for something on a grander scale, he can even put on a full stage show in your living room! Give your party the wow factor it deserves with Anthony as your entertainer."
   stageBody="We all know the choices for entertainment are endless in New York. Broadway shows, comedy clubs, you name it! That sets the bar pretty high in The City that Never Sleeps. Anthony will bring his high-energy magic and mentalism right to your hotel's banquet room or other performance center. This customizable, modular show involves audience participation from start to finish and can suit a variety of time slots. Anthony's unique style of comedy magic and mentalism, combined with his skills as an MC/ event host make for a hilariously mystifying evening."
-  servingAreas="Serving New York City, TriBeCa, Hudson Yards, Staten Island, Upper East Side, Newark & surrounding areas."
-  faqs={generalLocationFaqs('New York', 'NY')}
+  servingAreas="Serving <a href='https://www.nyctourism.com/' target='_blank' rel='noopener noreferrer'>New York City</a>, <a href='https://www.nyctourism.com/new-york/manhattan/tribeca/' target='_blank' rel='noopener noreferrer'>TriBeCa</a>, <a href='https://www.cityneighborhoods.nyc/hudson-yards' target='_blank' rel='noopener noreferrer'>Hudson Yards</a>, <a href='https://www.nyctourism.com/new-york/staten-island/' target='_blank' rel='noopener noreferrer'>Staten Island</a>, <a href='https://www.nyctourism.com/new-york/manhattan/upper-east-side/' target='_blank' rel='noopener noreferrer'>Upper East Side</a>, <a href='https://visitnj.org/city/newark' target='_blank' rel='noopener noreferrer'>Newark</a> &amp; surrounding areas."
+  eventTypesTagline="Events should be fun- not a place for people to stare at their phones all night!"
+  faqs={nyFaqs}
+  testimonials={nyTestimonials}
+  testimonialsTitle="CLIENTS WHO LOVE ANTHONY'S NEW YORK, NY ENTERTAINMENT"
+  guaranteesLabel="Unlock the Secrets of a Truly Memorable Event"
 />

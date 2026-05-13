@@ -1,8 +1,107 @@
 ---
 const base = import.meta.env.BASE_URL;
 
+const EVENT_PAGE_MAP: Record<string, string> = {
+  'Corporate Events': 'corporate-magician',
+  'Weddings': 'wedding-magician',
+  'Holiday Parties': 'holiday-party-magician',
+  'Adult Birthdays': 'birthday-party-magician-and-mentalist',
+  'Birthday Parties': 'birthday-party-magician-and-mentalist',
+  'Private Parties': 'private-party-magician',
+  'Trade Shows': 'trade-show-magician',
+};
+
+const EVENT_ICONS: Record<string, string> = {
+  'Anniversaries':
+    `<circle cx="15" cy="21" r="6.5"/>
+     <circle cx="25" cy="21" r="6.5"/>
+     <path d="M20 17.5 Q20 14 20 13" stroke-linecap="round"/>
+     <path d="M17.5 13.5 Q20 11 22.5 13.5" stroke-linecap="round"/>`,
+
+  'Corporate Events':
+    `<rect x="9" y="16" width="22" height="14" rx="1.5"/>
+     <path d="M15 16v-3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/>
+     <line x1="9" y1="23" x2="31" y2="23"/>
+     <line x1="20" y1="16" x2="20" y2="30"/>`,
+
+  'Holiday Parties':
+    `<line x1="20" y1="8" x2="20" y2="32"/>
+     <line x1="8" y1="20" x2="32" y2="20"/>
+     <line x1="11.5" y1="11.5" x2="28.5" y2="28.5"/>
+     <line x1="28.5" y1="11.5" x2="11.5" y2="28.5"/>
+     <circle cx="20" cy="20" r="3"/>
+     <circle cx="20" cy="9" r="1.5" fill="currentColor" stroke="none"/>
+     <circle cx="20" cy="31" r="1.5" fill="currentColor" stroke="none"/>
+     <circle cx="9" cy="20" r="1.5" fill="currentColor" stroke="none"/>
+     <circle cx="31" cy="20" r="1.5" fill="currentColor" stroke="none"/>`,
+
+  'Adult Birthdays':
+    `<ellipse cx="20" cy="17" rx="8" ry="9.5"/>
+     <path d="M20 26.5 Q18.5 30.5 20.5 33.5" stroke-linecap="round"/>
+     <path d="M20 7.5 Q20 7 20.5 6.5" stroke-linecap="round"/>
+     <path d="M18 8.5 Q20 6 22 8.5" stroke-linecap="round"/>`,
+
+  'Weddings':
+    `<circle cx="14" cy="22" r="7"/>
+     <circle cx="26" cy="22" r="7"/>
+     <path d="M20 13 L22 17 L26.5 17.5 L23.2 20.5 L24 25 L20 22.8 L16 25 L16.8 20.5 L13.5 17.5 L18 17 Z" stroke-linejoin="round"/>`,
+
+  'Cocktail Hours':
+    `<path d="M10 9 L20 22 L30 9 Z"/>
+     <line x1="20" y1="22" x2="20" y2="30"/>
+     <line x1="14" y1="30" x2="26" y2="30"/>
+     <circle cx="24" cy="13" r="1.5" fill="currentColor" stroke="none"/>
+     <circle cx="26" cy="17" r="1" fill="currentColor" stroke="none"/>`,
+
+  'Graduations':
+    `<polygon points="20,9 33,16 20,23 7,16"/>
+     <path d="M13 19.5 L13 27 Q20 31 27 27 L27 19.5" stroke-linecap="round" stroke-linejoin="round"/>
+     <line x1="33" y1="16" x2="33" y2="23"/>
+     <circle cx="33" cy="24" r="1.5" fill="currentColor" stroke="none"/>`,
+
+  'Surprise Entertainment':
+    `<path d="M12 28 L24 16" stroke-linecap="round" stroke-width="2.5"/>
+     <path d="M24 16 L28 12" stroke-linecap="round"/>
+     <path d="M26 10 L30 10 L30 14" stroke-linecap="round" stroke-linejoin="round"/>
+     <circle cx="10" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+     <circle cx="30" cy="22" r="1.5" fill="currentColor" stroke="none"/>
+     <circle cx="14" cy="10" r="1" fill="currentColor" stroke="none"/>
+     <circle cx="32" cy="16" r="1" fill="currentColor" stroke="none"/>
+     <path d="M8 18 L10 16 L12 18 L10 20 Z" fill="currentColor" stroke="none"/>`,
+
+  'Private Parties':
+    `<path d="M20 9 L22 16 L29 16 L23.5 20 L25.5 27 L20 23 L14.5 27 L16.5 20 L11 16 L18 16 Z" stroke-linejoin="round"/>`,
+
+  'Birthday Parties':
+    `<rect x="9" y="20" width="22" height="11" rx="1.5"/>
+     <path d="M14 20 v-4 Q14 13 20 13 Q26 13 26 16 v4"/>
+     <line x1="9" y1="25" x2="31" y2="25"/>
+     <path d="M20 13 Q20 11 20 10" stroke-linecap="round"/>
+     <path d="M18 11 Q20 9 22 11" stroke-linecap="round"/>`,
+
+  'Team Building':
+    `<circle cx="20" cy="13" r="4"/>
+     <path d="M12 30 Q12 23 20 23 Q28 23 28 30"/>
+     <circle cx="9" cy="15" r="3"/>
+     <path d="M3 30 Q3 25 9 25"/>
+     <circle cx="31" cy="15" r="3"/>
+     <path d="M37 30 Q37 25 31 25"/>`,
+
+  'Trade Shows':
+    `<rect x="8" y="14" width="10" height="14" rx="1"/>
+     <rect x="22" y="10" width="10" height="18" rx="1"/>
+     <line x1="6" y1="28" x2="34" y2="28"/>
+     <line x1="13" y1="14" x2="13" y2="9"/>
+     <path d="M10 9 L16 9" stroke-linecap="round"/>`,
+};
+
+const FALLBACK_ICON =
+  `<path d="M20 9 L22 16 L29 16 L23.5 20 L25.5 27 L20 23 L14.5 27 L16.5 20 L11 16 L18 16 Z" stroke-linejoin="round"/>`;
+
 export interface Props {
   title?: string;
+  label?: string;
+  tagline?: string;
   events?: string[];
   note?: string;
 }
@@ -14,78 +113,197 @@ const defaultEvents = [
 
 const {
   title = 'The Magician Dallas Trusts For Events Like These',
+  label,
+  tagline,
   events = defaultEvents,
   note,
 } = Astro.props;
 ---
 
-<section class="section section--dark event-types-section">
+<section class="section event-types-section section--dark" data-header-dark>
   <div class="container">
-    <h2 class="section-title" data-reveal="fade-up">{title}</h2>
-    <div class="divider" data-reveal="fade-up"></div>
 
-    <ul class="event-types-grid" data-reveal-stagger>
-      {events.map((event) => (
-        <li class="event-type-item">
-          <span class="event-type-dot" aria-hidden="true">◆</span>
-          {event}
-        </li>
-      ))}
-    </ul>
-
-    {note && <p class="event-types-note" data-reveal="fade-up">{note}</p>}
-
-    <div class="event-types-cta" data-reveal="fade-up">
-      <a href={`${base}get-a-quote`} class="btn btn--primary">Get a Free Quote</a>
+    <div class="et-head">
+      <div class="et-head-left" data-reveal="fade-up">
+        {label && <span class="section-label">{label}</span>}
+        <span class="et-gold-rule"></span>
+        <h2 class="section-title et-title">{title}</h2>
+        {tagline && <p class="et-tagline">{tagline}</p>}
+      </div>
+      <div class="et-head-right" data-reveal="fade-up">
+        {note && <p class="et-note">{note}</p>}
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Get a Free Quote</a>
+      </div>
     </div>
+
+    <div class="et-grid" data-reveal-stagger>
+      {events.map((event) => {
+        const href = EVENT_PAGE_MAP[event];
+        const icon = EVENT_ICONS[event] ?? FALLBACK_ICON;
+        const dest = href ? `${base}${href}` : `${base}services`;
+        return (
+          <a
+            href={dest}
+            class="et-tile et-tile--link"
+          >
+            <svg
+              class="et-tile-icon"
+              width="40" height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              set:html={icon}
+            />
+            <span class="et-tile-rule"></span>
+            <span class="et-tile-name">{event}</span>
+          </a>
+        );
+      })}
+    </div>
+
   </div>
 </section>
 
 <style>
-.event-types-grid {
+/* ── Section ──────────────────────────────────────── */
+.event-types-section {
+  background: #1b556d;
+}
+
+/* ── Header ───────────────────────────────────────── */
+.et-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 52px;
+}
+.et-head-left { flex: 1 1 auto; }
+.et-head-right {
+  flex: 0 0 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding-bottom: 4px;
+}
+
+.section-label { color: rgba(215, 180, 62, 0.65); }
+
+.et-gold-rule {
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: rgba(215, 180, 62, 0.45);
+  margin: 14px 0 22px;
+}
+
+.section-title.et-title {
+  color: #fff;
+  font-size: clamp(1.8rem, 3vw, 2.75rem);
+  max-width: 22ch;
+}
+
+.et-tagline {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+.et-note {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.38);
+  max-width: 44ch;
+}
+
+/* ── Grid ─────────────────────────────────────────── */
+.et-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 40px;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.22);
 }
 
-.event-type-item {
+/* ── Tile ─────────────────────────────────────────── */
+.et-tile {
+  position: relative;
+  padding: 40px 32px 36px;
+  background: #1b556d;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
-  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-}
-.event-type-item:hover {
-  color: var(--color-text);
-  border-color: var(--color-accent);
-  background: rgba(123,47,247,0.08);
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  text-decoration: none;
+  transition: background 0.28s ease;
 }
 
-.event-type-dot {
-  color: var(--color-accent);
-  font-size: 0.55rem;
+/* Gold sweep top border */
+.et-tile::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(215,180,62,0.9), rgba(215,180,62,0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.et-tile:hover::before { transform: scaleX(1); }
+.et-tile:hover { background: #20637d; }
+
+/* Icon */
+.et-tile-icon {
+  color: rgba(215, 180, 62, 0.7);
   flex-shrink: 0;
+  transition: color 0.25s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.et-tile:hover .et-tile-icon {
+  color: rgba(215, 180, 62, 1);
+  transform: translateY(-2px);
 }
 
-.event-types-note {
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 32px;
+/* Small gold separator */
+.et-tile-rule {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: rgba(215, 180, 62, 0.35);
+  margin: 20px 0 16px;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.25s;
+}
+.et-tile:hover .et-tile-rule {
+  width: 40px;
+  background: rgba(215, 180, 62, 0.65);
 }
 
-.event-types-cta { margin-top: 8px; }
-
-@media (max-width: 900px) {
-  .event-types-grid { grid-template-columns: repeat(2, 1fr); }
+/* Name */
+.et-tile-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.3;
+  transition: color 0.25s;
 }
-@media (max-width: 540px) {
-  .event-types-grid { grid-template-columns: 1fr; }
+.et-tile:hover .et-tile-name { color: #fff; }
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 1024px) {
+  .et-head { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .et-head-right { flex: 0 0 auto; }
+}
+@media (max-width: 960px) {
+  .et-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .et-grid { grid-template-columns: 1fr; }
+  .et-tile { padding: 32px 24px 28px; }
 }
 </style>

@@ -4,6 +4,8 @@ pubDate: "2025-10-04"
 author: "Anthony Dempsey"
 category: "Magician"
 description: "Anthony Dempsey announces his return as a Beetlejuice-themed entertainer for Halloween 2024, offering magic and mentalism services for parties in the DFW area."
+heroImage: "https://static.wixstatic.com/media/40084f_c674518e0fdc47d68e39657bfdde56d2~mv2.jpg"
+readTime: "2 min"
 ---
 
 My favorite time of the year is creeping up so fast! There's nothing better than the feeling of crisp fall air, seeing pumpkins on front porches, and hearing my daughter yell the word "Halloween" every time she sees Halloween decorations.

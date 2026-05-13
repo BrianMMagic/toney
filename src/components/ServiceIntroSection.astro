@@ -46,27 +46,36 @@ const { title = 'Service Options', label = 'How Anthony Performs', intro, option
 }
 
 .service-option-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
   padding: 36px 30px;
-  transition: border-color var(--transition-mid), transform var(--transition-mid), box-shadow var(--transition-mid);
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
 }
-.service-option-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+@media (hover: hover) {
+  .service-option-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
 }
 
 .service-option-heading {
-  font-size: 1.25rem;
-  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  letter-spacing: -0.01em;
   margin-bottom: 14px;
 }
 
 .service-option-body {
-  font-size: 0.92rem;
-  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  color: var(--c-dark-base);
   line-height: 1.8;
   margin-bottom: 20px;
   max-width: none;
@@ -78,12 +87,11 @@ const { title = 'Service Options', label = 'How Anthony Performs', intro, option
   gap: 8px;
 }
 .service-option-uses li {
-  background: rgba(123,47,247,0.1);
-  border: 1px solid rgba(123,47,247,0.2);
-  border-radius: var(--radius-full);
+  background: transparent;
+  border: 1px solid var(--c-card-border);
   padding: 4px 14px;
   font-size: 0.78rem;
-  color: var(--color-accent-light);
-  font-weight: 500;
+  color: var(--c-dark-muted);
+  font-weight: 400;
 }
 </style>

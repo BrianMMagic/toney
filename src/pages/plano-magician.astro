@@ -8,30 +8,99 @@ import TestimonialsSection from '../components/TestimonialsSection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
-import FAQSection from '../components/FAQSection.astro';
-import { corporateTestimonials } from '../data/testimonials';
-import { planoFaqs } from '../data/faqs';
-
 const base = import.meta.env.BASE_URL;
+
+// Inline testimonials — verbatim from source (plano-magician.md)
+const planoTestimonials = [
+  {
+    quote:
+      "Seriously prepare to be amazed, because Plano magician Anthony Dempsey is the best! If you're looking for that something extra that will make your party a huge success that will keep people talking about it for months, Anthony is your guy. In addition to possessing copious amounts of magic knowledge, his performances take the shock and awe to the next level. 10/10 would recommend!",
+    name: 'Alexa N.',
+    company: 'The Vested Group',
+    image: 'https://static.wixstatic.com/media/40084f_4358417dbbfe400d8f1d11deae29af73~mv2.jpg/v1/fill/w_147,h_61,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_4358417dbbfe400d8f1d11deae29af73~mv2.jpg',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event in Plano. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+    image: 'https://static.wixstatic.com/media/40084f_71c7efa6acaf4e71b0d3e7e2a21549d4~mv2.jpg/v1/fill/w_155,h_103,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_71c7efa6acaf4e71b0d3e7e2a21549d4~mv2.jpg',
+  },
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! My co-workers are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+    image: 'https://static.wixstatic.com/media/40084f_752145f2bd394f5fb283e192fe1ef0cc~mv2.jpg/v1/fill/w_81,h_83,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_752145f2bd394f5fb283e192fe1ef0cc~mv2.jpg',
+  },
+];
+
+// Inline FAQs — verbatim from source (plano-magician.md), with HTML link in last answer
+const planoFaqs = [
+  {
+    question: 'What do you wear to events?',
+    answer:
+      "It depends on the type of event! For an indoor corporate event, I'd wear a traditional suit. I have a variety of options. For an outdoor summertime corporate event, I typically wear a linen jacket with suit pants to save myself when it's hot. Occasionally a client requests that I rent a tuxedo, which I am happy to do.",
+  },
+  {
+    question: "We booked you for last year's party. Will you have new tricks for us this year?",
+    answer:
+      "You can bet on it! I'm constantly rolling out new material and I keep a pretty detailed log of what I did at each booking- that way I can ensure I'm not repeating anything when I book repeat clients. However, some of my heavy-hitter magic tricks are often requested by repeat clients when they have new guests in attendance! It's pretty flattering when the host brings a new guest over to me and requests \"can you do the such and such trick for her that you did at our last party?\"",
+  },
+  {
+    question: 'Are you open to traveling to an event?',
+    answer:
+      "Although I live in the Plano / Dallas-Fort Worth area, but I am more than happy to travel anywhere in the world for your Corporate Event. I fly out to several events per month so I'm perfectly comfortable living out of a suitcase, and occasionally I'll drive if I'm performing somewhere nearby like Louisiana or Oklahoma.",
+  },
+  {
+    question: 'What exactly is a mentalist?',
+    answer:
+      "It's not every day that you meet a mentalist, or a corporate mentalist for that matter. So what do I do? Well, I like to say that I use all five of my senses to give the illusion of a sixth. I heard it somewhere a long time ago and can't quite remember where! Everyone's heard of a magician who does sleight of hand tricks or card tricks, but a mentalist entertains people with tricks that are more psychological based, like mind reading tricks! It's a lot of fun for all types of events. I also have a blog post with further information here: <a href=\"https://www.anthonyentertains.com/post/magic-of-mentalism-corporate-event\">Unleashing the Magic of Mentalism</a>.",
+  },
+];
 ---
 
 <BaseLayout
   title="Plano Magician | Corporate Event Entertainment | Anthony Entertains"
-  description="Plano's favorite magician and mentalist Anthony Dempsey delivers mind-blowing entertainment for corporate events, private parties, and stage shows in Plano, TX."
-  canonicalUrl="https://anthonyentertains.com/plano-magician"
+  description="Anthony Dempsey is known for his quick wit, humor, and sleight of hand skill. As seen on NBC, FOX, and CW. Magic and Mentalism for Corporate Events and Private Parties."
+  canonicalUrl="https://www.anthonyentertains.com/plano-magician"
 >
   <!-- Hero -->
   <Hero
-    eyebrow="Plano Magician & Mentalist"
-    headline="Plano's Favorite<br>Magician &amp; Mentalist"
+    eyebrow="PLANO'S FAVORITE MAGICIAN & MENTALIST"
+    headline="ANTHONY DEMPSEY"
     subheadline="Anthony Will Transform Your Next Event Into An Unbelievable Experience."
     ctaText="Get a Free Quote"
     ctaHref={`${base}get-a-quote`}
-    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryText="2026 Demo Reel"
     ctaSecondaryHref="#media"
-    bgImage="images/hero/anthony-dempsey-hero.jpg"
+    bgImage="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1330,h_745,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png"
     overlay="rgba(0,0,0,0.62)"
   />
+
+  <!-- IMG 1 (favicon/logo small) — present in header via BaseLayout; included here for completeness -->
+  <!-- IMG 2 (hero banner) — used as bgImage in Hero above -->
+  <!-- IMG 3 (header logo) — present in header via BaseLayout -->
+
+  <!-- Demo Reel Strip — "Your guests will act like this" -->
+  <section class="section section--demo-reel" id="media">
+    <div class="container container--narrow">
+      <span class="section-label" data-reveal="fade-up">2026 DEMO REEL</span>
+      <p class="demo-reel__sub" data-reveal="fade-up">Your guests will act like this</p>
+      <div class="demo-reel__video" data-reveal="fade-up">
+        <iframe
+          src="https://www.youtube.com/embed/ZyrK_2VLKVM"
+          title="Dallas Magician and Mentalist Anthony Dempsey"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="demo-reel__cta" data-reveal="fade-up">
+        <a href="#videos" class="btn btn--secondary">SEE MORE VIDEOS</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Penn & Teller -->
   <PennTellerBadge />
@@ -44,31 +113,166 @@ const base = import.meta.env.BASE_URL;
   <!-- Services -->
   <section class="section">
     <div class="container">
-      <span class="section-label" data-reveal="fade-up">Services</span>
-      <h2 class="section-title" data-reveal="fade-up">Mind Blowing Entertainment in Plano for People Who Like to Have Fun</h2>
+      <span class="section-label" data-reveal="fade-up">Plano Entertainment</span>
+      <h2 class="section-title" data-reveal="fade-up">Service Options</h2>
       <div class="divider" data-reveal="fade-up"></div>
 
       <div class="plano-grid" data-reveal-stagger>
         <div class="plano-card">
-          <h3>Strolling Magic &amp; Mentalism</h3>
-          <p>Strolling magic and mentalism is the perfect opportunity for Anthony to mix and mingle with your guests. He'll spend time with each cluster of people and help break the ice for those who don't know anyone! Strolling magic is ideal for: Dinner Parties, Cocktail Hours, Weddings, Adult Birthdays, Corporate Events, Graduations, Anniversaries, Holiday Parties, Proms, and Hospitality.</p>
+          <!-- IMG 4 (service/strolling magic photo) -->
+          <img
+            src="https://static.wixstatic.com/media/40084f_27740bf79bcd477eaa94273a143150f2~mv2.jpg/v1/crop/x_192,y_0,w_1663,h_1365/fill/w_435,h_357,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/plano%20magician.jpg"
+            alt="plano magician.jpg"
+            class="plano-card__img"
+            loading="lazy"
+            width="435"
+            height="357"
+          />
+          <h3>Magic Up Close</h3>
+          <p>"Strolling" magic and mentalism is the perfect opportunity for Anthony to mix and mingle with your guests. He'll spend time with each cluster of people and help break the ice for those who don't know anyone!</p>
+          <p>Strolling magic is ideal for: Dinner Parties, Cocktail Hours, Weddings, Adult Birthdays, Corporate Events, Graduations, Anniversaries, Holiday Parties, Proms, and Hospitality.</p>
         </div>
         <div class="plano-card">
-          <h3>Stage Shows</h3>
-          <p>Plan on having a stage at your event? Anthony's got you covered with a mind-blowing magic and mentalism stage show that uses audience participation from start to finish. This show is a perfect mixture of comedy, mystery, and 'what just happened?' Stage Magic is great for: Banquets, Corporate Events, Trade Shows, House Parties, Festivals, Team Building Events, Large Dinner Parties, Sales Presentations, and Surprise Entertainment.</p>
+          <!-- IMG 5 (service/stage magic photo) -->
+          <img
+            src="https://static.wixstatic.com/media/40084f_1cbf3844ae6f43099831e4335bea0cd8~mv2.png/v1/crop/x_147,y_0,w_3738,h_3024/fill/w_440,h_356,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_7790_HEIC.png"
+            alt="IMG_7790.HEIC"
+            class="plano-card__img"
+            loading="lazy"
+            width="440"
+            height="356"
+          />
+          <h3>On-Stage Magic Shows</h3>
+          <p>Plan on having a stage at your event? Anthony's got you covered with a mind-blowing magic and mentalism stage show that uses audience participation from start to finish. This show is a perfect mixture of comedy, mystery, and "what just happened?"</p>
+          <p>Stage Magic is great for: Banquets, Corporate Events, Trade Shows, House Parties, Festivals, Team Building Events, Large Dinner Parties, Sales Presentations, and Surprise Entertainment.</p>
         </div>
       </div>
 
       <p class="serving-note" data-reveal="fade-up">
-        Serving the Dallas-Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, & more.
+        Serving the Dallas- Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, &amp; more.
       </p>
+
+      <div class="services-cta" data-reveal="fade-up">
+        <a href={`${base}services`} class="btn btn--secondary">SERVICES</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid-Page CTA Section -->
+  <section class="section section--mid-cta">
+    <div class="container">
+      <!-- IMG 6 (mid-page section photo) -->
+      <img
+        src="https://static.wixstatic.com/media/40084f_3c008e7bb1274c71ba2b8c0c25fd8b9d~mv2.jpg/v1/fill/w_981,h_550,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Plano%20Magician.jpg"
+        alt="Plano Magician.jpg"
+        class="mid-cta__img"
+        loading="lazy"
+        width="981"
+        height="550"
+      />
+      <h2 class="mid-cta__heading" data-reveal="fade-up">Mind Blowing Entertainment in Plano<br />for People Who Like to Have Fun</h2>
+      <p class="mid-cta__body" data-reveal="fade-up">Plano Magician and Mentalist Anthony Dempsey wants to help you elevate your next event.</p>
+      <p class="mid-cta__body" data-reveal="fade-up">We will provide an accurate quote with a simple, quick phone call.</p>
+      <div data-reveal="fade-up">
+        <a href={`${base}get-a-quote`} class="btn btn--primary">PRICING &amp; AVAILABILITY</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews / Social Proof Images -->
+  <section class="section section--reviews" aria-label="Reviews">
+    <div class="container">
+      <!-- IMG 7 (reviews/social proof image) -->
+      <img
+        src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/fill/w_1090,h_613,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Reviews%20Web%20Image.png"
+        alt="Reviews Web Image.png"
+        class="reviews__hero-img"
+        loading="lazy"
+        width="1090"
+        height="613"
+      />
+
+      <div class="reviews__cards">
+        <!-- Review card 1 -->
+        <div class="reviews__card">
+          <img
+            src="https://static.wixstatic.com/media/40084f_a117e8d3bf2b4ebfbacf380dbf1831e4~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,enc_avif,quality_auto/Plano-Magician-Review.jpg"
+            alt="Plano-Magician-Review.jpg"
+            loading="lazy"
+            width="200"
+            height="200"
+          />
+          <!-- IMG 12 (logo/badge) -->
+          <img
+            src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_197,h_50,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png"
+            alt=""
+            loading="lazy"
+            width="197"
+            height="50"
+          />
+          <!-- IMG 13 (reviewer avatar — Untitled design) -->
+          <img
+            src="https://static.wixstatic.com/media/40084f_25a324ae36af45e98ae6c5580f5ac0ae~mv2.jpg/v1/fill/w_79,h_53,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_25a324ae36af45e98ae6c5580f5ac0ae~mv2.jpg"
+            alt="Untitled design.jpg"
+            loading="lazy"
+            width="79"
+            height="53"
+          />
+        </div>
+
+        <!-- Review card 2 -->
+        <div class="reviews__card">
+          <img
+            src="https://static.wixstatic.com/media/40084f_dcf51f2059324f8fb682ec7c266b0495~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Plano-Magician-For-Events.jpg"
+            alt="Plano-Magician-For-Events.jpg"
+            loading="lazy"
+            width="200"
+            height="200"
+          />
+          <!-- IMG 15 (logo/badge repeat) -->
+          <img
+            src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_197,h_50,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png"
+            alt=""
+            loading="lazy"
+            width="197"
+            height="50"
+          />
+          <!-- IMG 16 (reviewer avatar — Transparent 2) -->
+          <img
+            src="https://static.wixstatic.com/media/40084f_7b0afbf5919a409da3f5365782ab699e~mv2.jpg/v1/fill/w_79,h_53,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_7b0afbf5919a409da3f5365782ab699e~mv2.jpg"
+            alt="Transparent 2.jpg"
+            loading="lazy"
+            width="79"
+            height="53"
+          />
+        </div>
+
+        <!-- Review card 3 -->
+        <div class="reviews__card">
+          <img
+            src="https://static.wixstatic.com/media/40084f_3d8e66214f87445ca4a5855fb0a47587~mv2.jpg/v1/crop/x_0,y_0,w_656,h_656/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Plano-Magician-For-Hire.jpg"
+            alt="Plano-Magician-For-Hire.jpg"
+            loading="lazy"
+            width="200"
+            height="200"
+          />
+          <!-- IMG 18 (logo/badge repeat) -->
+          <img
+            src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_197,h_50,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png"
+            alt=""
+            loading="lazy"
+            width="197"
+            height="50"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Guarantees -->
   <ThreeGuarantees
-    label="The Key to a Truly Memorable Event"
-    title="Anthony Guarantees:"
+    label="Plano Magician Anthony Dempsey Promises You 3 Things..."
+    title=""
     items={[
       {
         heading: 'Guest Interaction',
@@ -85,30 +289,95 @@ const base = import.meta.env.BASE_URL;
     ]}
   />
 
-  <!-- Testimonials -->
+  <!-- Testimonials — "Our work" per source -->
   <TestimonialsSection
-    testimonials={corporateTestimonials}
-    title="Clients Who Love Anthony's Entertainment"
+    testimonials={planoTestimonials}
+    title="Our work"
   />
 
-  <!-- Videos -->
-  <VideoGrid />
+  <!-- Videos — all 9 IDs rendered by VideoGrid via shared videos data -->
+  <div id="videos">
+    <VideoGrid />
+  </div>
 
   <!-- About -->
   <AboutSection />
 
   <!-- Contact -->
   <ContactForm
-    title="We will provide an accurate quote with a simple, quick phone call."
-    label="Contact"
+    title="Tell us about your event"
+    label="CONTACT ANTHONY"
     showFullForm={true}
   />
 
-  <!-- FAQ -->
-  <FAQSection faqs={planoFaqs} />
+  <!-- FAQ — rendered inline so last answer can use set:html for the mentalism link -->
+  <section class="section" id="faq">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">FAQ</span>
+      <h2 class="section-title" data-reveal="fade-up">Frequently Asked Questions</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="faq-list" data-reveal="fade-up">
+        {planoFaqs.map((faq) => (
+          <details class="faq-item" name="faq-group">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p set:html={faq.answer} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
+/* Demo Reel strip */
+.section--demo-reel {
+  background: var(--c-dark-base);
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.section--demo-reel .section-label {
+  color: var(--c-brand-gold, #c9a84c);
+}
+
+.demo-reel__sub {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.demo-reel__video {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 28px;
+  aspect-ratio: 16 / 9;
+}
+
+.demo-reel__video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.demo-reel__cta {
+  margin-top: 8px;
+}
+
+.container--narrow {
+  max-width: 900px;
+}
+
 .plano-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -117,38 +386,193 @@ const base = import.meta.env.BASE_URL;
 }
 
 .plano-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
   padding: 32px 28px;
-  transition: border-color var(--transition-mid), transform var(--transition-mid);
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
 }
-.plano-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .plano-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.plano-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+  object-fit: cover;
 }
 
 .plano-card h3 {
-  font-size: 1.15rem;
-  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
   margin-bottom: 14px;
 }
 
 .plano-card p {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
   line-height: 1.8;
   max-width: none;
+  margin-bottom: 8px;
 }
 
 .serving-note {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
   text-align: center;
   font-style: italic;
+  margin-bottom: 24px;
+}
+
+.services-cta {
+  text-align: center;
+}
+
+/* Mid-page CTA */
+.section--mid-cta {
+  background: var(--c-light-base);
+  text-align: center;
+}
+
+.mid-cta__img {
+  width: 100%;
+  max-width: 981px;
+  height: auto;
+  display: block;
+  margin: 0 auto 32px;
+  object-fit: cover;
+}
+
+.mid-cta__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.mid-cta__body {
+  font-size: 1rem;
+  color: var(--c-dark-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reviews section */
+.section--reviews {
+  background: var(--c-light-base);
+}
+
+.reviews__hero-img {
+  width: 100%;
+  max-width: 1090px;
+  height: auto;
+  display: block;
+  margin: 0 auto 40px;
+}
+
+.reviews__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.reviews__card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.reviews__card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .reviews__cards { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
   .plano-grid { grid-template-columns: 1fr; }
+}
+
+/* Inline FAQ styles (mirrors FAQSection.astro) */
+.faq-list {
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid rgba(20, 21, 29, 0.1);
+}
+
+.faq-item {
+  background: var(--c-light-base);
+  border: none;
+  border-bottom: 1px solid rgba(20, 21, 29, 0.1);
+  overflow: hidden;
+  transition: background var(--transition-fast);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-item[open] { background: var(--c-card-bg); }
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--c-dark-base);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--transition-fast);
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question:hover { color: var(--c-brand-navy); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--c-dark-muted);
+  transition: transform var(--transition-fast);
+  font-family: var(--font-body);
+  line-height: 1;
+}
+.faq-item[open] .faq-icon { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 24px 22px;
+}
+.faq-answer p {
+  font-size: 0.9rem;
+  color: var(--c-dark-muted);
+  line-height: 1.8;
+  max-width: none;
 }
 </style>

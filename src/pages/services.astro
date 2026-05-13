@@ -3,13 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import PennTellerBadge from '../components/PennTellerBadge.astro';
 import EventTypesSection from '../components/EventTypesSection.astro';
-import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import ClientLogos from '../components/ClientLogos.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
-import FAQSection from '../components/FAQSection.astro';
 import { homepageTestimonials } from '../data/testimonials';
-import { generalFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
 
@@ -17,7 +15,7 @@ const allEvents = [
   'Team Building', 'Sales Meetings', 'Conventions', 'Trade Shows',
   'Film and Television', 'Banquets', 'Colleges and Theaters', 'Graduations',
   'Prom', 'Country Clubs', 'Award Ceremonies', 'Hotel Guest Entertainment',
-  'Birthday Parties', 'Special Events', 'Corporate Functions',
+  '40th Birthday Parties', 'Special Events', 'Corporate Functions',
 ];
 ---
 
@@ -29,86 +27,166 @@ const allEvents = [
   <!-- Hero -->
   <Hero
     eyebrow="Dallas Magician & Mentalist"
-    headline="The Best Magician<br>in Dallas, TX"
-    subheadline="ANTHONY DEMPSEY"
+    headline="The Best Magician **in Dallas, TX**"
+    nameDisplay="Anthony Dempsey"
     ctaText="Get a Free Quote"
     ctaHref={`${base}get-a-quote`}
-    ctaSecondaryText="Watch Anthony Perform"
-    ctaSecondaryHref="#media"
     bgImage="images/hero/anthony-dempsey-hero.jpg"
-    overlay="rgba(0,0,0,0.60)"
   />
 
   <!-- Penn & Teller -->
   <PennTellerBadge />
 
-  <!-- Services Grid -->
+  <!-- Services Section -->
   <section class="section">
     <div class="container">
       <span class="section-label" data-reveal="fade-up">Services</span>
-      <h2 class="section-title" data-reveal="fade-up">What Anthony Offers</h2>
+      <h2 class="section-title" data-reveal="fade-up">MAGICIAN SERVICES OFFERED</h2>
       <div class="divider" data-reveal="fade-up"></div>
 
-      <div class="services-grid" data-reveal-stagger>
-        <article class="service-card">
-          <div class="service-card-body">
-            <h3 class="service-card-heading">Private Parties</h3>
-            <p>I'll make your guests feel like they're the ones being celebrated. They will laugh, gasp, and they might just try to steal me away from the other guests.</p>
-            <a href={`${base}private-party-magician`} class="service-card-link">Learn More →</a>
-          </div>
-        </article>
+      <!-- Private Parties -->
+      <article class="service-block" data-reveal="fade-up">
+        <div class="service-block-img-wrap">
+          <img
+            src="https://static.wixstatic.com/media/40084f_4a76dee1d5cb4d13bf1a794655ab6825~mv2.jpg/v1/fill/w_500,h_373,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_4a76dee1d5cb4d13bf1a794655ab6825~mv2.jpg"
+            alt="Private Parties"
+            loading="lazy"
+            class="service-block-img"
+          />
+        </div>
+        <div class="service-block-body">
+          <h3 class="service-block-heading">Private Parties</h3>
+          <p>I'll make your guests feel like they're the ones being celebrated. They will laugh, gasp, and they might just try to steal me away from the other guests. In actuality, nearly every party is in need of some form of unique entertainment. Magic and mentalism is a great way to ensure your guests leave with more friends than they arrived with. There's a reason why I'm the highest rated Magician and Mentalist in Texas- I'm fun!</p>
+          <p>Unleash the fun and create lasting memories at your next celebration! As a professional magician, I guarantee to deliver an experience that will have your guests talking for days. Whether it's an intimate dinner gathering or a milestone birthday bash, I've got you covered. Impress your guests with an after-dinner comedy mind-reading performance or add a touch of surprise with strolling magic and mentalism as they arrive. Trust me, I'm the entertainment specialist who will elevate your party to the next level, leaving your guests with a lasting impression of an amazing time. Don't settle for just any magician, hire the right one and make your celebration truly unforgettable!</p>
+          <a href={`${base}get-a-quote`} class="service-block-link">Get a FREE quote</a>
+        </div>
+      </article>
 
-        <article class="service-card">
-          <div class="service-card-body">
-            <h3 class="service-card-heading">Corporate Entertainment</h3>
-            <p>Enhancing guest experiences, creating connections, and blowing minds. As DFW's preferred Corporate Magician and Mentalist, Anthony Dempsey will ensure that your event is a success!</p>
-            <a href={`${base}corporate-magician`} class="service-card-link">Learn More →</a>
+      <!-- Corporate Entertainment -->
+      <article class="service-block" data-reveal="fade-up">
+        <div class="service-block-img-wrap">
+          <img
+            src="https://static.wixstatic.com/media/40084f_85cbbef8454646bb9866bb2f8d6e61f0~mv2.jpg/v1/crop/x_256,y_16,w_3458,h_2536/fill/w_495,h_364,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_85cbbef8454646bb9866bb2f8d6e61f0~mv2.jpg"
+            alt="Corporate Entertainment"
+            loading="lazy"
+            class="service-block-img"
+          />
+        </div>
+        <div class="service-block-body">
+          <h3 class="service-block-heading">Corporate Entertainment</h3>
+          <p>Enhancing guest experiences, creating connections, and blowing minds. As DFW's preferred Corporate Magician and Mentalist, Anthony Dempsey will ensure that your event is a success!</p>
+          <p>There's a lot riding on having good quality corporate entertainment - and it's sometimes difficult to work out the good from the bad (and the ugly). Anthony's experience working for corporations just like yours means he understands professional requirements and what is expected by a professional group.</p>
+          <p>Anthony brings his extensive corporate entertainment expertise to your event, guaranteeing an unforgettable evening. Having performed on FOUR CONTINENTS as well as for celebrities and businesses across the U.S., your guests will join the long list of people who love to see Anthony at their parties!</p>
+          <div class="service-block-links">
+            <a href={`${base}get-a-quote`} class="service-block-link">Get a FREE quote</a>
+            <a href={`${base}get-a-quote`} class="service-block-link">Contact Us</a>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="service-card">
-          <div class="service-card-body">
-            <h3 class="service-card-heading">Close-up Magic and Mind Reading</h3>
-            <p>Dallas Magician Anthony Dempsey works his way amongst the crowd, showing them unbelievable feats.</p>
-            <a href={`${base}corporate-magician`} class="service-card-link">Learn More →</a>
-          </div>
-        </article>
+      <!-- Close-up Magic and Mind Reading -->
+      <article class="service-block" data-reveal="fade-up">
+        <div class="service-block-img-wrap">
+          <img
+            src="https://static.wixstatic.com/media/40084f_85cf716c17e0442593f5d89ecb92d3f0~mv2.jpg/v1/fill/w_536,h_356,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_85cf716c17e0442593f5d89ecb92d3f0~mv2.jpg"
+            alt="Close-up Magic and Mind Reading"
+            loading="lazy"
+            class="service-block-img"
+          />
+        </div>
+        <div class="service-block-body">
+          <h3 class="service-block-heading">Close-up Magic and Mind Reading</h3>
+          <p>Strolling Magic at your cocktail hour is a great way to not only impress your guests, but also help them start the conversation!</p>
+          <p>Dallas Magician Anthony Dempsey works his way amongst the crowd, showing them unbelievable feats of the mind and sleight of hand that will leave a smile across their faces and have them begging to see more! Every trick is geared to engage the group as well as help them have a great time. Not only will he blow their minds, but he will also get them to interact with one another in a unique and exciting way. The great thing about strolling magic is that it's incredibly versatile; it can be done absolutely anywhere.</p>
+          <p>Perfect for Corporate Holiday Parties, Corporate Entertainment, Banquets, Hospitality and any type of Special Event! Breaking the ice is hard to do- let Anthony be your icepick!</p>
+          <a href={`${base}get-a-quote`} class="service-block-link">Get a FREE quote</a>
+        </div>
+      </article>
 
-        <article class="service-card">
-          <div class="service-card-body">
-            <h3 class="service-card-heading">Stage Shows</h3>
-            <p>Entertain your Brain! Influencing crowd decisions, reading strangers' thoughts and predicting the future…</p>
-            <a href={`${base}corporate-magician`} class="service-card-link">Learn More →</a>
-          </div>
-        </article>
+      <!-- Stage Shows -->
+      <article class="service-block" data-reveal="fade-up">
+        <div class="service-block-img-wrap">
+          <img
+            src="https://static.wixstatic.com/media/40084f_31583f170f4943078f09c4f6e3bb4a2b~mv2.png/v1/fill/w_504,h_395,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_31583f170f4943078f09c4f6e3bb4a2b~mv2.png"
+            alt="Stage Shows"
+            loading="lazy"
+            class="service-block-img"
+          />
+        </div>
+        <div class="service-block-body">
+          <h3 class="service-block-heading">Stage Shows</h3>
+          <p>Entertain your Brain! Influencing crowd decisions, reading strangers' thoughts and predicting the future… This isn't a Sci-Fi novel, this is his Stage Show- and your company is the star of it all!</p>
+          <p>Anthony can customize his Comedy Mind Reading Stage Show to fit any theme as well as showcase the company in a Corporate Party setting! The show can be scaled to fit any location that you may have in mind, and it can entertain any size crowd- whether it's 5 people or well over 1000! He uses audience participation from beginning to end, and even performs effects that involve the entire crowd! Most importantly, all of Anthony's humor and performances are guaranteed to be 100% family friendly and HR approved.</p>
+          <p>This is World Class Entertainment that has been seen around the world! Don't miss out on the opportunity of having a mind reader thrill your guests at your next corporate event! This type of show can be performed on large stages, or altered and scaled down to fit in most locations, including conference rooms.</p>
+          <a href={`${base}get-a-quote`} class="service-block-link">Contact Us</a>
+        </div>
+      </article>
 
-        <article class="service-card">
-          <div class="service-card-body">
-            <h3 class="service-card-heading">Wedding Entertainment</h3>
-            <p>Your wedding is one of the most important days of your life, and Anthony makes sure your guests feel just as valued and important.</p>
-            <a href={`${base}wedding-magician`} class="service-card-link">Learn More →</a>
-          </div>
-        </article>
-      </div>
-
-      <p class="service-area-note" data-reveal="fade-up">
-        Dallas Magician Anthony Dempsey Services Events all over Texas. Including Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, as well as all over the United States.
-      </p>
+      <!-- Wedding Entertainment -->
+      <article class="service-block" data-reveal="fade-up">
+        <div class="service-block-img-wrap">
+          <img
+            src="https://static.wixstatic.com/media/40084f_6fbf615186044a98ae8ce8d849670954~mv2.jpg/v1/crop/x_0,y_1309,w_3840,h_3141/fill/w_489,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Magic-Show-Dallas-Magician-Wedding%20(1)_j.jpg"
+            alt="Wedding Entertainment"
+            loading="lazy"
+            class="service-block-img"
+          />
+        </div>
+        <div class="service-block-body">
+          <h3 class="service-block-heading">Wedding Entertainment</h3>
+          <p>Your wedding is one of the most important days of your life, and Anthony makes sure your guests feel just as valued and important. His Wedding Magic performances are designed to engage your adult guests, and use as many people as possible with each magic trick. This helps bring the different groups, who may not know each other, together and get them interacting with one another. They will be laughing side by side between the astonished looks of amazement.</p>
+          <p>Click the button below to learn about Anthony's Wedding Entertainment!</p>
+          <a href={`${base}wedding-magician`} class="service-block-link">Wedding Services</a>
+        </div>
+      </article>
     </div>
   </section>
 
   <!-- Event Types -->
   <EventTypesSection
-    title="The Magician Dallas Trusts For Events Like These"
+    title="Experienced in the following types of events"
     events={allEvents}
-    note="Anthony is the highest rated Magician and Mentalist in Texas."
+    note="The great thing about Magic and Mind Reading is that it's extremely versatile. Magic is fun and entertaining for any type of event, from a large Corporate Event to a small Social Gathering. Below is a list of just a few events Anthony has performed for:"
   />
 
-  <!-- Guarantees -->
-  <ThreeGuarantees
-    label="The Recipe for a Truly Memorable Event"
-    title="Anthony Guarantees:"
-  />
+  <!-- Event Types Image + Corporate Clients -->
+  <section class="section">
+    <div class="container">
+      <div class="event-img-wrap" data-reveal="fade-up">
+        <img
+          src="https://static.wixstatic.com/media/40084f_697e15f63d3f4f28aeb853cfce43a84d~mv2.jpg/v1/fill/w_400,h_600,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_697e15f63d3f4f28aeb853cfce43a84d~mv2.jpg"
+          alt="Anthony Dempsey performing at an event"
+          loading="lazy"
+          class="event-img"
+        />
+      </div>
+
+      <h2 class="section-title" data-reveal="fade-up">Corporate Clients</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="client-images" data-reveal="fade-up">
+        <img
+          src="https://static.wixstatic.com/media/40084f_638215bbefc54ee1bd4259f7dd328bab~mv2.jpg/v1/fill/w_979,h_548,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_638215bbefc54ee1bd4259f7dd328bab~mv2.jpg"
+          alt="Corporate clients"
+          loading="lazy"
+          class="client-img"
+        />
+        <img
+          src="https://static.wixstatic.com/media/40084f_726f0cd7b0fd4ecd950630ff3352220c~mv2.jpg/v1/fill/w_982,h_548,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_726f0cd7b0fd4ecd950630ff3352220c~mv2.jpg"
+          alt="Corporate clients"
+          loading="lazy"
+          class="client-img"
+        />
+      </div>
+
+      <p class="service-area-note" data-reveal="fade-up">
+        Dallas Magician Anthony Dempsey Services Events all over Texas. Including <a href="https://www.visitdallas.com/" class="area-link">Dallas</a>, <a href="https://www.fortworth.com/" class="area-link">Fort Worth</a>, <a href="https://www.plano.gov/" class="area-link">Plano</a>, <a href="https://addisontexas.net" class="area-link">Addison</a>, <a href="http://www.arlington-tx.gov/visitors/" class="area-link">Arlington</a>, <a href="https://visitmckinney.com" class="area-link">McKinney</a>, <a href="https://www.irvingtexas.com/" class="area-link">Irving</a>, <a href="https://www.grapevinetexasusa.com" class="area-link">Grapevine</a>, <a href="https://www.visitfrisco.com" class="area-link">Frisco</a>, as well as all over the United States.
+      </p>
+    </div>
+  </section>
+
+  <!-- Client Logos -->
+  <ClientLogos />
 
   <!-- Testimonials -->
   <TestimonialsSection
@@ -120,71 +198,133 @@ const allEvents = [
   <VideoGrid />
 
   <!-- Contact -->
-  <ContactForm />
-
-  <!-- FAQ -->
-  <FAQSection faqs={generalFaqs} />
+  <ContactForm showFullForm={true} />
 </BaseLayout>
 
 <style>
-.services-grid {
+/* Service blocks — full-width article layout */
+.service-block {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-bottom: 48px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 72px;
+  padding-bottom: 72px;
+  border-bottom: 1px solid rgba(20, 21, 29, 0.1);
+}
+.service-block:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-.service-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+/* Alternate image left/right */
+.service-block:nth-child(even) .service-block-img-wrap {
+  order: 2;
+}
+.service-block:nth-child(even) .service-block-body {
+  order: 1;
+}
+
+.service-block-img-wrap {
+  width: 100%;
   overflow: hidden;
-  transition: transform var(--transition-mid), box-shadow var(--transition-mid), border-color var(--transition-mid);
-}
-.service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--color-accent);
+  border-radius: 2px;
 }
 
-.service-card-body { padding: 32px; }
+.service-block-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-theatrical);
+}
+.service-block:hover .service-block-img { transform: scale(1.03); }
 
-.service-card-heading {
-  font-size: 1.2rem;
-  color: var(--color-text);
-  margin-bottom: 12px;
+.service-block-body { display: flex; flex-direction: column; gap: 0; }
+
+.service-block-heading {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
 }
 
-.service-card-body p {
+.service-block-body p {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-base);
   line-height: 1.75;
-  max-width: none;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.service-card-link {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-accent-light);
+.service-block-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.service-block-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--c-dark-muted);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
-.service-card-link:hover { color: var(--color-accent); }
+.service-block-link:hover { color: var(--c-brand-navy); }
+
+/* Event image */
+.event-img-wrap {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.event-img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+/* Corporate client images */
+.client-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.client-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 .service-area-note {
-  font-size: 0.95rem;
-  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  color: var(--c-dark-muted);
   line-height: 1.75;
   text-align: center;
   max-width: 720px;
   margin: 0 auto;
 }
 
-@media (max-width: 900px) {
-  .services-grid { grid-template-columns: 1fr 1fr; }
+.area-link {
+  color: var(--c-brand-navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
-@media (max-width: 540px) {
-  .services-grid { grid-template-columns: 1fr; }
+.area-link:hover { opacity: 0.75; }
+
+@media (max-width: 900px) {
+  .service-block {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .service-block:nth-child(even) .service-block-img-wrap,
+  .service-block:nth-child(even) .service-block-body {
+    order: unset;
+  }
+  .client-images { grid-template-columns: 1fr; }
 }
 </style>

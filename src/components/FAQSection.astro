@@ -9,7 +9,7 @@ export interface Props {
 const { faqs, title = 'Frequently Asked Questions' } = Astro.props;
 ---
 
-<section class="section section--darker" id="faq">
+<section class="section" id="faq">
   <div class="container">
     <span class="section-label" data-reveal="fade-up">FAQ</span>
     <h2 class="section-title" data-reveal="fade-up">{title}</h2>
@@ -36,20 +36,21 @@ const { faqs, title = 'Frequently Asked Questions' } = Astro.props;
   max-width: 780px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 .faq-item {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  background: var(--c-light-base);
+  border: none;
+  border-bottom: 1px solid var(--c-card-border);
   overflow: hidden;
-  transition: border-color var(--transition-fast);
+  transition: background var(--transition-fast);
 }
-.faq-item[open] {
-  border-color: var(--color-accent);
-}
-.faq-item + .faq-item { margin-top: 8px; }
+.faq-item:last-child { border-bottom: none; }
+.faq-item[open] { background: var(--c-card-bg); }
 
 .faq-question {
   display: flex;
@@ -57,45 +58,39 @@ const { faqs, title = 'Frequently Asked Questions' } = Astro.props;
   justify-content: space-between;
   gap: 16px;
   padding: 22px 24px;
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--c-dark-base);
   cursor: pointer;
   list-style: none;
   transition: color var(--transition-fast);
 }
 .faq-question::-webkit-details-marker { display: none; }
-.faq-question:hover { color: var(--color-accent-light); }
+.faq-question:hover { color: var(--c-brand-navy); }
 
 .faq-icon {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border-light);
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
-  color: var(--color-accent);
-  transition: transform var(--transition-fast), background var(--transition-fast);
-  font-family: var(--font-body);
+  font-size: 1.2rem;
   font-weight: 300;
+  color: var(--c-dark-muted);
+  transition: transform var(--transition-fast);
+  font-family: var(--font-body);
+  line-height: 1;
 }
-.faq-item[open] .faq-icon {
-  transform: rotate(45deg);
-  background: var(--color-accent);
-  color: #fff;
-  border-color: var(--color-accent);
-}
+.faq-item[open] .faq-icon { transform: rotate(45deg); }
 
 .faq-answer {
   padding: 0 24px 22px;
 }
 .faq-answer p {
-  font-size: 0.95rem;
-  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  color: var(--c-dark-muted);
   line-height: 1.8;
   max-width: none;
 }

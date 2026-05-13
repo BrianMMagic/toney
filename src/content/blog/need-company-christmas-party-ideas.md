@@ -4,6 +4,8 @@ pubDate: "2025-12-04"
 author: "Anthony Dempsey"
 category: "Magician"
 description: "If you're scrambling for innovative company Christmas party ideas, you might want to pay close attention."
+heroImage: "https://static.wixstatic.com/media/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.jpg"
+readTime: "2 min"
 ---
 
 If you're scrambling for innovative company Christmas party ideas, you might want to pay close attention. Have you ever considered hiring a magician and mentalist to elevate your event? Imagine having Anthony Dempsey dazzle your employees and guests with astonishing feats of mind-reading and illusion. Not only does he offer unique entertainment that will leave everyone mesmerized, but his act also serves as an incredible icebreaker, fostering deep connections among attendees. Take it from us, this is an experience you won't want your company to miss. But act quickly—Anthony's schedule fills up fast, especially for those most coveted holiday dates.

@@ -1,0 +1,206 @@
+---
+const logos: { src: string; white?: true; tall?: true }[] = [
+  { src: 'https://static.wixstatic.com/media/00b1d8_5c6f32d0d21e4f81b6ff40cfa541a177~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_a841f893fcde43ec8990a50a777d8fde~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_40a2c32e842a4d46b6d2b7b19d62f450~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_0aa540bd781a4b2f9c24436e59c49a98~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_eb4fa8973a104d26ae0cba165997b9f8~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_18b68279777c42ecaad0a94b8399c961~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_eda21d434a38499cbb796584abca2766~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_c80b8f51960b45328aebe64cf107f68a~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_68b1176271f24d538bb36e26a485d1bd~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_390dfc22e12442f1aea28619e86c2f5a~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_0c158fea9ece4a49b92e482b06e84bdd~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_750174de34c04d31ba4dee1fc7d67183~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_096b342dd2aa4234bd99fabd87b5c008~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_e75615cc37154bd883d350c20e2aac0d~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_bde85451fca54ddb94939582e965dd7e~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_9041e56889b648428bd9058d551f0232~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_23631a122efe480fbd6ebe342d683818~mv2.png', tall: true },  // 17
+  { src: 'https://static.wixstatic.com/media/00b1d8_739303dc12274796a5b3cd0db3b67659~mv2.png', tall: true },  // 18
+  { src: 'https://static.wixstatic.com/media/00b1d8_980b3e8f970b4b9c80995e723b07484f~mv2.png', white: true }, // 19
+  { src: 'https://static.wixstatic.com/media/00b1d8_63e98e5401cc4831a720d51a4dc96256~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_5660c94b247849b882479818763630b8~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_fdeba82cc9444686a987b5193db892d8~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_4a0a072d125a40428e364e2cae396003~mv2.png', tall: true },  // 23
+  { src: 'https://static.wixstatic.com/media/00b1d8_04d584f93588499e8e3cdb585aae2040~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_debacdc04b694bd48cbcc27f76e7ea49~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_589fe12330e04676a26a3d7a2f782bca~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_d3c65c729c3e4ab4853f62021b157f27~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_7cdf333662764a06a8a32ca9f90df186~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_3d59f75b122f419d8e38822b71e297f6~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_fe651ce2485d4fbdad02db6aa9c44236~mv2.png', white: true }, // 30
+  { src: 'https://static.wixstatic.com/media/00b1d8_f5663253b33241338919c4c8c1e2641a~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_7c813cedec5b4e17a2fbe3ed2afae3dd~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_c0c2bd44d82b4cc9982875e8fe648340~mv2.png', white: true }, // 33
+  { src: 'https://static.wixstatic.com/media/00b1d8_9128aa4a154848fea96e324cb3e5d7f5~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_51987777541f47b3840633349a9c8384~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_c99c9d90fb034745bfa493bdcb58ad88~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_a7ab07b544ff4b39badaa94346859442~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_ce2c1408d58249b7ab6f6299dd57fbef~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_460f543b9b1f4f87bdd846aebee7b0fb~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_f4b582197926458db93e96d3f768d680~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_7b8f4d52e0654a02af5652c5ed01ebaf~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_4f71c2c57df8483f856077030fcb976a~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_f11b049618bd46fe8bf34aec6e6172ca~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_c9255c34da614c64baf82b5d3b83abd1~mv2.png' },
+  { src: 'https://static.wixstatic.com/media/00b1d8_4655c1400b1a4653928c01ce6cae917f~mv2.png', white: true }, // 45
+  { src: 'https://static.wixstatic.com/media/00b1d8_7d168c37508e4775a089447dc831ffb4~mv2.png' },
+];
+
+const half = Math.ceil(logos.length / 2);
+const row1 = logos.slice(0, half);   // scrolls LEFT
+const row2 = logos.slice(half);      // scrolls RIGHT
+---
+
+<section class="section logos-section" id="clients">
+  <div class="container">
+    <p class="logos-eyebrow" data-reveal="fade-up">
+      Clients Who Love Anthony's Corporate Entertainment
+    </p>
+    <div class="divider" data-reveal="fade-up"></div>
+  </div>
+
+  <div class="logos-rows-wrap" aria-label="Corporate client logos">
+
+    <!--
+      Row 1 — scrolls LEFT
+      DOM order: [originals … duplicates]
+      Animation: translateX(0) → translateX(-50%)
+      At loop reset: duplicate tail looks identical to original head → seamless
+    -->
+    <div class="logos-track logos-track--left">
+      {row1.map((logo) => (
+        <div class="logo-item">
+          <img src={logo.src} class={`${logo.white ? 'logo--white' : ''} ${logo.tall ? 'logo--tall' : ''}`} alt="Corporate client logo" loading="lazy" width="240" height="72" />
+        </div>
+      ))}
+      {row1.map((logo) => (
+        <div class="logo-item" aria-hidden="true">
+          <img src={logo.src} class={`${logo.white ? 'logo--white' : ''} ${logo.tall ? 'logo--tall' : ''}`} alt="" loading="lazy" width="240" height="72" />
+        </div>
+      ))}
+    </div>
+
+    <!--
+      Row 2 — scrolls RIGHT
+      DOM order: [duplicates … originals]  ← duplicates FIRST is the key
+      Animation: translateX(-50%) → translateX(0)
+      At t=0 the viewport shows originals (second half); track moves right;
+      at t=end viewport shows duplicates (first half = same logos) → seamless right-scroll
+    -->
+    <div class="logos-track logos-track--right">
+      {row2.map((logo) => (
+        <div class="logo-item" aria-hidden="true">
+          <img src={logo.src} class={`${logo.white ? 'logo--white' : ''} ${logo.tall ? 'logo--tall' : ''}`} alt="" loading="lazy" width="240" height="72" />
+        </div>
+      ))}
+      {row2.map((logo) => (
+        <div class="logo-item">
+          <img src={logo.src} class={`${logo.white ? 'logo--white' : ''} ${logo.tall ? 'logo--tall' : ''}`} alt="Corporate client logo" loading="lazy" width="240" height="72" />
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+.logos-section {
+  overflow: hidden;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.logos-eyebrow {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-dark-muted);
+  margin-bottom: 0;
+  max-width: none;
+}
+
+/* Full-bleed wrapper so fade masks span edge-to-edge */
+.logos-rows-wrap {
+  position: relative;
+  overflow: hidden;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.logos-track {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+  will-change: transform;
+}
+
+.logos-track--left {
+  animation: logos-left 40s linear infinite;
+}
+
+.logos-track--right {
+  animation: logos-right 40s linear infinite;
+}
+
+.logos-track:hover {
+  animation-play-state: paused;
+}
+
+/*
+  scale(1.5) on the img zooms into the actual logo graphic, visually trimming
+  ~33% off each side of the transparent PNG whitespace without distorting the logo.
+  overflow: hidden on the container clips the scaled overflow.
+  The cell is kept compact (200×64) so ~7 logos are visible per row at once.
+*/
+.logo-item {
+  flex-shrink: 0;
+  width: 200px;
+  height: 64px;
+  overflow: hidden;
+}
+
+.logo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.5);
+  transform-origin: center;
+}
+
+.logo-item img.logo--white {
+  filter: brightness(0);
+  opacity: 0.75;
+}
+
+/* Tall logos have content near the edges — reduce zoom to prevent clipping */
+.logo-item img.logo--tall {
+  transform: scale(1);
+}
+
+/* Left scroll: track moves left, new logos enter from right */
+@keyframes logos-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Right scroll: track moves right, new logos enter from left */
+@keyframes logos-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@media (max-width: 640px) {
+  .logo-item { width: 140px; height: 44px; }
+  .logos-rows-wrap { gap: 12px; }
+}
+</style>

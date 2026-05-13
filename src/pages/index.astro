@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import PennTellerBadge from '../components/PennTellerBadge.astro';
 import EventTypesSection from '../components/EventTypesSection.astro';
-import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import ClientLogos from '../components/ClientLogos.astro';
 import AboutSection from '../components/AboutSection.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
+import ThreeGuarantees from '../components/ThreeGuarantees.astro';
+import PennTellerSection from '../components/PennTellerSection.astro';
 import { homepageTestimonials } from '../data/testimonials';
 import { generalFaqs } from '../data/faqs';
+import { videos as allVideos } from '../data/videos';
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -19,58 +21,78 @@ const base = import.meta.env.BASE_URL;
   title="Dallas Magician | Corporate Event Entertainment | Anthony Entertains"
   canonicalUrl="https://anthonyentertains.com/"
 >
+  <!-- Page entrance preloader -->
+  <div class="page-preloader" aria-hidden="true"></div>
+
   <!-- Hero -->
   <Hero
-    eyebrow="Award-Winning Dallas Magician & Mentalist"
-    headline="Dallas Magician &amp; Mentalist<br><em>Anthony Dempsey</em>"
+    headline="Dallas Magician **& Mentalist**"
+    nameDisplay="Anthony Dempsey"
     subheadline="An Award-Winning Magician & Mentalist For Any Party Or Event"
-    ctaText="Get a Free Quote"
+    ctaText="GET A FREE QUOTE"
     ctaHref={`${base}get-a-quote`}
-    ctaSecondaryText="Watch Anthony Perform"
-    ctaSecondaryHref="#media"
-    bgImage="images/hero/anthony-dempsey-hero.jpg"
-    overlay="rgba(0,0,0,0.62)"
+    bgImage="https://static.wixstatic.com/media/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg"
   />
 
-  <!-- Penn & Teller -->
-  <PennTellerBadge />
+  <!-- Promo Video -->
+  <section class="section promo-video-section section--dark">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Watch Anthony Perform</span>
+      <h2 class="section-title promo-video-title" data-reveal="fade-up">See the Magic for Yourself</h2>
+      <div class="promo-video-wrap" data-reveal="zoom-in">
+        <iframe
+          src="https://www.youtube.com/embed/ZyrK_2VLKVM?controls=1&rel=0"
+          title="Dallas Magician and Mentalist Anthony Dempsey — Promo Reel"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="promo-video-cta" data-reveal="fade-up">
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Get a FREE Quote</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Services Overview -->
+  <!-- Penn & Teller credential section -->
+  <PennTellerSection />
+
+  <!-- Service Cards -->
   <section class="section home-services-section">
     <div class="container">
       <span class="section-label" data-reveal="fade-up">Services</span>
-      <h2 class="section-title" data-reveal="fade-up">More Information</h2>
-      <div class="divider" data-reveal="fade-up"></div>
-
+      <h2 class="section-title home-services-title" data-reveal="fade-up">Entertainment For Every Occasion</h2>
       <div class="home-services-grid" data-reveal-stagger>
+
         <article class="home-service-card">
           <div class="home-service-img-wrap">
             <img
-              src={`${base}images/services/private-parties.jpg`}
-              alt="Dallas Magician Entertainment"
+              src="https://static.wixstatic.com/media/40084f_138590b720b84a92baba1f7c5dd2688c~mv2.jpg"
+              alt="Dallas Magician Entertainment.jpg"
               loading="lazy"
               width="540"
               height="380"
             />
           </div>
           <div class="home-service-body">
-            <h2 class="home-service-heading">Private Parties</h2>
-            <p>Make your party stand out from the rest! After all, what's a party without unforgettable entertainment? From Strolling Magic &amp; Mentalism amongst the guests to a full living room Stage Show, Anthony will make your party a night that guests will NEVER forget! Serving Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, and more.</p>
+            <h3 class="home-service-heading">PRIVATE PARTIES</h3>
+            <p>Make your party stand out from the rest! After all, what's a party without unforgettable entertainment? From Strolling Magic &amp; Mentalism amongst the guests to a full living room Stage Show, Anthony will make your party a night that guests will NEVER forget!  Serving Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, and more.</p>
           </div>
         </article>
 
         <article class="home-service-card">
           <div class="home-service-img-wrap">
             <img
-              src={`${base}images/services/stage-shows.jpg`}
-              alt="Dallas Texas Magician and Mentalist Private Event Entertainment"
+              src="https://static.wixstatic.com/media/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg"
+              alt="Dallas Texas Magician and Mentalist Private Event Entertainment.jpg"
               loading="lazy"
               width="540"
               height="380"
             />
           </div>
           <div class="home-service-body">
-            <h2 class="home-service-heading">Stage Shows</h2>
+            <h3 class="home-service-heading">STAGE SHOWS</h3>
             <p>Put your guests and company in the spotlight! With a completely customizable Magic &amp; Mind Reading Stage Show, your guests will experience the hilariously impossible and be the stars of the show! With over 20 years of experience on stage, Anthony will be able to captivate your party guests with his comedy magic and mentalism show, as well as with his charismatic skills as an event MC!</p>
           </div>
         </article>
@@ -78,32 +100,56 @@ const base = import.meta.env.BASE_URL;
         <article class="home-service-card">
           <div class="home-service-img-wrap">
             <img
-              src={`${base}images/services/corporate-events.jpg`}
-              alt="Holiday magician for corporate events"
+              src="https://static.wixstatic.com/media/40084f_9b8730b173184c2eb21f1f664ec097c6~mv2.jpg"
+              alt="holiday magician_edited.jpg"
               loading="lazy"
               width="540"
               height="380"
             />
           </div>
           <div class="home-service-body">
-            <h2 class="home-service-heading">Corporate Events</h2>
+            <h3 class="home-service-heading">CORPORATE EVENTS</h3>
             <p>Connect your employees in a whole new way! Whether it's an intimate cocktail hour or your yearly sales meeting, Anthony is the secret to helping your employees build new friendships. They'll have an unforgettable evening, all thanks to you! Dallas Magician Anthony Dempsey can't wait to make your event a hit with his corporate entertainment!</p>
+            <a href={`${base}corporate-magician`} class="btn btn--outline home-service-more-btn">MORE INFORMATION</a>
           </div>
         </article>
+
+      </div>
+
+      <!-- Event photography gallery strip -->
+      <div class="home-extra-gallery" data-reveal="fade-up" aria-label="Anthony Dempsey event photography">
+        <img
+          src="https://static.wixstatic.com/media/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg"
+          alt="Fort Worth Magician Corporate Event"
+          loading="lazy"
+          width="640"
+          height="268"
+        />
       </div>
     </div>
   </section>
 
-  <!-- Event Types -->
+  <!-- Services / Event Types -->
   <EventTypesSection
+    label="SERVICES"
     title="The Magician Dallas Trusts For Events Like These"
     note="Dallas Magician Anthony Dempsey will make your event unforgettable. Click on the options above for further information on event types."
   />
 
+  <!-- Client Logos -->
+  <ClientLogos />
+
   <!-- Three Guarantees -->
   <ThreeGuarantees
-    label="The Recipe for a Truly Memorable Event in Dallas TX"
-    title="Anthony Guarantees:"
+    title="The Recipe for a Truly Memorable Event in Dallas TX"
+    label="Anthony Guarantees:"
+    image="https://static.wixstatic.com/media/40084f_51c999ff92d743be9dd400104f47c361~mv2.jpg"
+    imageAlt="Dallas Magician Anthony Dempsey"
+    items={[
+      { heading: 'Interactive Fun' },
+      { heading: 'Hilarious & Unforgettable Magic' },
+      { heading: 'Memories That Will Last Forever' },
+    ]}
   />
 
   <!-- About -->
@@ -112,69 +158,166 @@ const base = import.meta.env.BASE_URL;
   <!-- Testimonials -->
   <TestimonialsSection
     testimonials={homepageTestimonials}
-    title="Clients Who Love Anthony's Corporate Entertainment"
+    label="TESTIMONIALS"
+    title="Clients Who Love Anthony's Entertainment"
   />
 
-  <!-- Videos -->
-  <VideoGrid />
+  <!-- Videos — top 6 featured -->
+  <VideoGrid videos={allVideos.slice(0, 6)} />
 
   <!-- Contact -->
-  <ContactForm />
+  <ContactForm showFullForm={true} />
 
   <!-- FAQ -->
   <FAQSection faqs={generalFaqs} />
 </BaseLayout>
 
 <style>
+/* ── Promo Video Section ────────────────────────────────────── */
+.promo-video-section {
+  text-align: center;
+}
+
+.promo-video-title {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 20ch;
+}
+
+.promo-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 48px auto 0;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+}
+
+.promo-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.promo-video-cta {
+  margin-top: 40px;
+}
+
+/* ── Service cards section ──────────────────────────────────── */
+.home-services-section {
+  background: var(--c-light-base);
+}
+
+.home-services-section .section-title {
+  max-width: 18ch;
+}
+
 .home-services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
+  margin-top: 48px;
 }
 
 .home-service-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform var(--transition-mid), box-shadow var(--transition-mid);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.3s var(--ease-out-quint),
+    box-shadow 0.3s var(--ease-out-quint);
 }
-.home-service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
+
+@media (hover: hover) {
+  .home-service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .home-service-card:hover .home-service-img-wrap img {
+    transform: scale(1.04);
+  }
 }
 
 .home-service-img-wrap {
   width: 100%;
-  aspect-ratio: 16/11;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
+  background: var(--c-light-beige);
 }
+
 .home-service-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-.home-service-card:hover .home-service-img-wrap img {
-  transform: scale(1.04);
+  transition: transform 0.6s var(--ease-theatrical);
 }
 
-.home-service-body { padding: 28px; }
+.home-service-body {
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
 .home-service-heading {
-  font-size: 1.25rem;
-  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--c-brand-navy);
   margin-bottom: 12px;
+  line-height: 1.2;
 }
 
 .home-service-body p {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-base);
   line-height: 1.75;
   max-width: none;
+  flex: 1;
+  margin-bottom: 20px;
 }
 
-@media (max-width: 900px) {
-  .home-services-grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+.home-service-more-btn {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-size: 0.82rem;
+}
+
+/* ── Extra gallery strip ──────────────────────────────────────── */
+.home-extra-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.home-extra-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .home-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .home-services-grid { grid-template-columns: 1fr; }
+  .home-service-img-wrap { aspect-ratio: 16 / 9; }
 }
 </style>

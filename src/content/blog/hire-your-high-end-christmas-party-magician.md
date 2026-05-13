@@ -4,6 +4,8 @@ pubDate: "2025-10-25"
 author: "Anthony Dempsey"
 category: "Magician"
 description: "A guide to hiring a professional Christmas party magician to elevate your holiday event with skilled entertainment suitable for all ages."
+heroImage: "https://static.wixstatic.com/media/40084f_2e2c1e90593f44e69bfbfa14a3470b68~mv2.jpg"
+readTime: "2 min"
 ---
 
 As the holiday season approaches, many people are planning their Christmas parties. You might think it's too early to start talking about Christmas, seeing as it's been so hot lately where I live. That aside, it really is important to get a head start on planning if you have an inflexible date and time frame. Something that can add some extra excitement to any party is a magician. A high-end Christmas party magician can take your event to the next level and provide entertainment that your guests will be talking about for weeks to come.

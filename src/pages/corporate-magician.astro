@@ -9,11 +9,64 @@ import ServiceBenefits from '../components/ServiceBenefits.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
-import FAQSection from '../components/FAQSection.astro';
 import { corporateTestimonials } from '../data/testimonials';
 import { corporateFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
+
+// Only the 9 videos that appear on the live corporate-magician page
+const corporateVideos = [
+  {
+    id: '4BBs_kVngkM',
+    title: 'Top Corporate Magician Stuns TV Host by Reading Her Mind | Anthony Dempsey on NBC 5',
+    duration: '6:18',
+  },
+  {
+    id: 'h9twl4BwcGs',
+    title: "Award-Winning Magician Anthony Dempsey Brings Magic to FOX 4's \"The Ten\"",
+    duration: '4:02',
+  },
+  {
+    id: 'jwnaezj134Q',
+    title: 'CRAZY Ending to Magic Trick on Penn and Teller FOOL US // Anthony Dempsey and Grandma',
+    duration: '8:45',
+  },
+  {
+    id: '4OX9myZoq-s',
+    title: 'Dallas Corporate Entertainment 2026 - Anthony Dempsey - Texas Magician and Mentalist',
+    duration: '0:52',
+  },
+  {
+    id: 'iNB_k3Yc5T0',
+    title: 'Dallas Magician and Mentalist for Corporate Events and Private Parties 2026 - Anthony Dempsey',
+    duration: '2:38',
+  },
+  {
+    id: 'B9MOkuXPs2c',
+    title: 'Dallas Magician makes boredom disappear!',
+    duration: '0:33',
+  },
+  {
+    id: '14RSNG_cm74',
+    title: 'Team Building Magic Classes with Dallas Magician Anthony Dempsey for 2026',
+    duration: '0:44',
+  },
+  {
+    id: '2MnoA88CF_A',
+    title: 'Magician in Dallas Texas 2026 - Anthony Dempsey Entertains TV Host',
+    duration: '2:23',
+  },
+  {
+    id: 'iKPSVyuwrLQ',
+    title: 'Magician Dallas Tx 2026 - Anthony Dempsey Television Appearance',
+    duration: '2:27',
+  },
+  {
+    id: 'sn-iE1P1pNE',
+    title: 'Corporate Magician and Mentalist Anthony Dempsey',
+    duration: '',
+  },
+];
 
 const corporateEvents = [
   'Holiday Parties', 'Team Building', 'Corporate Events', 'Cocktail Hours',
@@ -23,12 +76,12 @@ const corporateEvents = [
 const serviceOptions = [
   {
     heading: 'Magic Up Close',
-    body: 'Many corporate events have some sort of welcome reception or something along the lines of a cocktail hour. This is the perfect time for Anthony to stroll around the room and mingle with the guests, captivating them with unique and entertaining mentalism and sleight of hand magic. Strolling magic and mentalism is a more casual, relaxed approach to entertainment. Anthony treats guests like old friends so they can loosen up and laugh. Anthony can provide a mixture of magic and mentalism for your guests. If you prefer one over the other, no problem! Just specify your preference during the booking process.',
+    body: 'Many corporate events have some sort of welcome reception or something along the lines of a cocktail hour.\n\nThis is the perfect time for Anthony to stroll around the room and mingle with the guests, captivating them with unique and entertaining mentalism and sleight of hand magic.\n\nStrolling magic is great for: Corporate Events, Dinner Parties, Cocktail Hours, Client Appreciation Events, Company Anniversaries, Holiday Parties, Product Launches, and Hospitality.',
     useCases: ['Corporate Events', 'Dinner Parties', 'Cocktail Hours', 'Client Appreciation Events', 'Company Anniversaries', 'Holiday Parties', 'Product Launches', 'Hospitality'],
   },
   {
     heading: 'Stage Shows',
-    body: "Looking for a formal after-dinner show? Anthony's magic and mentalism stage show uses audience participation from start to finish. It's absolutely hilarious and mind-blowing! Anthony is also a sought-after corporate event MC! He's the friendly face who will guide guests through the evening, present awards, and keep the energy high.",
+    body: "Looking for a formal after-dinner show?\n\nAnthony's magic and mentalism stage show uses audience participation from start to finish. It's absolutely hilarious and mind-blowing!\n\nThis show is a perfect mixture of comedy, mystery, and \"What just happened?\" This modular show can suit a variety of time slots from 20 to 60 minutes, making it suitable for nearly any type of seated event.\n\nAnthony is also a sought-after corporate event MC! He's the friendly face who will guide guests through the evening, present awards, and keep the energy high.\n\nStage Magic is great for: Banquets, Corporate Events, Festivals, Trade Shows, Client Appreciation Events, Team Building, Symposiums, and Surprise Entertainment.",
     useCases: ['Banquets', 'Corporate Events', 'Festivals', 'Trade Shows', 'Client Appreciation Events', 'Team Building', 'Symposiums', 'Surprise Entertainment'],
   },
 ];
@@ -47,25 +100,46 @@ const benefits = [
     body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good! So relax and enjoy some time with your colleagues.",
   },
 ];
+
+
 ---
 
 <BaseLayout
   title="Corporate Magician | Corporate Event Entertainment | Anthony Entertains"
-  description="Award-winning corporate magician and mentalist Anthony Dempsey delivers unforgettable entertainment for corporate events, holiday parties, trade shows, and more in Dallas and beyond."
+  description="Mind-blowing magic and mentalism tailored to the corporate world. Anthony is a highly sought-after, award-winning magician & mentalist who performs for corporate events worldwide."
   canonicalUrl="https://anthonyentertains.com/corporate-magician"
 >
   <!-- Hero -->
   <Hero
-    eyebrow="Magician & Mentalist Anthony Dempsey"
-    headline="Award-Winning Corporate Entertainment<br>for Companies Who Like to Have Fun"
+    eyebrow="MAGICIAN & MENTALIST ANTHONY DEMPSEY"
+    headline="Award-Winning Corporate Entertainment for Companies Who Like to Have Fun"
     subheadline="Reach Out Today To Find Out How Corporate Magician and Mentalist Anthony Dempsey Can Help You Take Your Corporate Event To The Next Level"
     ctaText="Get a Free Quote"
     ctaHref={`${base}get-a-quote`}
-    ctaSecondaryText="Watch Anthony Perform"
-    ctaSecondaryHref="#media"
-    bgImage="images/hero/anthony-dempsey-hero.jpg"
-    overlay="rgba(0,0,0,0.62)"
+    bgImage="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1396,h_785,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png"
   />
+
+  <!-- Promo Video -->
+  <section class="section promo-video-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Watch Anthony Perform</span>
+      <h2 class="section-title promo-video-title" data-reveal="fade-up">See the Magic for Yourself</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="promo-video-wrap" data-reveal="fade-up">
+        <iframe
+          src="https://www.youtube.com/embed/sn-iE1P1pNE?controls=1&rel=0"
+          title="Corporate Magician and Mentalist Anthony Dempsey"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="promo-video-cta" data-reveal="fade-up">
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Get a FREE Quote</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Penn & Teller -->
   <PennTellerBadge />
@@ -73,21 +147,95 @@ const benefits = [
   <!-- Event Types -->
   <EventTypesSection
     title="Anthony Is The Corporate Magician Companies Trust For Events Like These"
+    tagline="Reach out today to find out how to take your event to the next level."
     events={corporateEvents}
+    note="Ready to step it up with unforgettable magic and mentalism? Anthony accommodates corporate events worldwide."
   />
+
+  <!-- Award-winning magician image + CTA -->
+  <section class="section award-image-section">
+    <div class="container award-image-container">
+      <img
+        src="https://static.wixstatic.com/media/40084f_7805bb15949b4b019586264ccee34afc~mv2.png/v1/crop/x_249,y_9,w_627,h_1071/fill/w_430,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7805bb15949b4b019586264ccee34afc~mv2.png"
+        alt="award winning magician &amp; mentalist for corporate entertainment"
+        width="430"
+        height="731"
+        loading="lazy"
+      />
+      <div class="award-image-cta">
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Get a Free Quote</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Service Options -->
   <ServiceIntroSection
-    label="How Anthony Performs"
-    title="Corporate Entertainment Services"
+    label="Corporate Entertainment"
+    title="Service Options"
     options={serviceOptions}
   />
+
+  <!-- Service option supporting images -->
+  <div class="service-images-row container">
+    <img
+      src="https://static.wixstatic.com/media/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg/v1/fill/w_600,h_450,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg"
+      alt="Dallas Magician and Mentalist Private Event Entertainment"
+      width="600"
+      height="450"
+      loading="lazy"
+    />
+    <img
+      src="https://static.wixstatic.com/media/40084f_461314904e234654b466f2b5325886d1~mv2.jpg/v1/fill/w_600,h_590,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_461314904e234654b466f2b5325886d1~mv2.jpg"
+      alt="Corporate magician close-up performance"
+      width="600"
+      height="590"
+      loading="lazy"
+    />
+    <img
+      src="https://static.wixstatic.com/media/40084f_f54e5957c6934a8fb4b68898f56fd09f~mv2.jpg/v1/fill/w_600,h_394,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f54e5957c6934a8fb4b68898f56fd09f~mv2.jpg"
+      alt="Corporate Stage show"
+      width="600"
+      height="394"
+      loading="lazy"
+    />
+  </div>
 
   <!-- Guarantees -->
   <ThreeGuarantees
     label="The Key to a Truly Memorable Corporate Event"
     title="Anthony Guarantees:"
   />
+
+  <!-- Key Metrics + magic mentalism image -->
+  <section class="section key-metrics-section">
+    <div class="container">
+      <p class="key-metrics-subtitle">Corporate Entertainment That Delivers 3 Key Metrics...</p>
+      <a href={`${base}get-a-quote`} class="btn btn--primary key-metrics-cta">Get a Free Quote</a>
+      <div class="key-metrics-images">
+        <img
+          src="https://static.wixstatic.com/media/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg/v1/crop/x_267,y_116,w_1572,h_1614/fill/w_460,h_470,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg"
+          alt="magic &amp; mentalism for unforgatable corporate events"
+          width="460"
+          height="470"
+          loading="lazy"
+        />
+        <img
+          src="https://static.wixstatic.com/media/40084f_e57aedf011844eefb76ed7836f8ad020~mv2.png/v1/fill/w_702,h_153,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_e57aedf011844eefb76ed7836f8ad020~mv2.png"
+          alt="Corporate-Entertainment-Ideas-Magician-and-Mentalist"
+          width="702"
+          height="153"
+          loading="lazy"
+        />
+        <img
+          src="https://static.wixstatic.com/media/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png/v1/fill/w_1028,h_578,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png"
+          alt="magic &amp; mentalism preformed at these corporate events"
+          width="1028"
+          height="578"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
 
   <!-- Benefits -->
   <ServiceBenefits benefits={benefits} />
@@ -98,16 +246,283 @@ const benefits = [
     title="Clients Who Love Anthony's Corporate Entertainment"
   />
 
-  <!-- Videos -->
-  <VideoGrid />
+  <!-- Testimonial client photos (from live page) -->
+  <div class="testimonial-photos container">
+    <img
+      src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/fill/w_775,h_436,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Reviews%20Web%20Image.png"
+      alt="Reviews"
+      width="775"
+      height="436"
+      loading="lazy"
+    />
+    <img
+      src="https://static.wixstatic.com/media/40084f_fd753c19f5f440f2b5734244f3f7204a~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,enc_avif,quality_auto/AlexaN.jpeg"
+      alt="Corporate Entertainment Magician and Mentalist Client Alexa"
+      width="200"
+      height="200"
+      loading="lazy"
+    />
+    <img
+      src="https://static.wixstatic.com/media/40084f_1f3775c59c634a5d8df13bc6934b094b~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Virgiinia%20Expedia.jpeg"
+      alt="Corporate Entertainment Magician and Mentalist Client Virgina"
+      width="200"
+      height="200"
+      loading="lazy"
+    />
+    <img
+      src="https://static.wixstatic.com/media/40084f_37bb544d640242c5b17d0d48c48032e4~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/RandallSNissan_edited.jpg"
+      alt="Corporate Entertainment Magician and Mentalist Client Randall"
+      width="200"
+      height="200"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Videos — only the 9 corporate videos from the live page -->
+  <VideoGrid videos={corporateVideos} />
 
   <!-- Contact -->
   <ContactForm
     title="Tell us about your event"
-    label="Contact"
+    label="Contact Anthony"
     showFullForm={true}
   />
 
-  <!-- FAQ -->
-  <FAQSection faqs={corporateFaqs} />
+  <!-- FAQ with blog post links on the 4th item -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="divider"></div>
+      <dl class="faq-list">
+        {corporateFaqs.map((faq) => (
+          <div class="faq-item">
+            <dt class="faq-question">{faq.question}</dt>
+            <dd class="faq-answer">{faq.answer}</dd>
+          </div>
+        ))}
+        <div class="faq-item">
+          <dt class="faq-question">Need more information on booking a corporate magician?</dt>
+          <dd class="faq-answer">
+            Check out these blog posts we've prepared for you with additional information.
+            <ul class="faq-blog-links">
+              <li><a href="https://www.anthonyentertains.com/post/a-guide-for-hiring-a-corporate-magician">A Guide For Hiring a Corporate Magician in 2025</a></li>
+              <li><a href="https://www.anthonyentertains.com/post/top-8-corporate-entertainers">Top 8 Corporate Entertainers to Elevate Your Next Event</a></li>
+              <li><a href="https://www.anthonyentertains.com/post/it-s-time-to-up-your-conference-game">It's Time to Up Your Conference Game!</a></li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- All source images from the live page, visibly rendered in a photo gallery -->
+  <section class="section corporate-gallery-section" aria-label="Corporate event photo gallery">
+    <div class="container">
+      <div class="corporate-gallery">
+        <img
+          src="https://static.wixstatic.com/media/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg/v1/fill/w_1280,h_569,al_t,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg"
+          alt="Anthony Dempsey corporate magician performing"
+          width="1280"
+          height="569"
+          loading="lazy"
+        />
+        <img
+          src="https://static.wixstatic.com/media/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png/v1/fill/w_800,h_462,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png"
+          alt="Best Corporate Magician and Mentalist for Event Entertainment"
+          width="800"
+          height="462"
+          loading="lazy"
+        />
+        <img
+          src="https://static.wixstatic.com/media/40084f_721b3b1b29524e43a2e3017a33e8dc1a~mv2.jpg/v1/fill/w_600,h_382,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_721b3b1b29524e43a2e3017a33e8dc1a~mv2.jpg"
+          alt="Corporate event entertainment"
+          width="600"
+          height="382"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+/* Promo Video Section */
+.promo-video-section {
+  background: var(--c-light-base);
+  text-align: center;
+}
+.promo-video-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+.promo-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+}
+.promo-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.promo-video-cta {
+  margin-top: 32px;
+}
+
+/* Service supporting images row */
+.service-images-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 24px 0;
+}
+.service-images-row img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
+}
+@media (max-width: 600px) {
+  .service-images-row { grid-template-columns: 1fr; }
+}
+
+/* Testimonial photos strip */
+.testimonial-photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0 40px;
+}
+.testimonial-photos img {
+  height: auto;
+  display: block;
+  border-radius: 50%;
+}
+.testimonial-photos img:first-child {
+  border-radius: 0;
+  max-width: 100%;
+}
+
+/* Award image section */
+.award-image-section {
+  padding: 40px 0;
+}
+.award-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.award-image-container img {
+  max-width: 430px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.award-image-cta {
+  text-align: center;
+}
+
+/* Key metrics section */
+.key-metrics-section {
+  padding: 60px 0;
+  background: var(--c-bg, #fff);
+}
+.key-metrics-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--c-brand-navy, #14151d);
+  margin-bottom: 24px;
+  text-align: center;
+}
+.key-metrics-cta {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 40px;
+}
+.key-metrics-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.key-metrics-images img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* FAQ section */
+.faq-section {
+  padding: 80px 0;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(20,21,29,0.12);
+  padding: 24px 0;
+}
+.faq-question {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-brand-navy, #14151d);
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.faq-answer {
+  font-size: 0.9rem;
+  color: var(--c-dark-muted, #555);
+  line-height: 1.8;
+  max-width: 720px;
+}
+.faq-blog-links {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.faq-blog-links li a {
+  color: var(--c-brand-gold, #b8860b);
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+.faq-blog-links li a:hover {
+  opacity: 0.8;
+}
+
+/* Corporate gallery */
+.corporate-gallery-section {
+  padding: 40px 0;
+  background: var(--c-bg, #fff);
+}
+.corporate-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.corporate-gallery img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+</style>

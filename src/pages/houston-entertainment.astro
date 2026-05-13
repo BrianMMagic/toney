@@ -1,21 +1,83 @@
 ---
 import LocationPageContent from '../components/LocationPageContent.astro';
-import { austinHoustonFaqs } from '../data/faqs';
+import type { FAQ } from '../data/faqs';
+import type { Testimonial } from '../data/testimonials';
+
+const houstonFaqs: FAQ[] = [
+  {
+    question: 'Can it match my theme?',
+    answer:
+      "Absolutely! The goal is to bring your party to life. I cater to the theming and needs of each event, knowing how unique each party can be. Whether it's renting specific clothing, performing only the client's requested tricks, or acting as a character- I truly value your party and will work hard to incorporate your theme.",
+  },
+  {
+    question: 'Do you perform for all ages?',
+    answer:
+      "Yes! The great thing about strolling magic is that it's adaptable. Each group gets their own show. If there happens to be a group that consists mostly of kids, I can show them effects that will be perfect for their age range. I have tricks for everyone, no matter the age.",
+  },
+  {
+    question: 'Can my guests record your performance?',
+    answer:
+      "Of course! For most people, this is their first time seeing a party magician in person, so they want to remember it by taking photos or videos. They will also want to post those videos on Instagram or Snapchat, and I don't blame them! They are welcome to take as much footage as they like and even post them online!",
+  },
+  {
+    question: 'If I hire you for more than an hour, does your time run consecutively?',
+    answer:
+      "Almost all of my clients hire me for several hours, usually during the cocktail hour and then to perform during the party itself. I understand that party schedules are sometimes spread out and that you don't always need the entertainment to be back-to-back. As long as it is specified beforehand, the time does not have to be consecutive. Within reason, of course.",
+  },
+  {
+    question: 'I have a high guest count- will you be able to entertain everyone?',
+    answer:
+      "If you have a large guest count, I normally suggest hiring multiple entertainers. I have a great group of other professional magicians that I work with to ensure that everyone gets a chance to experience some magic. These performers are vetted by me, and you can expect the same quality service as you would from myself.",
+  },
+  {
+    question: 'Will you be able to make my grumpy uncle laugh?',
+    answer:
+      "Nope! I unfortunately can not perform miracles. That man lost the ability to experience joy a long time ago. If anything, I can try and distract him long enough for everyone else at the table to escape his judging glare and backhanded comments. I'll still try my best to make him laugh first, though!",
+  },
+];
+
+const houstonTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+    image: 'https://static.wixstatic.com/media/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+    image: 'https://static.wixstatic.com/media/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png',
+  },
+  {
+    quote:
+      "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away.   The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling.   He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+    image: 'https://static.wixstatic.com/media/40084f_6f9c3ba5150748f9b631b39ac01dc127~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png',
+  },
+];
 ---
 
 <LocationPageContent
   pageTitle="Houston Entertainment | Magic & Mentalism That Will Thrill"
-  metaDescription="Houston's #1 magician and mentalist Anthony Dempsey delivers magic and mind reading for corporate events, private parties, and cocktail hours in Houston, TX."
+  metaDescription="As seen on NBC, FOX, and CW's Penn & Teller Fool Us! Anthony's unmatched skill and quick wit make him Houston's top choice for magic and mentalism."
   canonicalUrl="https://anthonyentertains.com/houston-entertainment"
-  heroEyebrow="Houston Magician & Mentalist"
-  heroHeadline="Houston's #1 Choice"
-  heroSubheadline="Magician and Mentalist Anthony Dempsey will take your corporate or private event to the next level."
-  corporateHeading="Strolling Magic"
+  heroEyebrow="Houston's #1 Choice"
+  heroHeadline="Magician and Mentalist Anthony Dempsey will take your corporate or private event to the next level."
+  corporateHeading="Magic Up Close (Strolling Magic)"
   corporateBody="Also known as strolling magic! Anthony will mix and mingle with your guests, allowing them to see the magic happening right before their eyes. He will pluck thoughts out of their heads, which makes for an enchanting evening. This option is great for a cocktail-style party."
   privateHeading="Stage Shows"
   privateBody="Plan on having a stage at your event? Anthony's got you covered with a mind-blowing magic and mentalism stage show that uses audience participation from start to finish. This show is a perfect mixture of comedy, mystery, and 'What just happened?' This modular show can suit a variety of time slots, making it suitable for nearly any type of seated event. Ideal For: Corporate Events, symposiums, and any type of seated event."
   stageHeading="Private Parties"
   stageBody="Whether it's jaw-dropping magic tricks performed right before your eyes or a mind-bending mentalism act, Anthony will ensure your Houston guests are blown away. For in-home private events, Anthony performs his strolling entertainment, as well as a modified version of his stage show in your living room."
-  servingAreas="Serving the Houston Area, River Oaks, Sugar Land, Pearland, Kingwood, The Woodlands, and more."
-  faqs={austinHoustonFaqs}
+  servingAreas="Serving the <a href='https://www.visithoustontexas.com/' target='_blank' rel='noopener noreferrer'>Houston Area</a>, <a href='https://www.visithoustontexas.com/about-houston/neighborhoods/river-oaks/' target='_blank' rel='noopener noreferrer'>River Oaks</a>, <a href='https://www.sugarlandtx.gov/' target='_blank' rel='noopener noreferrer'>Sugar Land</a>, <a href='https://www.pearlandtx.gov/' target='_blank' rel='noopener noreferrer'>Pearland</a>, <a href='https://www.thewoodlandstownship-tx.gov/' target='_blank' rel='noopener noreferrer'>Kingwood</a>, <a href='https://www.thewoodlandstownship-tx.gov/' target='_blank' rel='noopener noreferrer'>The Woodlands</a>, and more."
+  faqs={houstonFaqs}
+  promoVideoId="mxexRlDl5iM"
+  promoVideoTitle="Houston Magician and Mentalist Anthony Dempsey"
+  testimonials={houstonTestimonials}
+  testimonialsTitle="Client Testimonials"
+  guaranteesLabel="The Recipe For a Truly Memorable Event"
 />

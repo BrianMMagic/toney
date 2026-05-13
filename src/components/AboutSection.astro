@@ -1,5 +1,19 @@
 ---
+export interface Props {
+  bioParagraphs?: string[];
+}
+
 const base = import.meta.env.BASE_URL;
+const {
+  bioParagraphs,
+} = Astro.props;
+
+const defaultBio = [
+  "Hi, I'm Anthony! I'm a Dallas based magician and mentalist (mind reader) and I'm obsessed with traveling. I've always loved to entertain people; it seems to be engraved in my nature. My parents enrolled me in acting classes at age five, so I've always felt like the stage was my home. After years of performing in musicals and plays, I began touring Texas and the United States, performing magic and mentalism at trade shows and conventions.",
+  "I've appeared in commercials, print advertisements, television shows, and movies; but nothing compares to performing magic and mentalism for a live audience. I love the thrill of entertaining people, and I've been fortunate enough to have done so all over the United States and on four continents. From celebrities to CEOs, I can bring a laugh and a smile to anyone. My wit, charm, and clean humor give a personal moment of astonishment to every guest. Whether it's in Texas, Michigan, or another country, I look forward to giving your event a unique and magical touch!",
+];
+
+const bioLines = bioParagraphs ?? defaultBio;
 ---
 
 <section class="section about-section" id="about">
@@ -7,39 +21,41 @@ const base = import.meta.env.BASE_URL;
     <div class="about-grid">
       <div class="about-image-wrap" data-reveal="fade-right">
         <img
-          src={`${base}images/hero/anthony-dempsey-hero.jpg`}
-          alt="Dallas Magician and Mentalist Anthony Dempsey"
+          src="https://static.wixstatic.com/media/40084f_1d4c8a9f155e4a3a8cf3ea773f3f26e4~mv2.jpg"
+          alt="Dallas-Magician-and-Mentalist-Anthony-Dempsey"
           class="about-image"
           loading="lazy"
-          width="520"
-          height="680"
+          width="429"
+          height="470"
         />
-        <div class="about-badge">
-          <span class="about-badge-num">20+</span>
-          <span class="about-badge-label">Years Experience</span>
+        <div class="about-card">
+          <ul class="about-card-list">
+            <li>Interactive &amp; hilarious</li>
+            <li>Unforgettable magic</li>
+            <li>Memories that last forever</li>
+          </ul>
         </div>
       </div>
 
       <div class="about-content" data-reveal="fade-left">
         <span class="section-label">About Us</span>
         <h2 class="section-title">About Me</h2>
-        <div class="divider"></div>
 
         <div class="about-bio">
-          <p>Hi, I'm Anthony! I'm a Dallas based magician and mentalist (mind reader) and I'm obsessed with traveling. I've always loved to entertain people; it seems to be engraved in my nature. My parents enrolled me in acting classes at age 5, so I've always felt like the stage was my home. After years of performing in musicals and plays, I began touring Texas and the United States, performing magic and mentalism at trade shows and conventions.</p>
-
-          <p>I've appeared in commercials, print advertisements, television shows, and movies; but nothing compares to performing magic and mentalism for a live audience. I love the thrill of entertaining people, and I've been fortunate enough to have done so all over the United States and on four continents. From celebrities to CEOs, I can bring a laugh and a smile to anyone. My wit, charm, and clean humor give a personal moment of astonishment to every guest. Whether it's in Texas, Michigan, or another country, I look forward to giving your event a unique and magical touch!</p>
+          {bioLines.map((para) => <p>{para}</p>)}
         </div>
 
-        <p class="about-sig">— Anthony Dempsey</p>
+        <p class="about-sig">— <span>Anthon</span><span>y Dempsey</span></p>
 
-        <a href={`${base}get-a-quote`} class="btn btn--primary about-cta">Book Anthony Today</a>
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Book Anthony Today</a>
       </div>
     </div>
   </div>
 </section>
 
 <style>
+.about-section { background: var(--c-light-base); }
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -54,49 +70,65 @@ const base = import.meta.env.BASE_URL;
 
 .about-image {
   width: 100%;
-  border-radius: var(--radius-lg);
   object-fit: cover;
   aspect-ratio: 3/4;
-  border: 1px solid var(--color-border);
+  display: block;
+  border-radius: var(--radius-sm);
 }
 
-.about-badge {
+/* Floating card over image */
+.about-card {
   position: absolute;
-  bottom: -20px;
-  right: -20px;
-  background: var(--color-accent);
-  border-radius: var(--radius-md);
+  bottom: -24px;
+  left: -24px;
+  right: 24px;
+  background: var(--dark-bg, #491d35);
   padding: 20px 24px;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(123,47,247,0.4);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
 }
-.about-badge-num {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
+
+.about-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.about-badge-label {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.8);
-  text-transform: uppercase;
-  margin-top: 4px;
+
+.about-card-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--dark-text);
+}
+
+.about-card-list li::before {
+  content: '—';
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* Content side */
+.about-content .section-title {
+  max-width: 20ch;
+  margin-bottom: 28px;
 }
 
 .about-bio {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 .about-bio p {
   font-size: 0.95rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-base);
   line-height: 1.8;
   max-width: none;
 }
@@ -105,14 +137,14 @@ const base = import.meta.env.BASE_URL;
   font-family: var(--font-heading);
   font-style: italic;
   font-size: 1.1rem;
-  color: var(--color-gold);
-  margin-bottom: 32px;
+  color: var(--c-dark-muted);
+  margin-bottom: 36px;
   max-width: none;
 }
 
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .about-image-wrap { max-width: 400px; margin: 0 auto; }
-  .about-badge { right: 0; }
+@media (max-width: 960px) {
+  .about-grid { grid-template-columns: 1fr; gap: 56px; }
+  .about-image-wrap { max-width: 380px; margin: 0 auto; }
+  .about-card { left: 0; right: 0; }
 }
 </style>

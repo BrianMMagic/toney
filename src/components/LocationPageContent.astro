@@ -9,7 +9,7 @@ import AboutSection from '../components/AboutSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
-import { corporateTestimonials } from '../data/testimonials';
+import { corporateTestimonials, type Testimonial } from '../data/testimonials';
 import type { FAQ } from '../data/faqs';
 
 export interface Props {
@@ -28,8 +28,16 @@ export interface Props {
   stageBody: string;
   servingAreas: string;
   eventTypes?: string[];
+  eventTypesTitle?: string;
+  eventTypesTagline?: string;
+  eventTypesNote?: string;
   faqs: FAQ[];
   guaranteesLabel?: string;
+  testimonialsTitle?: string;
+  testimonials?: Testimonial[];
+  promoVideoId?: string;
+  promoVideoTitle?: string;
+  aboutBioParagraphs?: string[];
 }
 
 const base = import.meta.env.BASE_URL;
@@ -53,8 +61,16 @@ const {
     'Holiday Parties', 'Anniversaries', 'Corporate Events', 'Cocktail Hours',
     'Weddings', 'Adult Birthdays', 'Surprise Entertainment', 'Private Parties',
   ],
+  eventTypesTitle,
+  eventTypesTagline,
+  eventTypesNote,
   faqs,
   guaranteesLabel = 'The Key to a Truly Memorable Event',
+  testimonialsTitle = "Clients Who Love Anthony's Entertainment",
+  testimonials = corporateTestimonials,
+  promoVideoId,
+  promoVideoTitle,
+  aboutBioParagraphs,
 } = Astro.props;
 ---
 
@@ -77,15 +93,17 @@ const {
 
   <!-- Event Types -->
   <EventTypesSection
-    title={`Anthony Is The Magician ${heroEyebrow.replace(' Magician & Mentalist', '').replace(' Magician', '').replace(' Entertainer', '').trim()} Trusts For Events Like These`}
+    title={eventTypesTitle ?? `Anthony Is The Magician ${heroEyebrow.replace(' Magician & Mentalist', '').replace(' Magician', '').replace(' Entertainer', '').trim()} Trusts For Events Like These`}
+    tagline={eventTypesTagline}
     events={eventTypes}
+    note={eventTypesNote}
   />
 
   <!-- Services -->
   <section class="section">
     <div class="container">
       <span class="section-label" data-reveal="fade-up">Services</span>
-      <h2 class="section-title" data-reveal="fade-up">Make your event unforgettable with Anthony Dempsey</h2>
+      <h2 class="section-title" data-reveal="fade-up">Make your event unforgettable with {heroEyebrow.replace(/ & Mentalist\b/i, '').trim()} Anthony Dempsey</h2>
       <div class="divider" data-reveal="fade-up"></div>
       {intro && <p class="section-sub" data-reveal="fade-up">{intro}</p>}
 
@@ -106,27 +124,45 @@ const {
         </article>
       </div>
 
-      <p class="serving-note" data-reveal="fade-up">{servingAreas}</p>
+      <p class="serving-note" data-reveal="fade-up" set:html={servingAreas} />
     </div>
   </section>
 
   <!-- Guarantees -->
   <ThreeGuarantees
     label={guaranteesLabel}
-    title="Anthony Guarantees:"
+    title=""
   />
 
   <!-- Testimonials -->
   <TestimonialsSection
-    testimonials={corporateTestimonials}
-    title="Clients Who Love Anthony's Entertainment"
+    testimonials={testimonials}
+    title={testimonialsTitle}
   />
 
   <!-- Videos -->
   <VideoGrid />
 
+  <!-- Location promo video (page-specific featured embed) -->
+  {promoVideoId && (
+    <section class="section promo-video-section">
+      <div class="container promo-video-container">
+        {promoVideoTitle && <h2 class="promo-video-title">{promoVideoTitle}</h2>}
+        <div class="promo-video-embed">
+          <iframe
+            src={`https://www.youtube.com/embed/${promoVideoId}`}
+            title={promoVideoTitle ?? promoVideoId}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- About -->
-  <AboutSection />
+  <AboutSection bioParagraphs={aboutBioParagraphs} />
 
   <!-- Contact -->
   <ContactForm
@@ -148,35 +184,64 @@ const {
 }
 
 .loc-service-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--c-card-bg);
   border-radius: var(--radius-md);
   padding: 32px 28px;
-  transition: border-color var(--transition-mid), transform var(--transition-mid);
+  transition: background var(--transition-fast);
 }
-.loc-service-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .loc-service-card:hover {
+    background: var(--c-card-hover);
+  }
 }
 
 .loc-service-heading {
-  font-size: 1.15rem;
-  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
   margin-bottom: 14px;
 }
 
 .loc-service-card p {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
   line-height: 1.8;
   max-width: none;
 }
 
 .serving-note {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
   text-align: center;
   font-style: italic;
+}
+.serving-note a {
+  color: var(--c-dark-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.serving-note a:hover { color: var(--c-brand-navy); }
+
+.promo-video-container { max-width: 800px; margin: 0 auto; text-align: center; }
+.promo-video-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  margin-bottom: 24px;
+}
+.promo-video-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+.promo-video-embed iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
 }
 
 @media (max-width: 900px) {

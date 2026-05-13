@@ -1,0 +1,237 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="section section--dark penn-section" data-header-dark>
+
+  <div class="penn-strip">
+    <span class="penn-strip-star">★</span>
+    <span class="penn-strip-text">As Featured On National Television</span>
+    <span class="penn-strip-sep">—</span>
+    <strong class="penn-strip-show">Penn &amp; Teller: Fool Us</strong>
+    <span class="penn-strip-star">★</span>
+  </div>
+
+  <div class="container">
+
+    <div class="penn-header" data-reveal="fade-up">
+      <div class="penn-eyebrow-row">
+        <span class="penn-eyebrow-line"></span>
+        <span class="penn-eyebrow">As Seen On</span>
+        <span class="penn-eyebrow-line"></span>
+      </div>
+      <h2 class="penn-headline">Penn &amp; Teller: <em>Fool Us</em></h2>
+      <p class="penn-sub">Anthony is one of the rare few to take the stage on Penn &amp; Teller: Fool Us — the premier magic competition on national television. Watch the performance that has captivated audiences across the country.</p>
+    </div>
+
+    <div class="penn-embed-wrap" data-reveal="zoom-in">
+      <iframe
+        src="https://www.youtube.com/embed/ELVb9yqLJZ0?controls=1&rel=0"
+        title="Anthony Dempsey on Penn and Teller: Fool Us!"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+    <p class="penn-video-caption" data-reveal="fade-up">Anthony's performance on <em>Penn &amp; Teller: Fool Us</em></p>
+
+    <div class="penn-photos" data-reveal="fade-up">
+      <img
+        src="https://static.wixstatic.com/media/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png"
+        alt="Best Magician and Mentalist in Dallas Tx for Event Entertainment"
+        class="penn-photo-img"
+        loading="lazy"
+        width="640"
+        height="272"
+      />
+      <img
+        src="https://static.wixstatic.com/media/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg"
+        alt="Dallas Magician and Mentalist Anthony Dempsey"
+        class="penn-photo-img"
+        loading="lazy"
+        width="640"
+        height="285"
+      />
+    </div>
+
+    <div class="penn-cta-wrap" data-reveal="fade-up">
+      <a href={`${base}get-a-quote`} class="btn btn--secondary">Book Anthony For Your Event</a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.penn-section {
+  padding: 0 0 96px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(195, 155, 50, 0.1) 0%, transparent 65%),
+    var(--c-dark-base);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.penn-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 14px 24px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 160, 52, 0.14) 15%,
+    rgba(215, 180, 62, 0.24) 50%,
+    rgba(200, 160, 52, 0.14) 85%,
+    transparent 100%
+  );
+  border-top: 1px solid rgba(215, 180, 62, 0.4);
+  border-bottom: 1px solid rgba(215, 180, 62, 0.16);
+  margin-bottom: 72px;
+}
+
+.penn-strip-star {
+  color: rgba(215, 180, 62, 0.9);
+  font-size: 0.6rem;
+  line-height: 1;
+}
+
+.penn-strip-text {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.penn-strip-sep {
+  color: rgba(215, 180, 62, 0.4);
+}
+
+.penn-strip-show {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(215, 180, 62, 0.92);
+}
+
+.penn-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 56px;
+}
+
+.penn-eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.penn-eyebrow-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(215, 180, 62, 0.35);
+}
+
+.penn-eyebrow {
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(215, 180, 62, 0.88);
+  white-space: nowrap;
+}
+
+.penn-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.75rem, 5.5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 0 24px;
+}
+
+.penn-headline em {
+  font-style: italic;
+  color: rgba(215, 180, 62, 0.88);
+}
+
+.penn-sub {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 560px;
+}
+
+.penn-embed-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 2px rgba(215, 180, 62, 0.28),
+    0 0 60px rgba(215, 180, 62, 0.09),
+    0 48px 120px rgba(0, 0, 0, 0.7);
+}
+
+.penn-embed-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.penn-video-caption {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.36);
+  text-align: center;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.penn-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.penn-photo-img {
+  width: 100%;
+  height: 300px;
+  display: block;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  object-position: center center;
+  border: 1px solid rgba(215, 180, 62, 0.15);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.penn-cta-wrap {
+  text-align: center;
+  margin-top: 48px;
+}
+
+@media (max-width: 768px) {
+  .penn-section { padding: 0 0 60px; }
+  .penn-strip { margin-bottom: 48px; }
+  .penn-header { margin-bottom: 40px; }
+  .penn-photo-img { height: 220px; }
+}
+
+@media (max-width: 480px) {
+  .penn-photos { grid-template-columns: 1fr; }
+  .penn-photo-img { height: 240px; }
+}
+</style>

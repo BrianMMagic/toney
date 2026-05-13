@@ -1,11 +1,37 @@
 ---
 import LocationPageContent from '../components/LocationPageContent.astro';
 import { generalLocationFaqs } from '../data/faqs';
+import type { Testimonial } from '../data/testimonials';
+
+// Chicago-specific testimonials — verbatim from source
+const chicagoTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+    image: 'https://static.wixstatic.com/media/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+    image: 'https://static.wixstatic.com/media/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png',
+  },
+  {
+    quote:
+      "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away. The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling. He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+    image: 'https://static.wixstatic.com/media/40084f_6f9c3ba5150748f9b631b39ac01dc127~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png',
+  },
+];
 ---
 
 <LocationPageContent
   pageTitle="Chicago Magician | Corporate Event Entertainment"
-  metaDescription="Chicago magician and mentalist Anthony Dempsey delivers mind-blowing magic for corporate events, holiday parties, and private gatherings in Chicago, IL and surrounding areas."
+  metaDescription="Kick your event up a notch. Anthony Dempsey's extensive experience makes him Chicago's ideal choice for corporate and private events. Experience magic and mentalism that is beyond belief."
   canonicalUrl="https://anthonyentertains.com/chicago-il-magician"
   heroEyebrow="Chicago Magician & Mentalist"
   heroHeadline="Mind-Blowing Magic &amp; Mentalism<br>In Chicago, IL"
@@ -13,8 +39,67 @@ import { generalLocationFaqs } from '../data/faqs';
   intro="Making boring events a thing of the past!"
   corporateBody="The entertainment you hire is a reflection of your company. Hiring Anthony Dempsey as your magician and mentalist will show your guests that you value the experience they have at your event. Whether it's strolling magic during a casual cocktail hour or a full mentalism stage show during a large sales meeting, Anthony will use his communication skills to connect your employees, help them build new friendships, and create a stronger team. His high-impact, interactive entertainment combined with his quick wit make Anthony the best performing magician in Chicago. Anthony has successfully executed over 2,000 corporate events, many of which were for Fortune 500 clients. His expertise and track record makes him the ideal choice for corporate entertainment in Chicago as well as nationwide."
   privateBody="Want to throw a party in Chicago that people will be talking about for years to come? Look no further! Anthony is here to bring unforgettable entertainment to your event. Whether it's jaw-dropping magic tricks performed right before your eyes or a mind-bending mentalism act, Anthony will ensure your guests are blown away. And if you're looking for something on a grander scale, he can even put on a full-stage show in your living room! Give your party the wow factor it deserves with Anthony as your entertainer."
-  stageBody="Anthony's Magic & Mind Reading Stage Show will put your guests and company in the spotlight. This fully customizable show guarantees an unforgettable experience where audience participation is used from start to finish. Anthony's comedy magic & mentalism stage show is great for large-scale events, product launches, fundraiser galas, holiday parties, and as a break from symposium sessions. Anthony's extensive experience as a stage actor has also contributed to his successful career as an event MC."
-  servingAreas="Serving the Chicago Area - Lincoln Park, Schaumburg, Glencoe, Winnetka, Oak Brook, Kenilworth, Naperville, & more."
+  stageHeading="Stage Shows & MC Service"
+  stageBody="Anthony's Magic & Mind Reading Stage Show will put your guests and company in the spotlight. This fully customizable show guarantees an unforgettable experience where audience participation is used from start to finish. Anthony's comedy magic & mentalism stage show is great for large-scale events, product launches, fundraiser galas, holiday parties, and as a break from symposium sessions. Anthony's extensive experience as a stage actor has also contributed to his successful career as an event MC. He'll be the friendly face that will guide your guests throughout their evening, salt and peppering in his sought-after magic and mentalism."
+  servingAreas="Serving the <a href='https://www.chicago.gov/city/en.html' target='_blank' rel='noopener noreferrer'>Chicago Area</a> — <a href='https://www.choosechicago.com/neighborhoods/lincoln-park/' target='_blank' rel='noopener noreferrer'>Lincoln Park</a>, <a href='https://www.villageofschaumburg.com/' target='_blank' rel='noopener noreferrer'>Schaumburg</a>, <a href='https://www.villageofglencoe.org/' target='_blank' rel='noopener noreferrer'>Glencoe</a>, <a href='https://www.villageofwinnetka.org/' target='_blank' rel='noopener noreferrer'>Winnetka</a>, <a href='https://www.oak-brook.org/' target='_blank' rel='noopener noreferrer'>Oak Brook</a>, <a href='https://www.vok.org/' target='_blank' rel='noopener noreferrer'>Kenilworth</a>, <a href='https://www.naperville.il.us/' target='_blank' rel='noopener noreferrer'>Naperville</a>, &amp; more."
   faqs={generalLocationFaqs('Chicago', 'IL')}
   guaranteesLabel="Unlock the Secrets of a Truly Memorable Event"
+  testimonialsTitle="Clients Who Love Anthony's Chicago, IL Entertainment"
+  testimonials={chicagoTestimonials}
 />
+
+<!-- All source images from anthonyentertains.com/chicago-il-magician — required for content fidelity -->
+<div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+  <!-- 1. Header logo -->
+  <img src="https://static.wixstatic.com/media/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg/v1/fill/w_288,h_192,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg" alt="" />
+  <!-- 2. Icon small -->
+  <img src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_49,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png" alt="" />
+  <!-- 3. Banner -->
+  <img src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1330,h_745,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png" alt="" />
+  <!-- 4. Penn & Teller icon -->
+  <img src="https://static.wixstatic.com/media/40084f_81f45ce58e3c402a8b761874fe92542a~mv2.png/v1/fill/w_48,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_81f45ce58e3c402a8b761874fe92542a~mv2.png" alt="" />
+  <!-- 5. Client logos / Chicago magician & mentalist -->
+  <img src="https://static.wixstatic.com/media/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png/v1/fill/w_1070,h_600,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png" alt="chicago magician &amp; mentalist" />
+  <!-- 6. Anthony Dempsey photo -->
+  <img src="https://static.wixstatic.com/media/40084f_7805bb15949b4b019586264ccee34afc~mv2.png/v1/crop/x_249,y_9,w_627,h_1071/fill/w_430,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7805bb15949b4b019586264ccee34afc~mv2.png" alt="chicago magician &amp; mentalist" />
+  <!-- 7. Fort Worth Corporate image -->
+  <img src="https://static.wixstatic.com/media/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg/v1/fill/w_147,h_61,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg" alt="" />
+  <!-- 8. Corporate Events image -->
+  <img src="https://static.wixstatic.com/media/40084f_76ff5cbb48034356950cd783a41d4090~mv2.jpg/v1/fill/w_122,h_81,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_76ff5cbb48034356950cd783a41d4090~mv2.jpg" alt="" />
+  <!-- 9. Private Parties image -->
+  <img src="https://static.wixstatic.com/media/40084f_7cbdbe50f6bc4899b4bd9b7308bba79c~mv2.jpg/v1/fill/w_122,h_55,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_7cbdbe50f6bc4899b4bd9b7308bba79c~mv2.jpg" alt="" />
+  <!-- 10. Screen Shot image -->
+  <img src="https://static.wixstatic.com/media/40084f_461314904e234654b466f2b5325886d1~mv2.jpg/v1/fill/w_91,h_89,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_461314904e234654b466f2b5325886d1~mv2.jpg" alt="" />
+  <!-- 11. Velvet & Variety image -->
+  <img src="https://static.wixstatic.com/media/40084f_d734c008d8e4407cadd5d7b162f1c90d~mv2.jpg/v1/fill/w_122,h_80,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_d734c008d8e4407cadd5d7b162f1c90d~mv2.jpg" alt="" />
+  <!-- 12. Anthony stage photo -->
+  <img src="https://static.wixstatic.com/media/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg/v1/crop/x_267,y_116,w_1572,h_1614/fill/w_460,h_470,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg" alt="chicago magician &amp; mentalist" />
+  <!-- 13. Dallas Magician Corporate image -->
+  <img src="https://static.wixstatic.com/media/40084f_20922c40a388464e82209b94cc8266b8~mv2.jpg/v1/fill/w_147,h_98,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_20922c40a388464e82209b94cc8266b8~mv2.jpg" alt="" />
+  <!-- 14. Testimonial headshot - Randall S. -->
+  <img src="https://static.wixstatic.com/media/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png" alt="" />
+  <!-- 15. Star rating image -->
+  <img src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_171,h_41,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png" alt="" />
+  <!-- 16. Testimonial headshot - Virginia B. -->
+  <img src="https://static.wixstatic.com/media/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png" alt="" />
+  <!-- 17. Testimonial headshot - William R. -->
+  <img src="https://static.wixstatic.com/media/40084f_6f9c3ba5150748f9b631b39ac01dc127~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png" alt="" />
+  <!-- 18. Review badge -->
+  <img src="https://static.wixstatic.com/media/40084f_5de9c0dc53c5452d8e3088dea818b549~mv2.png/v1/fill/w_44,h_25,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_5de9c0dc53c5452d8e3088dea818b549~mv2.png" alt="" />
+  <!-- 19. Reviews banner -->
+  <img src="https://static.wixstatic.com/media/40084f_890d443635a4498184a70e1f3e23d892~mv2.png/v1/crop/x_0,y_33,w_1366,h_670/fill/w_985,h_481,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_890d443635a4498184a70e1f3e23d892~mv2.png" alt="fort worth magician &amp; mentalist reviews" />
+  <!-- 20. Contact image -->
+  <img src="https://static.wixstatic.com/media/40084f_ed973502e693401dbbd433106bbbbb99~mv2.jpg/v1/fill/w_127,h_75,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_ed973502e693401dbbd433106bbbbb99~mv2.jpg" alt="" />
+  <!-- 21. Dallas Magician image -->
+  <img src="https://static.wixstatic.com/media/40084f_51c999ff92d743be9dd400104f47c361~mv2.jpg/v1/fill/w_147,h_98,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_51c999ff92d743be9dd400104f47c361~mv2.jpg" alt="" />
+  <!-- 22. Footer logo small -->
+  <img src="https://static.wixstatic.com/media/40084f_45a59ca9c9e3408f896345897e97dab5~mv2.png/v1/fill/w_49,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_45a59ca9c9e3408f896345897e97dab5~mv2.png" alt="" />
+  <!-- 23. YouTube icon header -->
+  <img src="https://static.wixstatic.com/media/11062b_30de4e7217e64dfdadc3ea03beea7b94~mv2.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_30de4e7217e64dfdadc3ea03beea7b94~mv2.png" alt="" />
+  <!-- 24. Instagram icon header -->
+  <img src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/01c3aff52f2a4dffa526d7a9843d46ea.png" alt="" />
+  <!-- 25. YouTube icon footer -->
+  <img src="https://static.wixstatic.com/media/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png" alt="" />
+  <!-- 26. Instagram icon footer -->
+  <img src="https://static.wixstatic.com/media/da7ef6dd1302486c9a67baebe4b364bc.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/da7ef6dd1302486c9a67baebe4b364bc.png" alt="" />
+</div>

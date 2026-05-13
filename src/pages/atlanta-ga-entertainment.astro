@@ -1,19 +1,49 @@
 ---
 import LocationPageContent from '../components/LocationPageContent.astro';
 import { generalLocationFaqs } from '../data/faqs';
+import type { Testimonial } from '../data/testimonials';
+
+const atlantaTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+  },
+  {
+    quote:
+      "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away. The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling. He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+  },
+];
 ---
 
 <LocationPageContent
   pageTitle="Atlanta Magician | Corporate Event Entertainment"
-  metaDescription="Atlanta magician and mentalist Anthony Dempsey delivers mind-blowing magic and mentalism for corporate events, private parties, and stage shows in Atlanta, GA."
-  canonicalUrl="https://anthonyentertains.com/atlanta-ga-entertainment"
+  metaDescription="Atlanta Magician Anthony Dempsey is an experienced performer who will leave your guests astonished! Magic and Mentalism for Corporate Events, Trade Shows, and Private Parties."
+  canonicalUrl="https://www.anthonyentertains.com/atlanta-ga-entertainment"
   heroEyebrow="Atlanta Magician & Mentalist"
   heroHeadline="Mind-Blowing Magic &amp; Mentalism<br>In Atlanta, GA"
   heroSubheadline="Reach Out Today To Find Out How Anthony Can Transform Your Atlanta Corporate Event Or Private Party Into An Unforgettable Experience."
   corporateBody="Are you looking to bring your Atlanta team together in a uniquely fun way? Say goodbye to awkward office gatherings and hello to unforgettable evenings with Atlanta Magician Anthony Dempsey! Whether it's a casual cocktail hour or a large annual sales meeting, Anthony is the secret ingredient to helping your employees build new friendships. Anthony's extensive experience working with Fortune 500 companies makes him the ideal choice for corporate event entertainment and MC services in Atlanta as well as nationwide."
-  privateBody="Want to throw a party in Atlanta that people will be talking about for years to come? Look no further! Anthony will impress your guests with his sought-after strolling magic and mentalism during your private event, roaming from group to group to ensure a personalized guest experience. If you're looking for something on a grander scale, Anthony's Comedy Magic & Mind Reading Stage Show is fantastic for after dinner."
+  privateBody="Want to throw a party in Atlanta that people will be talking about for years to come? Look no further! Anthony will impress your guests with his sought-after strolling magic and mentalism during your private event, roaming from group to group to ensure a personalized guest experience. If you're looking for something on a grander scale, Anthony's Comedy Magic & Mind Reading Stage Show is fantastic for after dinner. For in-home private events, Anthony performs his strolling entertainment (mentioned above), as well as a modified version of his stage show in your living room or other suitable home location."
   stageBody="Atlanta, prepare to be amazed! Anthony's Magic & Mind Reading Stage Show will put your guests and company in the spotlight. This completely customizable stage show guarantees an unforgettable experience where your guests become the stars. Anthony has been performing on stage for over 20 years, so we know you'll be overcome with laughter and awe during his comedy magic and mentalism stage show."
   servingAreas="Serving Atlanta, Milton, Buckhead, Brookhaven, Decatur, Druid Hills, College Park & surrounding areas."
+  eventTypesNote="Making life not boring- one event at a time."
   faqs={generalLocationFaqs('Atlanta', 'GA')}
   guaranteesLabel="Plan an Event With Guest Experience in Mind"
+  testimonials={atlantaTestimonials}
+  testimonialsTitle="CLIENTS WHO LOVE ANTHONY'S ATLANTA, GA ENTERTAINMENT"
+  aboutBioParagraphs={[
+    "Hi, I'm Anthony! I'm a magician and mentalist (mind reader) who loves to travel. I've performed for over 2,000 corporate and private events in every major US city, as well as Africa, India, Asia, Europe, and Australia. I've always loved to entertain people; I've been performing on stage for 25 years, and over 400 of my past clients have left 5 star reviews on Google.",
+    "I've appeared in commercials, print advertisements, television shows, and movies; but nothing compares to performing magic and mentalism for a live audience. I love the thrill of entertaining people, and I've been fortunate enough to be able to entertain for a living. From celebrities to CEOs, I can bring a laugh and a smile to anyone. My wit, charm, and clean humor give a personal moment of astonishment to every guest. I look forward to giving your event a unique and magical touch!",
+    "As for my \"why\", it's 100% my daughter. She's the light of my life!",
+  ]}
 />

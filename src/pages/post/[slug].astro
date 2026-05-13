@@ -1,19 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import VideoGrid from '../../components/VideoGrid.astro';
 import ContactForm from '../../components/ContactForm.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
-    params: { slug: post.id },
+    params: { slug: post.id.replace(/\.md$/, '') },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const base = import.meta.env.BASE_URL;
 
@@ -29,7 +29,7 @@ const pubDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
   description={post.data.description ?? `Read ${post.data.title} on Anthony Entertains' blog.`}
 >
   <!-- Post Header -->
-  <section class="post-hero section--dark">
+  <section class="post-hero section--dark" data-header-dark>
     <div class="container">
       <div class="post-header" data-reveal="fade-up">
         <a href={`${base}blog/`} class="back-link">← Back to Blog</a>
@@ -56,7 +56,7 @@ const pubDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
   </section>
 
   <!-- CTA -->
-  <section class="section section--dark post-cta">
+  <section class="section section--dark post-cta" data-header-dark>
     <div class="container">
       <h2 class="section-title" data-reveal="fade-up">Ready to Book Anthony?</h2>
       <div class="divider" data-reveal="fade-up"></div>
@@ -70,13 +70,15 @@ const pubDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
 
   <!-- Videos -->
   <VideoGrid />
+
+  <!-- Contact -->
+  <ContactForm showFullForm={true} />
 </BaseLayout>
 
 <style>
 .post-hero {
   padding: 120px 0 60px;
-  background: linear-gradient(180deg, rgba(123,47,247,0.06) 0%, transparent 100%);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .post-header { max-width: 800px; }
@@ -84,32 +86,33 @@ const pubDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
 .back-link {
   display: inline-block;
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-accent-light);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   margin-bottom: 20px;
   transition: color var(--transition-fast);
 }
-.back-link:hover { color: var(--color-accent); }
+.back-link:hover { color: #ffffff; }
 
 .post-category {
   display: inline-block;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-accent-light);
-  background: rgba(123,47,247,0.12);
-  border: 1px solid rgba(123,47,247,0.2);
-  border-radius: var(--radius-full);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 3px 12px;
   margin-bottom: 16px;
 }
 
 .post-title {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  color: var(--color-text);
-  line-height: 1.2;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   margin-bottom: 20px;
 }
 
@@ -118,7 +121,7 @@ const pubDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
   align-items: center;
   gap: 10px;
   font-size: 0.88rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .post-separator { opacity: 0.4; }
@@ -129,18 +132,22 @@ const pubDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
 
 .prose {
   font-size: 1rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-base);
   line-height: 1.85;
 }
 .prose :global(h2) {
-  font-size: 1.5rem;
-  color: var(--color-text);
-  margin: 40px 0 16px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  letter-spacing: -0.02em;
+  margin: 48px 0 16px;
 }
 .prose :global(h3) {
-  font-size: 1.2rem;
-  color: var(--color-text);
-  margin: 32px 0 12px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--c-brand-navy);
+  margin: 36px 0 12px;
 }
 .prose :global(p) { margin-bottom: 20px; max-width: none; }
 .prose :global(ul), .prose :global(ol) {
@@ -148,14 +155,14 @@ const pubDate = new Date(post.data.pubDate).toLocaleDateString('en-US', {
   margin-bottom: 20px;
 }
 .prose :global(li) { margin-bottom: 8px; }
-.prose :global(strong) { color: var(--color-text); }
-.prose :global(a) { color: var(--color-accent-light); text-decoration: underline; }
+.prose :global(strong) { color: var(--c-brand-navy); }
+.prose :global(a) { color: var(--c-brand-navy); text-decoration: underline; }
 .prose :global(blockquote) {
-  border-left: 3px solid var(--color-accent);
+  border-left: 2px solid rgba(20, 21, 29, 0.2);
   padding-left: 20px;
   margin: 24px 0;
   font-style: italic;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
 }
 
 .post-cta { text-align: center; }

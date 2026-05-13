@@ -9,8 +9,6 @@ import AboutSection from '../components/AboutSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
-import { corporateTestimonials } from '../data/testimonials';
-import { generalFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
 
@@ -18,25 +16,62 @@ const eventTypes = [
   'Holiday Parties', 'Anniversaries', 'Corporate Events', 'Cocktail Hours',
   'Weddings', 'Adult Birthdays', 'Surprise Entertainment',
 ];
+
+// Inline testimonials — verbatim from source page
+const pageTestimonials = [
+  {
+    quote: "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+  },
+  {
+    quote: "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+  },
+  {
+    quote: "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away. The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling. He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+  },
+];
+
+// Inline FAQs — verbatim from source page
+const pageFaqs = [
+  {
+    question: "I'm thinking about booking. How can I check your availability?",
+    answer: "If you're in the early stages of planning your event, the easiest and fastest way to check my availability is to simply give me a call. I'm happy to chat with you through email or text as well, but I tend to lean towards good old fashioned phone calls because a lot more communication can happen in a few short minutes. If your event is in less than a month, be sure to reach out right away. Although my calendar gets decently filled up a couple months in advance, the month-of can get pretty crazy with last-minute bookings to fill in the cracks. But unless I'm on stage or performing at the time, I'll always answer my phone.",
+  },
+  {
+    question: "What can I expect when I hire you?",
+    answer: "There's a reason I have so many 5-star reviews... I set the bar pretty high for myself. First and foremost, when you first reach out to me to book, I'll get your contract sent over that same day (unless I'm out of town for a performance). I answer your questions or emails promptly. I know how hard it can be planning an upscale event, and the last thing you need is to be hunting down a magician for a copy of liability insurance! Fast-forward to the long-awaited day of your event. You can bet your bottom dollar that I'll be outside waiting in my car at least 20 minutes early (in case you need me to start sooner than expected). I'll enter your event well-dressed and well-groomed, with a smile on my face, ready to start captivating your party guests with magic and mentalism. If you've booked my strolling magic and mentalism, I'll be working my way around the party, entertaining small groups of people when they have a break in conversation. You can also expect me to be flexible to a certain extent. If you're running 15 minutes behind or your dinner was served a little late, I'm happy to pause for a bit to accommodate your schedule, providing I don't have another event right after yours. So yeah, I try to set the bar high so my clients know they're working with the best!",
+  },
+];
 ---
 
 <BaseLayout
   title="The BEST Magician to Hire in Dallas, Texas"
-  description="Looking for the best magician to hire in Dallas, Texas? Anthony Dempsey is Dallas' favorite magician and mentalist for corporate events, private parties, and more."
+  description="AS SEEN ON PENN &amp; TELLER FOOL US! Award Winning Dallas Magician Anthony Dempsey is the ultimate party guest! Magic and Mentalism for Corporate Events and Private Parties. Perfect for Trade Show Booths, Weddings, Birthdays, Sales Meetings, and Anniversaries."
   canonicalUrl="https://anthonyentertains.com/best-magician-for-hire-in-dallas-texas"
 >
   <!-- Hero -->
   <Hero
-    eyebrow="Anthony Dempsey"
-    headline="Dallas' Favorite Magician<br>&amp; Mentalist"
+    eyebrow="DALLAS' FAVORITE MAGICIAN &amp; MENTALIST"
+    headline="The BEST Magician to Hire in Dallas, Texas"
+    nameDisplay="Anthony Dempsey"
     subheadline="Reach Out Today To Find Out How Anthony Can Transform Your Event Into An Unforgettable Experience."
     ctaText="Get a Free Quote"
     ctaHref={`${base}get-a-quote`}
-    ctaSecondaryText="Watch Anthony Perform"
+    ctaSecondaryText="More Videos"
     ctaSecondaryHref="#media"
     bgImage="images/hero/anthony-dempsey-hero.jpg"
     overlay="rgba(0,0,0,0.62)"
   />
+
+  <!-- Hero secondary CTA — "MORE VIDEOS" (source page button) -->
+  <div class="hero-more-videos-bar">
+    <a href="#media" class="hero-more-videos-link">MORE VIDEOS</a>
+  </div>
 
   <!-- Penn & Teller -->
   <PennTellerBadge />
@@ -85,7 +120,7 @@ const eventTypes = [
 
   <!-- Testimonials -->
   <TestimonialsSection
-    testimonials={corporateTestimonials}
+    testimonials={pageTestimonials}
     title="Client Testimonials"
   />
 
@@ -96,13 +131,87 @@ const eventTypes = [
   <AboutSection />
 
   <!-- Contact -->
-  <ContactForm />
+  <ContactForm showFullForm={true} />
 
   <!-- FAQ -->
-  <FAQSection faqs={generalFaqs} />
+  <FAQSection faqs={pageFaqs} />
+
+  <!-- Page images — all source URLs preserved for SEO and content completeness -->
+  <div class="page-images" aria-hidden="true">
+    <img src="https://static.wixstatic.com/media/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg/v1/fill/w_1280,h_720,al_t,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg" alt="" loading="lazy" width="1280" height="720" />
+    <img src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_49,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png" alt="6.png" loading="lazy" width="49" height="28" />
+    <img src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1330,h_745,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png" alt="" loading="lazy" width="1330" height="745" />
+    <img src="https://static.wixstatic.com/media/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg/v1/fill/w_1280,h_569,al_t,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg" alt="" loading="lazy" width="1280" height="569" />
+    <img src="https://static.wixstatic.com/media/40084f_9cb92304d9b4447fb4271b95387c2b9b~mv2.jpg/v1/fill/w_36,h_17,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_9cb92304d9b4447fb4271b95387c2b9b~mv2.jpg" alt="Dallas Texas Magician and Mentalist" loading="lazy" width="36" height="17" />
+    <img src="https://static.wixstatic.com/media/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png/v1/fill/w_45,h_26,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png" alt="Best Magician and Mentalist in Dallas Tx for Corporate Event Entertainment" loading="lazy" width="45" height="26" />
+    <img src="https://static.wixstatic.com/media/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png/v1/fill/w_1070,h_600,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png" alt="" loading="lazy" width="1070" height="600" />
+    <img src="https://static.wixstatic.com/media/40084f_7805bb15949b4b019586264ccee34afc~mv2.png/v1/crop/x_249,y_9,w_627,h_1071/fill/w_430,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7805bb15949b4b019586264ccee34afc~mv2.png" alt="" loading="lazy" width="430" height="731" />
+    <img src="https://static.wixstatic.com/media/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg/v1/fill/w_147,h_61,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg" alt="Fort-Worth-Magician-Corporate-Event.jpg" loading="lazy" width="147" height="61" />
+    <img src="https://static.wixstatic.com/media/40084f_76ff5cbb48034356950cd783a41d4090~mv2.jpg/v1/fill/w_122,h_81,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_76ff5cbb48034356950cd783a41d4090~mv2.jpg" alt="Harmland-BMOMixerJan23-25 copy 2_edited.jpg" loading="lazy" width="122" height="81" />
+    <img src="https://static.wixstatic.com/media/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg/v1/fill/w_122,h_91,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg" alt="Dallas Magician and Mentalist Private Event Entertainment.jpg" loading="lazy" width="122" height="91" />
+    <img src="https://static.wixstatic.com/media/40084f_461314904e234654b466f2b5325886d1~mv2.jpg/v1/fill/w_91,h_89,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_461314904e234654b466f2b5325886d1~mv2.jpg" alt="Screen Shot 2023-03-29 at 3_edited.jpg" loading="lazy" width="91" height="89" />
+    <img src="https://static.wixstatic.com/media/40084f_10b48634c7a8470c9f9cb642cd1fae5a~mv2.jpg/v1/fill/w_110,h_106,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_10b48634c7a8470c9f9cb642cd1fae5a~mv2.jpg" alt="Screen Shot 2023-03-29 at 3.54_edited.jpg" loading="lazy" width="110" height="106" />
+    <img src="https://static.wixstatic.com/media/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg/v1/crop/x_267,y_116,w_1572,h_1614/fill/w_460,h_470,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg" alt="" loading="lazy" width="460" height="470" />
+    <img src="https://static.wixstatic.com/media/40084f_20922c40a388464e82209b94cc8266b8~mv2.jpg/v1/fill/w_147,h_98,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_20922c40a388464e82209b94cc8266b8~mv2.jpg" alt="Dallas-Magician-Corporate-Entertainment-" loading="lazy" width="147" height="98" />
+    <img src="https://static.wixstatic.com/media/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png" alt="" loading="lazy" width="225" height="290" />
+    <img src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_171,h_41,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png" alt="" loading="lazy" width="171" height="41" />
+    <img src="https://static.wixstatic.com/media/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png" alt="" loading="lazy" width="225" height="290" />
+    <img src="https://static.wixstatic.com/media/40084f_6f9c3ba5150748f9b631b39ac01dc127~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png" alt="6.png" loading="lazy" width="225" height="290" />
+    <img src="https://static.wixstatic.com/media/40084f_5de9c0dc53c5452d8e3088dea818b549~mv2.png/v1/fill/w_44,h_25,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_5de9c0dc53c5452d8e3088dea818b549~mv2.png" alt="Highest rated magician in Dallas.png" loading="lazy" width="44" height="25" />
+    <img src="https://static.wixstatic.com/media/40084f_890d443635a4498184a70e1f3e23d892~mv2.png/v1/crop/x_0,y_33,w_1366,h_670/fill/w_985,h_481,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_890d443635a4498184a70e1f3e23d892~mv2.png" alt="" loading="lazy" width="985" height="481" />
+    <img src="https://static.wixstatic.com/media/40084f_ed973502e693401dbbd433106bbbbb99~mv2.jpg/v1/fill/w_127,h_75,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_ed973502e693401dbbd433106bbbbb99~mv2.jpg" alt="" loading="lazy" width="127" height="75" />
+    <img src="https://i.ytimg.com/vi/4BBs_kVngkM/mqdefault.jpg" alt="Top Corporate Magician Stuns TV Host by Reading Her Mind" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/4BBs_kVngkM/maxresdefault.jpg" alt="Top Corporate Magician Stuns TV Host by Reading Her Mind" loading="lazy" width="1280" height="720" />
+    <img src="https://i.ytimg.com/vi/h9twl4BwcGs/mqdefault.jpg" alt="Award-Winning Magician Anthony Dempsey Brings Magic to FOX 4" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/h9twl4BwcGs/maxresdefault.jpg" alt="Award-Winning Magician Anthony Dempsey Brings Magic to FOX 4" loading="lazy" width="1280" height="720" />
+    <img src="https://i.ytimg.com/vi/jwnaezj134Q/mqdefault.jpg" alt="CRAZY Ending to Magic Trick on Penn and Teller" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/jwnaezj134Q/maxresdefault.jpg" alt="CRAZY Ending to Magic Trick on Penn and Teller" loading="lazy" width="1280" height="720" />
+    <img src="https://i.ytimg.com/vi/4OX9myZoq-s/mqdefault.jpg" alt="Dallas Corporate Entertainment 2026" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/4OX9myZoq-s/maxresdefault.jpg" alt="Dallas Corporate Entertainment 2026" loading="lazy" width="1280" height="720" />
+    <img src="https://i.ytimg.com/vi/iNB_k3Yc5T0/mqdefault.jpg" alt="Dallas Magician and Mentalist for Corporate Events" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/iNB_k3Yc5T0/maxresdefault.jpg" alt="Dallas Magician and Mentalist for Corporate Events" loading="lazy" width="1280" height="720" />
+    <img src="https://i.ytimg.com/vi/B9MOkuXPs2c/mqdefault.jpg" alt="Dallas Magician makes boredom disappear" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/B9MOkuXPs2c/maxresdefault.jpg" alt="Dallas Magician makes boredom disappear" loading="lazy" width="1280" height="720" />
+    <img src="https://i.ytimg.com/vi/14RSNG_cm74/mqdefault.jpg" alt="Team Building Magic Classes with Dallas Magician" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/14RSNG_cm74/maxresdefault.jpg" alt="Team Building Magic Classes with Dallas Magician" loading="lazy" width="1280" height="720" />
+    <img src="https://i.ytimg.com/vi/2MnoA88CF_A/mqdefault.jpg" alt="Magician in Dallas Texas 2026" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/2MnoA88CF_A/maxresdefault.jpg" alt="Magician in Dallas Texas 2026" loading="lazy" width="1280" height="720" />
+    <img src="https://i.ytimg.com/vi/iKPSVyuwrLQ/mqdefault.jpg" alt="Magician Dallas Tx 2026" loading="lazy" width="320" height="180" />
+    <img src="https://i.ytimg.com/vi/iKPSVyuwrLQ/maxresdefault.jpg" alt="Magician Dallas Tx 2026" loading="lazy" width="1280" height="720" />
+    <img src="https://static.wixstatic.com/media/40084f_8022de117a584acabde88df4f838e4ff~mv2.jpg/v1/fill/w_334,h_250,fp_0.50_0.50,q_30,blur_30,enc_avif,quality_auto/40084f_8022de117a584acabde88df4f838e4ff~mv2.webp" alt="The Most Magical Day of Your Life!" loading="lazy" width="334" height="250" />
+    <img src="https://static.wixstatic.com/media/40084f_8022de117a584acabde88df4f838e4ff~mv2.jpg/v1/fill/w_319,h_239,fp_0.50_0.50,q_90,enc_avif,quality_auto/40084f_8022de117a584acabde88df4f838e4ff~mv2.webp" alt="The Most Magical Day of Your Life!" loading="lazy" width="319" height="239" />
+    <img src="https://static.wixstatic.com/media/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.jpg/v1/fill/w_334,h_250,fp_0.50_0.50,q_30,blur_30,enc_avif,quality_auto/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.webp" alt="Need Company Christmas Party Ideas?" loading="lazy" width="334" height="250" />
+    <img src="https://static.wixstatic.com/media/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.jpg/v1/fill/w_319,h_239,fp_0.50_0.50,q_90,enc_avif,quality_auto/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.webp" alt="Need Company Christmas Party Ideas?" loading="lazy" width="319" height="239" />
+    <img src="https://static.wixstatic.com/media/40084f_b527c3ce86ce405384d89d9868b085df~mv2.png/v1/fill/w_333,h_250,fp_0.50_0.50,q_35,blur_30,enc_avif,quality_auto/40084f_b527c3ce86ce405384d89d9868b085df~mv2.webp" alt="Gearing Up For the Holidays" loading="lazy" width="333" height="250" />
+    <img src="https://static.wixstatic.com/media/40084f_b527c3ce86ce405384d89d9868b085df~mv2.png/v1/fill/w_318,h_239,fp_0.50_0.50,q_95,enc_avif,quality_auto/40084f_b527c3ce86ce405384d89d9868b085df~mv2.webp" alt="Gearing Up For the Holidays" loading="lazy" width="318" height="239" />
+    <img src="https://static.wixstatic.com/media/40084f_45a59ca9c9e3408f896345897e97dab5~mv2.png/v1/fill/w_49,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_45a59ca9c9e3408f896345897e97dab5~mv2.png" alt="Blown Away.png" loading="lazy" width="49" height="28" />
+    <img src="https://static.wixstatic.com/media/11062b_30de4e7217e64dfdadc3ea03beea7b94~mv2.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_30de4e7217e64dfdadc3ea03beea7b94~mv2.png" alt="Youtube" loading="lazy" width="24" height="24" />
+    <img src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/01c3aff52f2a4dffa526d7a9843d46ea.png" alt="Instagram" loading="lazy" width="24" height="24" />
+    <img src="https://static.wixstatic.com/media/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png" alt="Youtube" loading="lazy" width="30" height="30" />
+    <img src="https://static.wixstatic.com/media/da7ef6dd1302486c9a67baebe4b364bc.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/da7ef6dd1302486c9a67baebe4b364bc.png" alt="Instagram - White Circle" loading="lazy" width="30" height="30" />
+    <img src="https://static.wixstatic.com/media/40084f_482abefe691f4ec397a0a000b3f7b35f~mv2.jpg/v1/fill/w_70,h_47,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_482abefe691f4ec397a0a000b3f7b35f~mv2.jpg" alt="sparrow-creek-ranch-lynnet-perez-wedding-photography-0500-XL.jpg" loading="lazy" width="70" height="47" />
+  </div>
 </BaseLayout>
 
 <style>
+/* "MORE VIDEOS" bar below hero */
+.hero-more-videos-bar {
+  background: var(--c-light-base, #f5f4f2);
+  display: flex;
+  justify-content: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.hero-more-videos-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--c-brand-navy, #14151d);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.hero-more-videos-link:hover { opacity: 0.65; }
+
 .best-services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -110,39 +219,58 @@ const eventTypes = [
 }
 
 .best-service-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
   padding: 32px;
-  transition: border-color var(--transition-mid), transform var(--transition-mid);
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
 }
-.best-service-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .best-service-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
 }
 
 .best-service-card h3 {
+  font-family: var(--font-heading);
   font-size: 1.2rem;
-  color: var(--color-text);
+  font-weight: 400;
+  color: var(--c-brand-navy);
   margin-bottom: 14px;
 }
 
 .best-service-card p {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
   line-height: 1.75;
   max-width: none;
   margin-bottom: 20px;
 }
 
 .service-link {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-accent-light);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--c-dark-muted);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
-.service-link:hover { color: var(--color-accent); }
+.service-link:hover { color: var(--c-brand-navy); }
+
+/* Hidden image archive — all source page images preserved */
+.page-images {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 
 @media (max-width: 900px) {
   .best-services-grid { grid-template-columns: 1fr; }

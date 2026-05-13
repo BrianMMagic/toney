@@ -12,12 +12,15 @@ export const locations = [
   { label: 'Atlanta, GA', href: '/atlanta-ga-entertainment' },
   { label: 'Austin, TX', href: '/austin-entertainment' },
   { label: 'Chicago, IL', href: '/chicago-il-magician' },
+  { label: 'Dallas, TX', href: '/best-magician-for-hire-in-dallas-texas' },
   { label: 'Fort Worth, TX', href: '/fort-worth-magician' },
   { label: 'Grand Rapids, MI', href: '/grand-rapids-magician' },
+  { label: 'Grapevine, TX', href: '/magician-grapevine-texas' },
   { label: 'Houston, TX', href: '/houston-entertainment' },
   { label: 'Los Angeles, CA', href: '/los-angeles-ca-magician' },
   { label: 'New York, NY', href: '/new-york-ny-magician' },
   { label: 'Orlando, FL', href: '/orlando-fl-magician' },
+  { label: 'Plano, TX', href: '/plano-magician' },
   { label: 'Seattle, WA', href: '/seattle-wa-magician' },
 ];
 

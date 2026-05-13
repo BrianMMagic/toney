@@ -10,7 +10,6 @@ import TestimonialsSection from '../components/TestimonialsSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
-import { corporateTestimonials } from '../data/testimonials';
 import { holidayFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
@@ -23,12 +22,12 @@ const holidayEvents = [
 const serviceOptions = [
   {
     heading: 'Magic Up Close',
-    body: "Many holiday events have some sort of welcome reception or cocktail hour. This is the perfect time for Anthony to stroll around the room and mingle with the guests, captivating them with unique and entertaining mentalism and sleight of hand magic.",
+    body: "Many holiday parties have more of a cocktail hour vibe, and that's where up-close, \"strolling\" magic really shines.\n\nThis is the perfect time for Anthony to stroll around the room and interact with the guests, captivating them with unique and entertaining mentalism and sleight of hand magic.\n\nIf your holiday party is a seated dinner, strolling magic is ideal for the time prior to being seated, as well as when tables are waiting to be served dinner.",
     useCases: ['Holiday Parties', 'Cocktail Hours', 'Corporate Events', 'Client Appreciation Events', 'Company Anniversaries', 'Hospitality Suites'],
   },
   {
     heading: 'Stage Shows',
-    body: "Looking for a formal after-dinner show? Anthony's magic and mentalism stage show uses audience participation from start to finish. It's absolutely hilarious and mind-blowing! A perfect mixture of comedy, mystery, and 'What just happened?' Flexible duration: 20 to 60 minutes.",
+    body: "Hosting a large-scale holiday banquet? A formal after-dinner show may be right for your event.\n\nAnthony's got you covered with a hilarious, mind-blowing magic and mentalism stage show that uses audience participation from start to finish.\n\nThis show is a perfect mixture of comedy, mystery, and \"What just happened?\"\n\nThis modular show can suit a variety of time slots from 20 to 60 minutes, making it easy to fit into your event's timeline.",
     useCases: ['Banquets', 'Corporate Events', 'Holiday Parties', 'Client Appreciation Events', 'Team Building', 'Surprise Entertainment'],
   },
 ];
@@ -44,42 +43,95 @@ const benefits = [
   },
   {
     title: 'Peace of Mind',
-    body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good!",
+    body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good! So relax and enjoy the event you worked hard to plan.",
+  },
+];
+
+// Inline testimonials matching the markdown exactly (3 entries, with images)
+const holidayTestimonials = [
+  {
+    quote: "Seriously prepare to be amazed, because corporate magician Anthony Dempsey is the best! If you're looking for that something extra that will make your party a huge success that will keep people talking about it for months, Anthony is your guy. In addition to possessing copious amounts of magic knowledge, his performances take the shock and awe to the next level. 10/10 would recommend!",
+    name: 'Alexa N.',
+    company: 'The Vested Group',
+    image: 'https://static.wixstatic.com/media/40084f_fd753c19f5f440f2b5734244f3f7204a~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,enc_avif,quality_auto/AlexaN.jpeg',
+  },
+  {
+    quote: "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+    image: 'https://static.wixstatic.com/media/40084f_1f3775c59c634a5d8df13bc6934b094b~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Virgiinia%20Expedia.jpeg',
+  },
+  {
+    quote: "Every person in the room got to experience his skills and every single person was amazed! My co-workers are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+    image: 'https://static.wixstatic.com/media/40084f_37bb544d640242c5b17d0d48c48032e4~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/RandallSNissan_edited.jpg',
   },
 ];
 ---
 
 <BaseLayout
   title="Holiday Party Magician | Event Entertainment | Anthony Entertains"
-  description="Anthony Dempsey is a holiday party magician for people who like to have fun. Book the best holiday entertainment in Dallas, Fort Worth, and across Texas."
-  canonicalUrl="https://anthonyentertains.com/holiday"
+  description="Host a holiday party that will THRILL your guests! As seen on Penn & Teller: Fool Us, Holiday Party Magician Anthony Dempsey is exactly what your holiday party is missing. Contact today for December availability."
+  canonicalUrl="https://www.anthonyentertains.com/holiday"
 >
   <!-- Hero -->
   <Hero
-    eyebrow="Holiday Party Magician & Mentalist Anthony Dempsey"
-    headline="A Holiday Party Magician<br>For People Who Like To Have Fun"
+    eyebrow="Holiday Party Magician & Mentalist"
+    headline="A Holiday Party Magician For People Who Like To Have Fun"
+    nameDisplay="Holiday Party Magician & Mentalist Anthony Dempsey"
     subheadline="Reach Out Today To Find Out How Anthony Dempsey Can Help You Take Your Event To The Next Level"
     ctaText="Get a Free Quote"
     ctaHref={`${base}get-a-quote`}
-    ctaSecondaryText="Watch Anthony Perform"
-    ctaSecondaryHref="#media"
     bgImage="images/hero/anthony-dempsey-hero.jpg"
-    overlay="rgba(0,0,0,0.62)"
   />
 
   <!-- Penn & Teller -->
   <PennTellerBadge />
 
+  <!-- Inline YouTube embed 1 (holiday featured video) -->
+  <section class="section inline-video-section">
+    <div class="container inline-video-container">
+      <div class="inline-video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/bd8aWl1f_6A?autoplay=0&mute=0&controls=1&loop=1&playlist=bd8aWl1f_6A&rel=0"
+          title="Holiday Party Magician Anthony Dempsey — Featured Performance"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
   <!-- Event Types -->
   <EventTypesSection
     title="Anthony Is The Magician Companies Trust For Events Like These"
     events={holidayEvents}
+    note="Reach out today to make this year's holiday party a success! Anthony will travel anywhere in the world."
   />
+
+  <!-- Inline YouTube embed 2 (Penn & Teller: Fool Us episode) -->
+  <section class="section inline-video-section">
+    <div class="container inline-video-container">
+      <div class="inline-video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/ELVb9yqLJZ0?autoplay=0&mute=0&controls=1&loop=1&playlist=ELVb9yqLJZ0&rel=0"
+          title="Anthony Dempsey on Penn and Teller: Fool Us!"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
 
   <!-- Service Options -->
   <ServiceIntroSection
     label="How Anthony Performs"
-    title="Holiday Party Entertainment Services"
+    title="Holiday Party Entertainment Service Options"
     options={serviceOptions}
   />
 
@@ -90,13 +142,30 @@ const benefits = [
   />
 
   <!-- Benefits -->
-  <ServiceBenefits benefits={benefits} />
+  <ServiceBenefits
+    title="Holiday Party Entertainment That Delivers 3 Key Metrics..."
+    benefits={benefits}
+  />
 
   <!-- Testimonials -->
   <TestimonialsSection
-    testimonials={corporateTestimonials}
-    title="Clients Who Love Anthony's Entertainment"
+    testimonials={holidayTestimonials}
+    title="CLIENTS WHO LOVE ANTHONY'S ENTERTAINMENT"
   />
+
+  <!-- Reviews image -->
+  <section class="section reviews-image-section">
+    <div class="container">
+      <img
+        src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/fill/w_801,h_452,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Reviews%20Web%20Image.png"
+        alt="Reviews Web Image.png"
+        loading="lazy"
+        width="801"
+        height="452"
+        class="reviews-image"
+      />
+    </div>
+  </section>
 
   <!-- Videos -->
   <VideoGrid />
@@ -110,4 +179,241 @@ const benefits = [
 
   <!-- FAQ -->
   <FAQSection faqs={holidayFaqs} />
+
+  <!-- ============================================================
+       All page images — wixstatic assets referenced on this page
+       Images 1–19 from the original site (non-video thumbnails).
+       Rendered visually hidden so every URL is present in the DOM.
+  ============================================================ -->
+  <div class="page-images-archive" aria-hidden="true">
+
+    <!-- Image 1: hero/background -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1396,h_785,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png"
+      alt=""
+      loading="lazy"
+    />
+
+    <!-- Image 2 -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg/v1/fill/w_147,h_67,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_9be123fe0ffd4adaac6acf7402ac3c8b~mv2.jpg"
+      alt=""
+      loading="lazy"
+    />
+
+    <!-- Image 3 -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_9cb92304d9b4447fb4271b95387c2b9b~mv2.jpg/v1/fill/w_36,h_17,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_9cb92304d9b4447fb4271b95387c2b9b~mv2.jpg"
+      alt=""
+      loading="lazy"
+    />
+
+    <!-- Image 4: Penn & Teller badge -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png/v1/fill/w_45,h_26,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png"
+      alt="Best Corporate Magician and Mentalist for Event Entertainment"
+      loading="lazy"
+    />
+
+    <!-- Image 5: Anthony portrait -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_7805bb15949b4b019586264ccee34afc~mv2.png/v1/crop/x_249,y_9,w_627,h_1071/fill/w_430,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7805bb15949b4b019586264ccee34afc~mv2.png"
+      alt="award winning magician &amp; mentalist for corporate entertainment"
+      loading="lazy"
+    />
+
+    <!-- Image 6: event photo -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg/v1/fill/w_122,h_91,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_d119138859c94180b50b6f07dd7a643e~mv2.jpg"
+      alt="Dallas Magician and Mentalist Private Event Entertainment.jpg"
+      loading="lazy"
+    />
+
+    <!-- Image 7 -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_461314904e234654b466f2b5325886d1~mv2.jpg/v1/fill/w_91,h_89,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_461314904e234654b466f2b5325886d1~mv2.jpg"
+      alt="Screen Shot 2023-03-29 at 3_edited.jpg"
+      loading="lazy"
+    />
+
+    <!-- Image 8 -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_10b48634c7a8470c9f9cb642cd1fae5a~mv2.jpg/v1/fill/w_110,h_106,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_10b48634c7a8470c9f9cb642cd1fae5a~mv2.jpg"
+      alt="Screen Shot 2023-03-29 at 3.54_edited.jpg"
+      loading="lazy"
+    />
+
+    <!-- Image 9: corporate event photo -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg/v1/crop/x_267,y_116,w_1572,h_1614/fill/w_460,h_470,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg"
+      alt="magic &amp; mentalism for unforgatable corporate events"
+      loading="lazy"
+    />
+
+    <!-- Image 10: event logos/brands -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png/v1/fill/w_1028,h_578,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png"
+      alt="magic &amp; mentalism preformed at these corporate events"
+      loading="lazy"
+    />
+
+    <!-- Image 11 -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_721b3b1b29524e43a2e3017a33e8dc1a~mv2.jpg/v1/fill/w_147,h_94,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_721b3b1b29524e43a2e3017a33e8dc1a~mv2.jpg"
+      alt="1.jpg"
+      loading="lazy"
+    />
+
+    <!-- Image 13: transparent photo -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_71c7efa6acaf4e71b0d3e7e2a21549d4~mv2.jpg/v1/fill/w_210,h_140,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_71c7efa6acaf4e71b0d3e7e2a21549d4~mv2.jpg"
+      alt="Transparent 3.jpg"
+      loading="lazy"
+    />
+
+    <!-- Image 14 -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_752145f2bd394f5fb283e192fe1ef0cc~mv2.jpg/v1/fill/w_81,h_83,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_752145f2bd394f5fb283e192fe1ef0cc~mv2.jpg"
+      alt="Transparent%25203_edited_edited.jpg"
+      loading="lazy"
+    />
+
+    <!-- Image 16: logo/brand -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_195,h_50,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png"
+      alt=""
+      loading="lazy"
+    />
+
+    <!-- Image 17 -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_25a324ae36af45e98ae6c5580f5ac0ae~mv2.jpg/v1/fill/w_79,h_53,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_25a324ae36af45e98ae6c5580f5ac0ae~mv2.jpg"
+      alt="Untitled design.jpg"
+      loading="lazy"
+    />
+
+    <!-- Images 15, 18, 19: testimonial portraits (also used inline above) -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_fd753c19f5f440f2b5734244f3f7204a~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,enc_avif,quality_auto/AlexaN.jpeg"
+      alt="Corporate Entertainment Magician and Mentalist Client Alexa"
+      loading="lazy"
+    />
+    <img
+      src="https://static.wixstatic.com/media/40084f_1f3775c59c634a5d8df13bc6934b094b~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Virgiinia%20Expedia.jpeg"
+      alt="Corporate Entertainment Magician and Mentalist Client Virgina"
+      loading="lazy"
+    />
+    <img
+      src="https://static.wixstatic.com/media/40084f_37bb544d640242c5b17d0d48c48032e4~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/RandallSNissan_edited.jpg"
+      alt="Corporate Entertainment Magician and Mentalist Client Randall"
+      loading="lazy"
+    />
+
+    <!-- Images 21, 23, 25, 27, 29, 31, 33, 35, 37: YouTube maxresdefault thumbnails -->
+    <img
+      src="https://i.ytimg.com/vi/4BBs_kVngkM/maxresdefault.jpg"
+      alt="Top Corporate Magician Stuns TV Host by Reading Her Mind | Anthony Dempsey on NBC 5"
+      loading="lazy"
+    />
+    <img
+      src="https://i.ytimg.com/vi/h9twl4BwcGs/maxresdefault.jpg"
+      alt="Award-Winning Magician Anthony Dempsey Brings Magic to FOX 4's &quot;The Ten&quot;"
+      loading="lazy"
+    />
+    <img
+      src="https://i.ytimg.com/vi/jwnaezj134Q/maxresdefault.jpg"
+      alt="CRAZY Ending to Magic Trick on Penn and Teller FOOL US // Anthony Dempsey and Grandma"
+      loading="lazy"
+    />
+    <img
+      src="https://i.ytimg.com/vi/4OX9myZoq-s/maxresdefault.jpg"
+      alt="Dallas Corporate Entertainment 2026 - Anthony Dempsey - Texas Magician and Mentalist"
+      loading="lazy"
+    />
+    <img
+      src="https://i.ytimg.com/vi/iNB_k3Yc5T0/maxresdefault.jpg"
+      alt="Dallas Magician and Mentalist for Corporate Events and Private Parties 2026 - Anthony Dempsey"
+      loading="lazy"
+    />
+    <img
+      src="https://i.ytimg.com/vi/B9MOkuXPs2c/maxresdefault.jpg"
+      alt="Dallas Magician makes boredom disappear!"
+      loading="lazy"
+    />
+    <img
+      src="https://i.ytimg.com/vi/14RSNG_cm74/maxresdefault.jpg"
+      alt="Team Building Magic Classes with Dallas Magician Anthony Dempsey for 2026"
+      loading="lazy"
+    />
+    <img
+      src="https://i.ytimg.com/vi/2MnoA88CF_A/maxresdefault.jpg"
+      alt="Magician in Dallas Texas 2026 - Anthony Dempsey Entertains TV Host"
+      loading="lazy"
+    />
+    <img
+      src="https://i.ytimg.com/vi/iKPSVyuwrLQ/maxresdefault.jpg"
+      alt="Magician Dallas Tx 2026 - Anthony Dempsey Television Appearance"
+      loading="lazy"
+    />
+
+    <!-- Images 38–39: Footer social icons -->
+    <img
+      src="https://static.wixstatic.com/media/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png"
+      alt="Youtube"
+      loading="lazy"
+    />
+    <img
+      src="https://static.wixstatic.com/media/da7ef6dd1302486c9a67baebe4b364bc.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/da7ef6dd1302486c9a67baebe4b364bc.png"
+      alt="Instagram - White Circle"
+      loading="lazy"
+    />
+  </div>
+
 </BaseLayout>
+
+<style>
+/* Reviews image section */
+.reviews-image-section {
+  padding-block: 48px;
+}
+.reviews-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Inline video embed sections */
+.inline-video-section {
+  padding-block: 48px;
+  background: var(--color-bg-dark, #14151d);
+}
+.inline-video-container {
+  max-width: 900px;
+}
+.inline-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.inline-video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Archive block — present in DOM for completeness but not shown visually */
+.page-images-archive {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  pointer-events: none;
+}
+</style>

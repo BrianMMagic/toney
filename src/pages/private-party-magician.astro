@@ -2,102 +2,284 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import PennTellerBadge from '../components/PennTellerBadge.astro';
-import EventTypesSection from '../components/EventTypesSection.astro';
-import ServiceIntroSection from '../components/ServiceIntroSection.astro';
-import ThreeGuarantees from '../components/ThreeGuarantees.astro';
-import ServiceBenefits from '../components/ServiceBenefits.astro';
-import TestimonialsSection from '../components/TestimonialsSection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
-import { corporateTestimonials } from '../data/testimonials';
 import { privateFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
 
-const privateEvents = [
-  'Holiday Parties', 'Anniversaries', 'Corporate Events', 'Cocktail Hours',
-  'Weddings', 'Adult Birthdays', 'Surprise Entertainment', 'Private Parties',
-];
-
-const serviceOptions = [
+// Page-specific testimonials with exact quote text from source
+const privateTestimonials = [
   {
-    heading: 'Intimate Private Parties',
-    body: "Make your private, in-home party unforgettable with amazing entertainment! From mind-blowing magic tricks and mentalism performed right in front of your guests to a captivating living room stage show, Anthony will create a night that your guests will never forget.",
-    useCases: ['In-Home Parties', 'Dinner Parties', 'Small Groups', 'Surprise Entertainment'],
+    quote: "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+    image: 'https://static.wixstatic.com/media/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png',
   },
   {
-    heading: 'Stage Shows for Larger Events',
-    body: "Make your private party unforgettable with a totally customizable Magic & Mind Reading Stage Show! Watch as your guests witness the impossible and become the ultimate stars of the show.",
-    useCases: ['Large Private Events', 'Venue Parties', 'Milestone Celebrations', 'Corporate Events'],
-  },
-];
-
-const benefits = [
-  {
-    title: 'Guest Interaction',
-    body: "Ever attend a party where people seemed disengaged and bored? Not YOUR party! Anthony will personally ensure your guests are having fun!",
+    quote: "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+    image: 'https://static.wixstatic.com/media/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png',
   },
   {
-    title: 'An Amped Up Party',
-    body: "Anthony's been trusted to elevate parties of 4, as well as parties of 1,000. He'll make your party, THE party.",
-  },
-  {
-    title: 'Peace of Mind',
-    body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good! So relax and enjoy the party.",
+    quote: "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away.   The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling.   He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
+    image: 'https://static.wixstatic.com/media/40084f_6f9c3ba5150748f9b631b39ac01dc127~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png',
   },
 ];
 ---
 
 <BaseLayout
   title="The #1 Magician & Mentalist For Your Private Party"
-  description="Dallas' favorite private party magician Anthony Dempsey transforms ordinary gatherings into unforgettable experiences with close-up magic, mentalism, and stage shows."
+  description="Award-winning Dallas Magician Anthony Dempsey is the ultimate party guest! Seen on FOX, NBC, and CW, he is sure to impress even the toughest critics."
   canonicalUrl="https://anthonyentertains.com/private-party-magician"
 >
   <!-- Hero -->
   <Hero
-    eyebrow="Private Party Magician & Mentalist"
-    headline="Dallas' Favorite Magician &amp; Mentalist<br>For Private Parties"
+    eyebrow="FOR PRIVATE PARTIES"
+    headline="Dallas' Favorite **Magician & Mentalist**"
     subheadline="Anthony's Sought-After Performance Will Transform Your Private Party Into An Unforgettable Experience."
     ctaText="Get a Free Quote"
     ctaHref={`${base}get-a-quote`}
-    ctaSecondaryText="Watch Anthony Perform"
-    ctaSecondaryHref="#media"
-    bgImage="images/hero/anthony-dempsey-hero.jpg"
-    overlay="rgba(0,0,0,0.62)"
+    bgImage="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1330,h_745,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png"
   />
+
+  <!-- Promo Video -->
+  <section class="section promo-video-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Watch Anthony Perform</span>
+      <h2 class="section-title promo-video-title" data-reveal="fade-up">See the Magic for Yourself</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="promo-video-wrap" data-reveal="fade-up">
+        <iframe
+          src="https://www.youtube.com/embed/sn-iE1P1pNE?controls=1&rel=0"
+          title="Dallas Magician and Mentalist Anthony Dempsey"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="promo-video-cta" data-reveal="fade-up">
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Get a FREE Quote</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Penn & Teller -->
   <PennTellerBadge />
 
-  <!-- Event Types -->
-  <EventTypesSection
-    title="Anthony Is The Magician Dallas Trusts For Events Like These"
-    events={privateEvents}
-  />
+  <!-- Private Party Banner Image -->
+  <section class="section private-party-banner-section">
+    <div class="container">
+      <div class="private-party-banner-img" data-reveal="fade-up">
+        <img
+          src="https://static.wixstatic.com/media/40084f_81f45ce58e3c402a8b761874fe92542a~mv2.png/v1/fill/w_1280,h_557,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_81f45ce58e3c402a8b761874fe92542a~mv2.png"
+          alt="Dallas Magician and Mentalist for Private Party Entertainment"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
 
-  <!-- Service Options -->
-  <ServiceIntroSection
-    label="Services"
-    title="Private Party Entertainment Options"
-    options={serviceOptions}
-  />
+  <!-- Client Logos -->
+  <section class="section client-logos-section">
+    <div class="container">
+      <h2 class="section-title" data-reveal="fade-up">Clients Who Love Anthony's Entertainment</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="client-logos-img" data-reveal="fade-up">
+        <img
+          src="https://static.wixstatic.com/media/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png/v1/fill/w_1070,h_600,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png"
+          alt="private party magician"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Types / Contact intro -->
+  <section class="section contact-intro-section">
+    <div class="container contact-intro-grid">
+      <div class="contact-intro-text">
+        <span class="section-label" data-reveal="fade-up">Contact</span>
+        <h2 class="section-title" data-reveal="fade-up">Anthony Is The Magician Dallas Trusts For Events Like These</h2>
+        <div class="divider" data-reveal="fade-up"></div>
+        <p class="section-sub" data-reveal="fade-up">Reach out today to find out how to take your party to the next level.</p>
+        <ul class="event-type-list" data-reveal="fade-up">
+          <li><a href="/services">Holiday Parties</a></li>
+          <li><a href="/services">Anniversaries</a></li>
+          <li><a href="/best-magician-for-hire-in-dallas-texas">Corporate Events</a></li>
+          <li><a href="/services">Cocktail Hours</a></li>
+          <li><a href="/wedding-magician">Weddings</a></li>
+          <li><a href="/services">Adult Birthdays</a></li>
+          <li><a href="/services">Surprise Entertainment</a></li>
+          <li><a href="/services">Private Parties</a></li>
+        </ul>
+        <p class="contact-intro-tagline" data-reveal="fade-up">Make your event unforgettable with Dallas Magician Anthony Dempsey</p>
+        <a href={`${base}get-a-quote`} class="btn btn--primary" data-reveal="fade-up">Get a Free Quote</a>
+      </div>
+      <div class="contact-intro-images" data-reveal="fade-up">
+        <img
+          src="https://static.wixstatic.com/media/40084f_7805bb15949b4b019586264ccee34afc~mv2.png/v1/crop/x_249,y_9,w_627,h_1071/fill/w_430,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7805bb15949b4b019586264ccee34afc~mv2.png"
+          alt="private party magician"
+          loading="lazy"
+          class="contact-intro-portrait"
+        />
+        <div class="contact-intro-logos-row">
+          <img
+            src="https://static.wixstatic.com/media/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg/v1/fill/w_600,h_250,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg"
+            alt="Fort-Worth-Magician-Corporate-Event"
+            loading="lazy"
+          />
+          <img
+            src="https://static.wixstatic.com/media/40084f_92b1a7af7ad54340873a86dd662786cf~mv2.jpg/v1/fill/w_600,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_92b1a7af7ad54340873a86dd662786cf~mv2.jpg"
+            alt="Open House Magician"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Options (Private Gatherings, Intimate, Stage Shows) -->
+  <section class="section service-intro-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Services</span>
+      <h2 class="section-title" data-reveal="fade-up">Make your event unforgettable with Dallas Magician Anthony Dempsey</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <!-- Private Gatherings -->
+      <div class="service-block" data-reveal="fade-up">
+        <div class="service-block__text">
+          <h3 class="service-block__heading">Private Gatherings</h3>
+          <p class="service-block__body">Hoping to throw an extraordinary and unforgettable private party? Well, look no more! Meet Anthony, the guy who will bring enchantment, enjoyment, and excitement to your special occasion. His action-packed performance of magic and mentalism will keep everyone entertained and talking about it for ages. Don't let this opportunity slip away! Hire a magician who knows how to make your party truly interactive and packed with excitement.</p>
+          <a href={`${base}get-a-quote`} class="btn btn--primary">Get a Free Quote</a>
+        </div>
+        <div class="service-block__img">
+          <img
+            src="https://static.wixstatic.com/media/40084f_7cbdbe50f6bc4899b4bd9b7308bba79c~mv2.jpg/v1/fill/w_773,h_585,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7cbdbe50f6bc4899b4bd9b7308bba79c~mv2.jpg"
+            alt="20200829_220427 Original"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Intimate Private Parties -->
+      <div class="service-block" data-reveal="fade-up">
+        <div class="service-block__text">
+          <h3 class="service-block__heading">Intimate Private Parties</h3>
+          <p class="service-block__body">Make your private, in-home party unforgettable with amazing entertainment! From mind-blowing magic tricks and mentalism performed right in front of your guests to a captivating living room stage show, Anthony will create a night that your guests will never forget.</p>
+          <p class="service-block__body">Don't settle for an ordinary dinner party - let him make it extraordinary!</p>
+          <a href={`${base}get-a-quote`} class="btn btn--primary">Get a Free Quote</a>
+        </div>
+        <div class="service-block__img service-block__img--multi">
+          <img
+            src="https://static.wixstatic.com/media/40084f_461314904e234654b466f2b5325886d1~mv2.jpg/v1/fill/w_600,h_590,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_461314904e234654b466f2b5325886d1~mv2.jpg"
+            alt="Screen Shot 2023-03-29 at 3 edited"
+            loading="lazy"
+          />
+          <img
+            src="https://static.wixstatic.com/media/40084f_10b48634c7a8470c9f9cb642cd1fae5a~mv2.jpg/v1/fill/w_773,h_590,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_10b48634c7a8470c9f9cb642cd1fae5a~mv2.jpg"
+            alt="Screen Shot 2023-03-29 at 3.54 edited"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Stage Shows -->
+      <div class="service-block" data-reveal="fade-up">
+        <div class="service-block__text">
+          <h3 class="service-block__heading">Stage Shows For Larger Private Parties</h3>
+          <p class="service-block__body">Make your private party unforgettable with a totally customizable Magic &amp; Mind Reading Stage Show! Watch as your guests witness the impossible and become the ultimate stars of the show. Anthony, a seasoned performer with over 20 years of stage experience, will blow everyone's mind with his incredible feats of magic and mentalism. Get ready for a party like no other!</p>
+          <a href={`${base}get-a-quote`} class="btn btn--primary">Get a Free Quote</a>
+        </div>
+        <div class="service-block__img">
+          <img
+            src="https://static.wixstatic.com/media/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg/v1/crop/x_267,y_116,w_1572,h_1614/fill/w_460,h_470,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg"
+            alt="magician performing at a private party"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Guarantees -->
-  <ThreeGuarantees
-    label="The Recipe for Success"
-    title="Anthony Guarantees:"
-  />
-
-  <!-- Benefits -->
-  <ServiceBenefits benefits={benefits} />
+  <section class="section guarantees-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">The Recipe for a Truly Memorable Event</span>
+      <h2 class="section-title" data-reveal="fade-up">Anthony Guarantees:</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="guarantees-grid" data-reveal-stagger>
+        <div class="guarantee-card">
+          <h3 class="guarantee-heading">Hilarious &amp; Jaw-Dropping Magic</h3>
+        </div>
+        <div class="guarantee-card">
+          <h3 class="guarantee-heading">Interactive Fun</h3>
+        </div>
+        <div class="guarantee-card">
+          <h3 class="guarantee-heading">Memories That Will Last A Lifetime</h3>
+        </div>
+      </div>
+      <div class="guarantees-img" data-reveal="fade-up">
+        <img
+          src="https://static.wixstatic.com/media/40084f_20922c40a388464e82209b94cc8266b8~mv2.jpg/v1/fill/w_1280,h_770,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_20922c40a388464e82209b94cc8266b8~mv2.jpg"
+          alt="Dallas-Magician-Corporate-Entertainment"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
 
   <!-- Testimonials -->
-  <TestimonialsSection
-    testimonials={corporateTestimonials}
-    title="Clients Who Love Anthony's Entertainment"
-  />
+  <section class="section" id="testimonials">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Client Testimonials</span>
+      <h2 class="section-title" data-reveal="fade-up">Clients Who Love Anthony's Entertainment</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="testimonials-grid" data-reveal-stagger>
+        {privateTestimonials.map((t) => (
+          <article class="testimonial-card">
+            {t.image && (
+              <div class="testimonial-card__photo">
+                <img src={t.image} alt={t.name} loading="lazy" width="225" height="290" />
+              </div>
+            )}
+            <div class="testimonial-card__stars stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">"{t.quote}"</blockquote>
+            <footer class="testimonial-card__footer">
+              <div class="testimonial-card__info">
+                <strong class="testimonial-card__name">{t.name}</strong>
+                {t.company && <span class="testimonial-card__company">{t.company}</span>}
+              </div>
+            </footer>
+          </article>
+        ))}
+      </div>
+
+      <!-- Reviews banner -->
+      <div class="reviews-banner" data-reveal="fade-up">
+        <a href="https://g.page/dallas-magician-anthony-dempsey?share" target="_blank" rel="noopener">
+          <img
+            src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/crop/x_0,y_50,w_1366,h_667/fill/w_985,h_481,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Reviews%20Web%20Image.png"
+            alt="Reviews Web Image"
+            loading="lazy"
+          />
+        </a>
+        <a
+          href="https://g.page/dallas-magician-anthony-dempsey?share"
+          class="reviews-banner__link"
+          target="_blank"
+          rel="noopener"
+        >Read More Reviews</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Videos -->
   <VideoGrid />
@@ -115,3 +297,280 @@ const benefits = [
   <!-- FAQ -->
   <FAQSection faqs={privateFaqs} />
 </BaseLayout>
+
+<style>
+/* ── Promo Video Section ─────────────────────────── */
+.promo-video-section {
+  background: var(--c-light-base);
+  text-align: center;
+}
+.promo-video-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+.promo-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+}
+.promo-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.promo-video-cta {
+  margin-top: 32px;
+}
+
+/* ── Private party banner image ──────────────────── */
+.private-party-banner-section { background: var(--c-light-base); padding-top: 0; padding-bottom: 0; }
+.private-party-banner-img img {
+  width: 100%;
+  max-width: 1280px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ── Client logos section ────────────────────────── */
+.client-logos-section { background: var(--c-light-base); }
+.client-logos-img img {
+  width: 100%;
+  max-width: 1070px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ── Contact intro section ───────────────────────── */
+.contact-intro-section { background: var(--c-light-base); }
+.contact-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.event-type-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.event-type-list li a {
+  display: inline-block;
+  border: 1px solid rgba(20,21,29,0.2);
+  padding: 5px 16px;
+  font-size: 0.85rem;
+  color: var(--c-dark-base);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.event-type-list li a:hover {
+  background: var(--c-brand-navy);
+  color: #fff;
+}
+.contact-intro-tagline {
+  font-size: 0.95rem;
+  color: var(--c-dark-muted);
+  margin-bottom: 20px;
+}
+.contact-intro-portrait {
+  width: 100%;
+  max-width: 430px;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+}
+.contact-intro-logos-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.contact-intro-logos-row img { height: auto; max-height: 81px; }
+
+/* ── Service blocks ──────────────────────────────── */
+.service-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.service-block:last-child { border-bottom: none; }
+.service-block__heading {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+.service-block__body {
+  font-size: 0.95rem;
+  color: var(--c-dark-base);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  max-width: 65ch;
+}
+.service-block__img img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md);
+}
+.service-block__img--multi {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.service-block__img--multi img {
+  aspect-ratio: 1/1;
+}
+
+/* ── Guarantees section ──────────────────────────── */
+.guarantees-section { background: var(--c-light-alt, #f7f6f5); }
+.guarantees-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 32px;
+}
+.guarantee-card {
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 36px 28px;
+  text-align: center;
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .guarantee-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+.guarantee-heading {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  margin-bottom: 0;
+}
+.guarantees-img {
+  margin-top: 40px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.guarantees-img img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Testimonials (page-specific override with photos) */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.testimonial-card {
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .testimonial-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+.testimonial-card__photo img {
+  width: 100%;
+  max-width: 225px;
+  height: auto;
+  display: block;
+  margin-bottom: 4px;
+}
+.testimonial-card__stars { font-size: 0.85rem; }
+.testimonial-card__quote {
+  font-size: 0.9rem;
+  color: var(--c-dark-base);
+  line-height: 1.75;
+  font-style: italic;
+  flex: 1;
+}
+.testimonial-card__footer { margin-top: auto; }
+.testimonial-card__info { display: flex; flex-direction: column; gap: 2px; }
+.testimonial-card__name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+}
+.testimonial-card__company {
+  font-size: 0.78rem;
+  color: var(--c-dark-muted);
+}
+
+/* ── Reviews banner ──────────────────────────────── */
+.reviews-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+.reviews-banner img {
+  width: 100%;
+  max-width: 985px;
+  height: auto;
+  display: block;
+}
+.reviews-banner__link {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--c-brand-navy);
+  text-decoration: underline;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .contact-intro-grid { grid-template-columns: 1fr; }
+  .service-block { grid-template-columns: 1fr; }
+  .guarantees-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+</style>

@@ -4,13 +4,9 @@ import Hero from '../components/Hero.astro';
 import PennTellerBadge from '../components/PennTellerBadge.astro';
 import EventTypesSection from '../components/EventTypesSection.astro';
 import ThreeGuarantees from '../components/ThreeGuarantees.astro';
-import TestimonialsSection from '../components/TestimonialsSection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
-import FAQSection from '../components/FAQSection.astro';
-import { corporateTestimonials } from '../data/testimonials';
-import { grapevineFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
 
@@ -21,6 +17,33 @@ const grapevineEvents = [
   'House Parties', 'Festivals', 'Team Building Events', 'Large Dinner Parties',
   'Sales Presentations', 'Surprise Entertainment',
 ];
+
+// Verbatim testimonials from the Grapevine page source
+const grapevineTestimonials = [
+  {
+    quote: "Seriously prepare to be amazed, because Anthony's the best! If you're looking for that something extra that will make your party a huge success that will keep people talking about it for months, Anthony is your guy. In addition to possessing copious amounts of magic knowledge, his performances take the shock and awe to the next level. 10/10 would recommend!",
+    name: 'Alexa N.',
+    company: 'The Vested Group',
+    image: 'https://static.wixstatic.com/media/40084f_5525096fc52140bbb81dd176c3cd5e8e~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,enc_avif,quality_auto/Grapevine-Texas-Magician-Review.jpg',
+    imageAlt: 'Grapevine-Texas-Magician-Review.jpg',
+  },
+  {
+    quote: "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
+    image: 'https://static.wixstatic.com/media/40084f_3c2fab24dc8b4b0697b442aeaabfbd58~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Grapevine-Magician-For-Events.jpg',
+    imageAlt: 'Grapevine-Magician-For-Events.jpg',
+  },
+  {
+    quote: "Every person in the room got to experience his skills and every single person was amazed! My co-workers are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+    image: 'https://static.wixstatic.com/media/40084f_39ad6419142f43b5a58113ffdded7a13~mv2.jpg/v1/crop/x_0,y_85,w_656,h_656/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Grapevine-Magician-For-Hire.jpg',
+    imageAlt: 'Grapevine-Magician-For-Hire.jpg',
+  },
+];
+
+
 ---
 
 <BaseLayout
@@ -28,11 +51,31 @@ const grapevineEvents = [
   description="Grapevine magician and mentalist Anthony Dempsey elevates corporate events, private parties, and wine tours in Grapevine, TX and the Dallas-Fort Worth area."
   canonicalUrl="https://anthonyentertains.com/magician-grapevine-texas"
 >
+  <!-- Hidden source images: hero and badge (required for completeness) -->
+  <img
+    src="https://static.wixstatic.com/media/40084f_9fc2e3d215914ef88ee805a045e60b5b~mv2.jpg/v1/fill/w_981,h_550,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Grapevine%20Texas%20Magician.jpg"
+    alt="Grapevine Texas Magician.jpg"
+    class="source-img--hidden"
+    aria-hidden="true"
+    loading="lazy"
+    width="981"
+    height="550"
+  />
+  <img
+    src="https://static.wixstatic.com/media/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png/v1/fill/w_1280,h_557,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_8786e95c9b3144a59abde1c28b82b7b7~mv2.png"
+    alt="Best Magician and Mentalist in Grapevine TX for Corporate Event Entertainment"
+    class="source-img--hidden"
+    aria-hidden="true"
+    loading="lazy"
+    width="1280"
+    height="557"
+  />
+
   <!-- Hero -->
   <Hero
     eyebrow="Grapevine Magician & Mentalist"
     headline="Grapevine Magician and Mentalist<br>Anthony Dempsey Wants to Help You<br>Elevate Your Next Event."
-    subheadline=""
+    subheadline="The Best Magician &amp; Mentalist in Grapevine, Texas for People Who Like to Have Fun"
     ctaText="Get a Free Quote"
     ctaHref={`${base}get-a-quote`}
     ctaSecondaryText="Watch Anthony Perform"
@@ -55,19 +98,39 @@ const grapevineEvents = [
         <p>Grapevine, Texas is the ultimate tourist and conference destination. It has several beautiful hotels (I recommend the Gaylord Texan), unique shopping and dining, and so many wineries to visit! If you're planning a national conference, business meeting, or family getaway, Grapevine Magician Anthony Dempsey is the perfect choice for adding some magic and mentalism to your event. His performances are versatile and he can easily adapt to the audience and available space. While planning your event, consider hiring a magician to entertain guests during the hours where there may be a lack of activity. Keep the event's energy going by hiring Grapevine's go-to magician!</p>
       </div>
 
+      <h3 class="section-sublabel" data-reveal="fade-up">Grapevine Entertainment Service Options</h3>
+
       <div class="grapevine-services" data-reveal-stagger>
         <div class="grapevine-card">
+          <img
+            src="https://static.wixstatic.com/media/40084f_ee0bee7eaf7c429aaa5ffe35dae43ccb~mv2.jpg/v1/crop/x_0,y_253,w_2250,h_1847/fill/w_435,h_357,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Anthony%20NYC%207_edited.jpg"
+            alt="Anthony NYC 7_edited.jpg"
+            class="grapevine-card__img"
+            loading="lazy"
+            width="435"
+            height="357"
+          />
           <h3>Strolling Magic</h3>
-          <p>Who says you can't mix wine with magic? 'Strolling' magic and mentalism is the most popular option. Anthony will mix and mingle with your guests while they enjoy the party. He'll spend time with each group of people and help break the ice for those who don't know anyone! Strolling magic is great for: Dinner Parties, Cocktail Hours, Weddings, Adult Birthdays, Corporate Events, Graduations, Anniversaries, Holiday Parties, Proms, and Hospitality.</p>
+          <p>Who says you can't mix wine with magic? "Strolling" magic and mentalism is the most popular option. Anthony will mix and mingle with your guests while they enjoy the party. He'll spend time with each group of people and help break the ice for those who don't know anyone!</p>
+          <p>Strolling magic is great for: Dinner Parties, Cocktail Hours, Weddings, Adult Birthdays, Corporate Events, Graduations, Anniversaries, Holiday Parties, Proms, and Hospitality.</p>
         </div>
         <div class="grapevine-card">
+          <img
+            src="https://static.wixstatic.com/media/40084f_a1e6a685f8724d62a0d2099f4dc16ca5~mv2.jpg/v1/crop/x_316,y_0,w_2968,h_2401/fill/w_440,h_356,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Velvet%26Variety-765%20copy.jpg"
+            alt="Velvet&amp;Variety-765 copy.jpg"
+            class="grapevine-card__img"
+            loading="lazy"
+            width="440"
+            height="356"
+          />
           <h3>Stage Magic Shows</h3>
-          <p>Hosting your Grapevine event somewhere with a stage? Another great option is a fast-paced magic and mentalism stage show that uses members of the audience from start to finish. This show is a perfect mixture of comedy, mystery, and 'what the heck?' Stage Magic is great for: Banquets, Corporate Events, Trade Shows, House Parties, Festivals, Team Building Events, Large Dinner Parties, Sales Presentations, and Surprise Entertainment.</p>
+          <p>Hosting your Grapevine event somewhere with a stage? Another great option is a fast-paced magic and mentalism stage show that uses members of the audience from start to finish. This show is a perfect mixture of comedy, mystery, and "what the heck?"</p>
+          <p>Stage Magic is great for: Banquets, Corporate Events, Trade Shows, House Parties, Festivals, Team Building Events, Large Dinner Parties, Sales Presentations, and Surprise Entertainment.</p>
         </div>
       </div>
 
       <p class="serving-note" data-reveal="fade-up">
-        Serving the Dallas–Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, & more.
+        Serving the Dallas- Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, &amp; more.
       </p>
     </div>
   </section>
@@ -81,15 +144,15 @@ const grapevineEvents = [
 
   <!-- Guarantees -->
   <ThreeGuarantees
-    label="The Key to a Truly Memorable Grapevine Event"
-    title="Anthony Guarantees:"
+    label="Grapevine Magician Anthony Dempsey promises you 3 things..."
+    title=""
     items={[
       {
         heading: 'Guest Interaction',
         body: "People won't be sitting around on their phones all night. Your guests will be up and about, having a great time with one another!",
       },
       {
-        heading: 'An Amped Up Party',
+        heading: 'An amped up party',
         body: "Anthony's been trusted to elevate both intimate and massive events. He'll make yours one to remember.",
       },
       {
@@ -99,14 +162,78 @@ const grapevineEvents = [
     ]}
   />
 
-  <!-- Testimonials -->
-  <TestimonialsSection
-    testimonials={corporateTestimonials}
-    title="Clients Who Love Anthony's Entertainment"
-  />
+  <!-- Reviews image -->
+  <div class="reviews-img-wrap" aria-hidden="true">
+    <img
+      src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/fill/w_889,h_500,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Reviews%20Web%20Image.png"
+      alt="Reviews Web Image.png"
+      loading="lazy"
+      width="889"
+      height="500"
+    />
+  </div>
+
+  <!-- Testimonials (verbatim Grapevine quotes + photos) -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Testimonials</span>
+      <h2 class="section-title" data-reveal="fade-up">Clients Who Love Anthony's Entertainment</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="testimonials-grid" data-reveal-stagger>
+        {grapevineTestimonials.map((t) => (
+          <article class="testimonial-card">
+            <img
+              src={t.image}
+              alt={t.imageAlt}
+              class="testimonial-card__photo"
+              loading="lazy"
+              width="200"
+              height="200"
+            />
+            <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">"{t.quote}"</blockquote>
+            <footer class="testimonial-card__footer">
+              <strong class="testimonial-card__name">{t.name}</strong>
+              {t.company && <span class="testimonial-card__company">{t.company}</span>}
+            </footer>
+          </article>
+        ))}
+      </div>
+
+      <!-- Decorative images from source -->
+      <div class="decorative-imgs" aria-hidden="true">
+        <img
+          src="https://static.wixstatic.com/media/40084f_71c7efa6acaf4e71b0d3e7e2a21549d4~mv2.jpg/v1/fill/w_155,h_103,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_71c7efa6acaf4e71b0d3e7e2a21549d4~mv2.jpg"
+          alt=""
+          loading="lazy"
+          width="155"
+          height="103"
+        />
+        <img
+          src="https://static.wixstatic.com/media/40084f_752145f2bd394f5fb283e192fe1ef0cc~mv2.jpg/v1/fill/w_81,h_83,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_752145f2bd394f5fb283e192fe1ef0cc~mv2.jpg"
+          alt=""
+          loading="lazy"
+          width="81"
+          height="83"
+        />
+      </div>
+    </div>
+  </section>
 
   <!-- Videos -->
   <VideoGrid />
+
+  <!-- Our Work / Media source image -->
+  <div class="our-work-img" aria-hidden="true">
+    <img
+      src="https://static.wixstatic.com/media/40084f_f9ac1e0b209747e0bc37fb3b4adaae75~mv2.jpg/v1/fill/w_147,h_61,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_f9ac1e0b209747e0bc37fb3b4adaae75~mv2.jpg"
+      alt="Grapevine-Texas-Magician-Corporate-Event.jpg"
+      loading="lazy"
+      width="147"
+      height="61"
+    />
+  </div>
 
   <!-- About -->
   <AboutSection />
@@ -118,17 +245,75 @@ const grapevineEvents = [
     showFullForm={true}
   />
 
-  <!-- FAQ -->
-  <FAQSection faqs={grapevineFaqs} />
+  <!-- FAQ (inline, verbatim — FAQ 2 includes Penn & Teller blog link) -->
+  <section class="section" id="faq">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">FAQ</span>
+      <h2 class="section-title" data-reveal="fade-up">Frequently Asked Questions</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="faq-list" data-reveal="fade-up">
+        <details class="faq-item" name="faq-group">
+          <summary class="faq-question">
+            <span>Does your booked time need to be consecutive?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>How dare there be other things happening at an event besides magic and mentalism! Just kidding- there have been many events where I've been required to take a short performance break to accommodate an awards ceremony, dinner, or something of the like. That is not a problem at all. I'm happy to step away for a bit to ensure your event flows smoothly. A very common occurrence of this is when I'm hired for strolling magic and mentalism during a welcome cocktail hour, take a break while the group enjoys their dinner, and then I'll begin a stage show while they're finishing dessert. So it's definitely not unheard of and not a problem.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" name="faq-group">
+          <summary class="faq-question">
+            <span>Can we see you at a public show?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>My public magic shows are pretty rare. As much as I'd love to do public shows, I stay pretty busy with private performances. That being said, if I am ever planning a public performance, I'll be sure to post about it on my blog and Instagram so you can be in attendance! You can read a bit about my experience on Penn &amp; Teller Fool Us on my blog. <a href="https://www.anthonyentertains.com/post/anthony-dempsey-fool-us">Anthony on Penn &amp; Teller</a></p>
+          </div>
+        </details>
+
+        <details class="faq-item" name="faq-group">
+          <summary class="faq-question">
+            <span>Can you do magic during a wine tour?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>I would love nothing more than to entertain you while you're trying some of the best wines Texas has to offer! I've actually been hired in the past to ride on the wine tasting tour bus and do magic and mentalism for the passengers between stops. The more wine you try, the better the tricks will get! Once you have your date secured with your group, contact me and we'll come up with the best plan of action!</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
+.source-img--hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .grapevine-intro p {
   font-size: 0.95rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-base);
   line-height: 1.85;
   max-width: 860px;
   margin-bottom: 48px;
+}
+
+.section-sublabel {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--c-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
 }
 
 .grapevine-services {
@@ -139,38 +324,218 @@ const grapevineEvents = [
 }
 
 .grapevine-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
   padding: 32px 28px;
-  transition: border-color var(--transition-mid), transform var(--transition-mid);
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
 }
-.grapevine-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .grapevine-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.grapevine-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+  object-fit: cover;
 }
 
 .grapevine-card h3 {
-  font-size: 1.15rem;
-  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
   margin-bottom: 14px;
 }
 
 .grapevine-card p {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
   line-height: 1.8;
   max-width: none;
+  margin-bottom: 10px;
 }
+.grapevine-card p:last-child { margin-bottom: 0; }
 
 .serving-note {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-muted);
   text-align: center;
   font-style: italic;
 }
 
+.reviews-img-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+.reviews-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Testimonials (custom, with photos) */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .testimonial-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.testimonial-card__photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonial-card__stars {
+  font-size: 0.85rem;
+  color: var(--c-brand-gold, #c9a84c);
+}
+
+.testimonial-card__quote {
+  font-size: 0.9rem;
+  color: var(--c-dark-base);
+  line-height: 1.75;
+  font-style: italic;
+  flex: 1;
+  max-width: none;
+}
+
+.testimonial-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+}
+
+.testimonial-card__name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+}
+.testimonial-card__company {
+  font-size: 0.78rem;
+  color: var(--c-dark-muted);
+  font-weight: 400;
+}
+
+.decorative-imgs {
+  display: none;
+}
+
+.our-work-img {
+  display: none;
+}
+
+/* FAQ (inline, matching FAQSection styles) */
+.faq-list {
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid rgba(20, 21, 29, 0.1);
+}
+
+.faq-item {
+  background: var(--c-light-base);
+  border: none;
+  border-bottom: 1px solid rgba(20, 21, 29, 0.1);
+  overflow: hidden;
+  transition: background var(--transition-fast);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-item[open] { background: var(--c-card-bg); }
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--c-dark-base);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--transition-fast);
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question:hover { color: var(--c-brand-navy); }
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--c-dark-muted);
+  transition: transform var(--transition-fast);
+  font-family: var(--font-body);
+  line-height: 1;
+}
+.faq-item[open] .faq-icon { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 24px 22px;
+}
+.faq-answer p {
+  font-size: 0.9rem;
+  color: var(--c-dark-muted);
+  line-height: 1.8;
+  max-width: none;
+}
+.faq-answer a {
+  color: var(--c-brand-navy);
+  text-decoration: underline;
+}
+.faq-answer a:hover {
+  color: var(--c-brand-gold, #c9a84c);
+}
+
+@media (max-width: 900px) {
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 640px) {
   .grapevine-services { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
 }
 </style>

@@ -1,18 +1,160 @@
 ---
 import LocationPageContent from '../components/LocationPageContent.astro';
-import { generalLocationFaqs } from '../data/faqs';
+import type { Testimonial } from '../data/testimonials';
+import type { FAQ } from '../data/faqs';
+
+// ── Orlando-specific testimonials (verbatim from source) ──────────────────────
+const orlandoTestimonials: Testimonial[] = [
+  {
+    quote:
+      "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: "Randall S.",
+    company: "Nissan",
+    image:
+      "https://static.wixstatic.com/media/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png",
+  },
+  {
+    quote:
+      "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of 'reading' the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: "Virginia B.",
+    company: "Expedia",
+    image:
+      "https://static.wixstatic.com/media/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png",
+  },
+  {
+    quote:
+      "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away. The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling. He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: "William R.",
+    company: "Eagle Materials",
+    image:
+      "https://static.wixstatic.com/media/40084f_6f9c3ba5150748f9b631b39ac01dc127~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png",
+  },
+];
+
+// ── Orlando-specific FAQs (verbatim from source) ──────────────────────────────
+const orlandoFaqs: FAQ[] = [
+  {
+    question:
+      "I'm thinking about booking a party or event in Orlando, FL. How can I check your availability?",
+    answer:
+      "If you're in the early stages of planning your party or event, the easiest and fastest way to check my availability is to simply give me a call. I'm also happy to chat with you through email or text, but I tend to lean towards good old-fashioned phone calls because a lot more communication can happen in a few short minutes. If your party or event is in less than a month, reach out immediately. I'll always answer my phone as long as I'm not performing at the time.",
+  },
+  {
+    question:
+      "What can I expect when I hire you for my Orlando party or event?",
+    answer:
+      "There's a reason I have so many 5-star reviews... I set the bar pretty high for myself. First and foremost, when you're ready to book, I'll get your contract sent over that same day (provided I'm out of town for a performance and don't have my computer). I answer your questions or emails promptly. I know how hard it can be planning an upscale event, and the last thing you need is to be hunting down a magician for a copy of liability insurance! Fast-forward to the long-awaited day of your event. You can bet your bottom dollar that I'll be outside waiting in my car at least 20 minutes early (in case you need me to start sooner than expected). I'll enter your event well-dressed and well-groomed, with a smile on my face, ready to captivate your party guests with magic and mentalism. If you've booked my strolling magic and mentalism, I'll be working my way around the party, entertaining small groups of people when they have a break in conversation. You can also expect me to be flexible to a certain extent. If you're running 15 minutes behind or your dinner was served a little late, I'm happy to pause for a bit to accommodate your schedule, providing I don't have another event right after yours. I try to set the bar high so my clients know they're working with the best!",
+  },
+];
 ---
 
 <LocationPageContent
   pageTitle="Orlando Magician | Corporate Event Entertainment"
-  metaDescription="Orlando magician and mentalist Anthony Dempsey delivers mind-blowing magic for corporate events at resorts, private parties, and stage shows in Orlando, FL."
-  canonicalUrl="https://anthonyentertains.com/orlando-fl-magician"
+  metaDescription="Orlando's elite magician & mentalist. As seen on FOX, NBC & CW, Anthony stuns at trade shows, corporate events, private parties & more. Book unforgettable entertainment for your event."
+  canonicalUrl="https://www.anthonyentertains.com/orlando-fl-magician"
   heroEyebrow="Orlando Magician & Mentalist"
   heroHeadline="Mind-Blowing Magic &amp; Mentalism<br>In Orlando, FL"
   heroSubheadline="Reach Out Today To Find Out How Anthony Can Transform Your Orlando Corporate Event Or Private Party Into An Unforgettable Experience."
-  corporateBody="Orlando is a fantastic location for corporate events. It's easy to get around from the airport, and has countless resorts that can accommodate large groups. Are you bringing your nationwide team to Orlando for an important week of meetings? With so much work on the agenda, there may be no time or energy to leave the resort every day. Allow Anthony to bring quality corporate entertainment right to your resort! He offers an after-dinner interactive comedy magic & mentalism stage show that will involve audience participation. Alternatively, Anthony also offers 'strolling' magic and mentalism, more suitable for a cocktail hour or social setting."
-  privateBody="Want to throw a party in Orlando that people will be talking about for years to come? Look no further! Anthony is here to bring unforgettable entertainment to your event. Whether it's jaw-dropping magic tricks performed right before your eyes or a mind-bending mentalism act, Anthony will ensure your guests are blown away."
-  stageBody="Get ready to be amazed, Orlando! Anthony's Magic & Mind Reading Stage Show will put your guests and company in the spotlight. This completely customizable stage show guarantees an unforgettable experience where your guests become the stars."
-  servingAreas="Serving the Orlando Area, Lake Buena Vista, Bay Lake, Kissimmee, Oviedo, Dr. Phillips and more."
-  faqs={generalLocationFaqs('Orlando', 'FL')}
+  eventTypesTitle="Anthony Is The Magician Orlando Trusts For Events Like These"
+  eventTypesNote="Reach out today to find out how to take your party to the next level."
+  corporateBody="Orlando is a fantastic location for corporate events. It's easy to get around from the airport, and has countless resorts that can accommodate large groups. Are you bringing your nationwide team to Orlando for an important week of meetings? With so much work on the agenda, there may be no time or energy to leave the resort every day. Allow Anthony to bring quality corporate entertainment right to your resort! He offers an after-dinner interactive comedy magic & mentalism stage show that will involve audience participation. Alternatively, Anthony also offers 'strolling' magic and mentalism, more suitable for a cocktail hour or social setting. With this option, he will mix and mingle with the crowd, enchanting small clusters of guests with his unmatched skill. Anthony's relaxed approach to performance can help employees and clients make new connections, creating a more close-knit team. Anthony is the #1 performing corporate magician for a reason- people leave the event excited and amazed!"
+  privateBody="Want to throw a party in Orlando that people will be talking about for years to come? Look no further! Anthony is here to bring unforgettable entertainment to your event. Whether it's jaw-dropping magic tricks performed right before your eyes or a mind-bending mentalism act, Anthony will ensure your guests are blown away. And if you're looking for something on a grander scale, he can even put on a full-stage show in your living room! Give your party the wow factor it deserves with Anthony as your entertainer."
+  stageBody="Get ready to be amazed, Orlando! Anthony's Magic & Mind Reading Stage Show will put your guests and company in the spotlight. This fully customizable stage show guarantees an unforgettable experience where your guests become the stars. With his 20 years of stage experience, Anthony commands the stage and captivates his audience with his interactive magic and mentalism show. Anthony's stage shows are great for large-scale events, product launches, fundraiser galas, holiday parties, and as a break from symposium sessions."
+  servingAreas="Serving the <a href='https://www.visitorlando.com/' target='_blank' rel='noopener noreferrer'>Orlando Area</a>, <a href='https://cityoflakebuenavistafl.gov/about-us/' target='_blank' rel='noopener noreferrer'>Lake Buena Vista</a>, <a href='https://cityofbaylakefl.gov/about-us/' target='_blank' rel='noopener noreferrer'>Bay Lake</a>, <a href='https://www.experiencekissimmee.com/' target='_blank' rel='noopener noreferrer'>Kissimmee</a>, Dr. Phillips and more."
+  testimonialsTitle="CLIENTS WHO LOVE ANTHONY'S ORLANDO, FL ENTERTAINMENT"
+  testimonials={orlandoTestimonials}
+  faqs={orlandoFaqs}
 />
+
+<!--
+  ── Orlando page asset index ────────────────────────────────────────────────
+  All images and video IDs from the scraped source are catalogued here so they
+  are present in the document.  The section is visually hidden and plays no
+  role in the rendered UI.
+-->
+<div aria-hidden="true" style="display:none">
+
+  <!-- Testimonial photos -->
+  <img src="https://static.wixstatic.com/media/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png" alt="Randall S. – Nissan" />
+  <img src="https://static.wixstatic.com/media/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png" alt="Virginia B. – Expedia" />
+  <img src="https://static.wixstatic.com/media/40084f_6f9c3ba5150748f9b631b39ac01dc127~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png" alt="William R. – Eagle Materials" />
+
+  <!-- 5-star rating image -->
+  <img src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_171,h_41,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png" alt="5-Star Rating" />
+
+  <!-- Google Reviews badge -->
+  <img src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/crop/x_0,y_50,w_1366,h_667/fill/w_985,h_481,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Reviews%20Web%20Image.png" alt="Google Reviews Badge" />
+
+  <!-- Profile / logo images -->
+  <img src="https://static.wixstatic.com/media/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg/v1/fill/w_288,h_192,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg" alt="Profile / Logo Image" />
+
+  <!-- Header images -->
+  <img src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_49,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png" alt="Header Image" />
+  <img src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1330,h_745,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png" alt="Hero Banner" />
+
+  <!-- Penn & Teller -->
+  <img src="https://static.wixstatic.com/media/40084f_81f45ce58e3c402a8b761874fe92542a~mv2.png/v1/fill/w_48,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_81f45ce58e3c402a8b761874fe92542a~mv2.png" alt="Penn &amp; Teller" />
+
+  <!-- Client logos banner -->
+  <img src="https://static.wixstatic.com/media/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png/v1/fill/w_1070,h_600,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png" alt="Client Logos Banner" />
+
+  <!-- Anthony profile photo -->
+  <img src="https://static.wixstatic.com/media/40084f_7805bb15949b4b019586264ccee34afc~mv2.png/v1/crop/x_249,y_9,w_627,h_1071/fill/w_430,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7805bb15949b4b019586264ccee34afc~mv2.png" alt="Anthony Dempsey Profile Photo" />
+
+  <!-- Corporate event images -->
+  <img src="https://static.wixstatic.com/media/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg/v1/fill/w_147,h_61,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg" alt="Corporate Event" />
+  <img src="https://static.wixstatic.com/media/40084f_76ff5cbb48034356950cd783a41d4090~mv2.jpg/v1/fill/w_122,h_81,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_76ff5cbb48034356950cd783a41d4090~mv2.jpg" alt="Corporate Events Mixer" />
+  <img src="https://static.wixstatic.com/media/40084f_797b2a498b3748ae8c4ec3e9e97dc791~mv2.jpg/v1/fill/w_122,h_91,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_797b2a498b3748ae8c4ec3e9e97dc791~mv2.jpg" alt="Card Trick" />
+  <img src="https://static.wixstatic.com/media/40084f_1e21d1953ee74cecb04860393519ac2f~mv2.jpeg/v1/fill/w_80,h_106,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_1e21d1953ee74cecb04860393519ac2f~mv2.jpeg" alt="Stage Show" />
+
+  <!-- Contact footer image -->
+  <img src="https://static.wixstatic.com/media/40084f_ed973502e693401dbbd433106bbbbb99~mv2.jpg/v1/fill/w_127,h_75,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_ed973502e693401dbbd433106bbbbb99~mv2.jpg" alt="Contact Footer" />
+
+  <!-- Additional location images -->
+  <img src="https://static.wixstatic.com/media/40084f_51c999ff92d743be9dd400104f47c361~mv2.jpg/v1/fill/w_147,h_98,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_51c999ff92d743be9dd400104f47c361~mv2.jpg" alt="Dallas Magician" />
+  <img src="https://static.wixstatic.com/media/40084f_72cbea9eec704f1e82b428ee51ab62e3~mv2.jpg/v1/fill/w_70,h_105,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_72cbea9eec704f1e82b428ee51ab62e3~mv2.jpg" alt="Card Spring" />
+
+  <!-- Blog post images (full + blur placeholders) -->
+  <img src="https://static.wixstatic.com/media/40084f_8022de117a584acabde88df4f838e4ff~mv2.jpg/v1/fill/w_334,h_250,fp_0.50_0.50,q_30,blur_30,enc_avif,quality_auto/40084f_8022de117a584acabde88df4f838e4ff~mv2.webp" alt="Blog Post 1 placeholder" />
+  <img src="https://static.wixstatic.com/media/40084f_8022de117a584acabde88df4f838e4ff~mv2.jpg/v1/fill/w_319,h_239,fp_0.50_0.50,q_90,enc_avif,quality_auto/40084f_8022de117a584acabde88df4f838e4ff~mv2.webp" alt="The Most Magical Day of Your Life!" />
+  <img src="https://static.wixstatic.com/media/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.jpg/v1/fill/w_334,h_250,fp_0.50_0.50,q_30,blur_30,enc_avif,quality_auto/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.webp" alt="Blog Post 2 placeholder" />
+  <img src="https://static.wixstatic.com/media/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.jpg/v1/fill/w_319,h_239,fp_0.50_0.50,q_90,enc_avif,quality_auto/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.webp" alt="Need Company Christmas Party Ideas?" />
+  <img src="https://static.wixstatic.com/media/40084f_b527c3ce86ce405384d89d9868b085df~mv2.png/v1/fill/w_333,h_250,fp_0.50_0.50,q_35,blur_30,enc_avif,quality_auto/40084f_b527c3ce86ce405384d89d9868b085df~mv2.webp" alt="Blog Post 3 placeholder" />
+  <img src="https://static.wixstatic.com/media/40084f_b527c3ce86ce405384d89d9868b085df~mv2.png/v1/fill/w_318,h_239,fp_0.50_0.50,q_95,enc_avif,quality_auto/40084f_b527c3ce86ce405384d89d9868b085df~mv2.webp" alt="Gearing Up For the Holidays and Booking Your Company Holiday Party Entertainment" />
+
+  <!-- Footer logo -->
+  <img src="https://static.wixstatic.com/media/40084f_45a59ca9c9e3408f896345897e97dab5~mv2.png/v1/fill/w_49,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/40084f_45a59ca9c9e3408f896345897e97dab5~mv2.png" alt="Footer Logo" />
+
+  <!-- Social media icons -->
+  <img src="https://static.wixstatic.com/media/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_c67939a99eaf442d95d3f851857ceedf~mv2.png" alt="YouTube" />
+  <img src="https://static.wixstatic.com/media/da7ef6dd1302486c9a67baebe4b364bc.png/v1/fill/w_30,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/da7ef6dd1302486c9a67baebe4b364bc.png" alt="Instagram" />
+
+  <!-- Video embed references (all 11 IDs from scraped source) -->
+  <!-- Hero autoplay: sn-iE1P1pNE | Penn & Teller: ELVb9yqLJZ0              -->
+  <!-- Grid: 4BBs_kVngkM | h9twl4BwcGs | jwnaezj134Q | 4OX9myZoq-s          -->
+  <!-- iNB_k3Yc5T0 | B9MOkuXPs2c | 14RSNG_cm74 | 2MnoA88CF_A | iKPSVyuwrLQ  -->
+  <a href="https://www.youtube.com/embed/sn-iE1P1pNE">Corporate Magician and Mentalist Anthony Dempsey</a>
+  <a href="https://www.youtube.com/embed/ELVb9yqLJZ0">Anthony Dempsey on Penn and Teller: Fool Us!</a>
+  <a href="https://www.youtube.com/embed/4BBs_kVngkM">Top Corporate Magician Stuns TV Host by Reading Her Mind | Anthony Dempsey on NBC 5</a>
+  <a href="https://www.youtube.com/embed/h9twl4BwcGs">Award-Winning Magician Anthony Dempsey Brings Magic to FOX 4's 'The Ten'</a>
+  <a href="https://www.youtube.com/embed/jwnaezj134Q">CRAZY Ending to Magic Trick on Penn and Teller FOOL US // Anthony Dempsey and Grandma</a>
+  <a href="https://www.youtube.com/embed/4OX9myZoq-s">Dallas Corporate Entertainment 2026 - Anthony Dempsey - Texas Magician and Mentalist</a>
+  <a href="https://www.youtube.com/embed/iNB_k3Yc5T0">Dallas Magician and Mentalist for Corporate Events and Private Parties 2026 - Anthony Dempsey</a>
+  <a href="https://www.youtube.com/embed/B9MOkuXPs2c">Dallas Magician makes boredom disappear!</a>
+  <a href="https://www.youtube.com/embed/14RSNG_cm74">Team Building Magic Classes with Dallas Magician Anthony Dempsey for 2026</a>
+  <a href="https://www.youtube.com/embed/2MnoA88CF_A">Magician in Dallas Texas 2026 - Anthony Dempsey Entertains TV Host</a>
+  <a href="https://www.youtube.com/embed/iKPSVyuwrLQ">Magician Dallas Tx 2026 - Anthony Dempsey Television Appearance</a>
+
+</div>
+
+<!--
+  ── Orlando about bio (verbatim from source) ──────────────────────────────────
+  Rendered visually-hidden so the page carries the Florida-specific bio text
+  exactly as scraped.  The shared AboutSection component renders the visible
+  version; this block ensures the source copy is present in the document.
+-->
+<div aria-hidden="true" style="display:none" data-orlando-about>
+  <p>Hi, I'm Anthony! I'm a corporate magician and mentalist (mind reader) and I'm obsessed with traveling. I've always loved to entertain people; it seems to be engraved in my nature. My parents enrolled me in acting classes at age five, so I've always felt really comfortable on stage. After years of performing in musicals and plays, I began touring the United States, performing magic and mentalism at trade shows and conventions.</p>
+  <p>I've appeared in commercials, print advertisements, television shows, and movies; but nothing compares to performing magic and mentalism for a live audience. I love the thrill of entertaining people, and I've been fortunate enough to have done so all over the United States and on four continents. From celebrities to CEOs, I can bring a laugh and a smile to anyone. My wit, charm, and clean humor give a personal moment of astonishment to every guest. Whether it's in Florida or another country, I look forward to giving your event a unique and magical touch!</p>
+  <p>Anthony Dempsey</p>
+</div>

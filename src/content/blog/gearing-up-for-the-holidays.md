@@ -4,6 +4,8 @@ pubDate: "2025-10-27"
 author: "Anthony Dempsey"
 category: "Magician"
 description: "Planning ahead for holiday parties is essential, as sought-after vendors book quickly during the festive season."
+heroImage: "https://static.wixstatic.com/media/40084f_b527c3ce86ce405384d89d9868b085df~mv2.png"
+readTime: "3 min"
 ---
 
 Wait, it's too early to be thinking about holiday parties, right? It's only October! Not exactly... you'd be surprised by how many people get a head start on planning theirs. Whether it's a family Christmas party, an office holiday party, or a Friendsgiving gathering; it never hurts to plan a little early!

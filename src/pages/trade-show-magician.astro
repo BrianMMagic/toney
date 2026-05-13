@@ -2,27 +2,37 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import PennTellerBadge from '../components/PennTellerBadge.astro';
-import ServiceIntroSection from '../components/ServiceIntroSection.astro';
-import ThreeGuarantees from '../components/ThreeGuarantees.astro';
-import ServiceBenefits from '../components/ServiceBenefits.astro';
-import TestimonialsSection from '../components/TestimonialsSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
-import { homepageTestimonials } from '../data/testimonials';
-import { tradeShowFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
 
 const serviceOptions = [
   {
     heading: 'VIP Close-up Magic',
-    body: "Need to impress some VIPs? Anthony can provide his sought-after strolling magic and mentalism to a designated group, perhaps during a welcome reception or after a VIP dinner. Strolling magic and mentalism is a more casual, relaxed approach to entertainment. Anthony treats guests like old friends so they can loosen up and laugh. Anthony can provide a mixture of magic and mentalism for your guests. If you prefer one over the other, no problem! Just specify your preference during the booking process.",
+    paragraphs: [
+      "Need to impress some VIPs?",
+      "Anthony can provide his sought-after strolling magic and mentalism to a designated group, perhaps during a welcome reception or after a VIP dinner.",
+      "Strolling magic and mentalism is a more casual, relaxed approach to entertainment. Anthony treats guests like old friends so they can loosen up and laugh.",
+      "Anthony can provide a mixture of magic and mentalism for your guests. If you prefer one over the other, no problem! Just specify your preference during the booking process.",
+    ],
+    image: 'https://static.wixstatic.com/media/40084f_f9ea8823ec8c401db13819610e28f79e~mv2.jpg/v1/crop/x_0,y_85,w_960,h_788/fill/w_435,h_355,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Dallas-Magician-copy.jpg',
+    imageAlt: 'Trade-Show-Magician-Anthony-Dempsey.jpg',
     useCases: ['VIP Receptions', 'Welcome Events', 'Client Appreciation', 'Hospitality Suites', 'Private Dinners'],
   },
   {
     heading: 'Trade Show Floor Magic',
-    body: "Anthony understands that every minute counts on the trade show floor. He'll work your company's products, services, and message into an engaging, mind-blowing set that is guaranteed to draw people towards your booth. In between sets, he will do some one-on-one magic for attendees who may be waiting to chat with you. There's so much riding on the success of a trade show. Hire an excellent trade show mentalist to keep your booth's momentum going all day!",
+    paragraphs: [
+      "Anthony understands that every minute counts on the trade show floor.",
+      "He'll work your company's products, services, and message into an engaging, mind-blowing set that is guaranteed to draw people towards your booth.",
+      "In between sets, he will do some one-on-one magic for attendees who may be waiting to chat with you.",
+      "There's so much riding on the success of a trade show. Hire an excellent trade show mentalist to keep your booth's momentum going all day!",
+    ],
+    image: 'https://static.wixstatic.com/media/40084f_b3a3640d13954bcfbc348052ba46b3be~mv2.png/v1/crop/x_659,y_670,w_2918,h_2354/fill/w_440,h_355,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Trade%20Show%20Magician_HEIC.png',
+    imageAlt: 'Trade Show Magician.HEIC',
+    blogLink: 'https://www.anthonyentertains.com/post/6-reasons-why-you-should-hire-a-trade-show-magician',
+    blogLinkText: '6 Reasons Why You Should Hire a Trade Show Magician',
     useCases: ['Trade Shows', 'Conventions', 'Product Launches', 'Booth Traffic', 'Brand Messaging', 'Lead Generation'],
   },
 ];
@@ -34,7 +44,7 @@ const benefits = [
   },
   {
     title: 'Increased Traffic',
-    body: "All it takes are a few quality leads to make or break your trade show. Anthony will bring those important people right to your booth using dynamic magic and mentalism.",
+    body: "All it takes is a few quality leads to make or break your trade show. Anthony will bring those important people right to your booth using dynamic magic and mentalism.",
   },
   {
     title: 'Peace of Mind',
@@ -46,9 +56,51 @@ const tradeShowGoals = [
   'Have a crowd gathered around your booth',
   'Promote your products and services',
   'Generate leads',
-  'Clearly deliver your company\'s message',
+  "Clearly deliver your company's message",
   'Make meaningful connections',
   'Make your booth stand out from the rest',
+];
+
+const pageTestimonials = [
+  {
+    quote: "Seriously prepare to be amazed, because corporate magician Anthony Dempsey is the best! If you're looking for that something extra that will make your party a huge success that will keep people talking about it for months, Anthony is your guy. In addition to possessing copious amounts of magic knowledge, his performances take the shock and awe to the next level. 10/10 would recommend!",
+    name: 'Alexa N.',
+    company: 'The Vested Group',
+    image: 'https://static.wixstatic.com/media/40084f_fd753c19f5f440f2b5734244f3f7204a~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,enc_avif,quality_auto/AlexaN.jpeg',
+  },
+  {
+    quote: 'Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of "reading" the guests\' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.',
+    name: 'Virginia B.',
+    company: 'Expedia',
+    image: 'https://static.wixstatic.com/media/40084f_1f3775c59c634a5d8df13bc6934b094b~mv2.jpeg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Virgiinia%20Expedia.jpeg',
+  },
+  {
+    quote: "Every person in the room got to experience his skills and every single person was amazed! My co-workers are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
+    image: 'https://static.wixstatic.com/media/40084f_37bb544d640242c5b17d0d48c48032e4~mv2.jpg/v1/fill/w_200,h_200,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/RandallSNissan_edited.jpg',
+  },
+  {
+    quote: "You are so DOPE!",
+    name: 'Shia LaBeouf',
+    company: 'Hollywood Actor',
+    image: 'https://static.wixstatic.com/media/40084f_3ac6fe7d38ea4139abba77cb1d35ba8e~mv2.png/v1/fill/w_125,h_125,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_3ac6fe7d38ea4139abba77cb1d35ba8e~mv2.png',
+  },
+];
+
+const pageFaqs = [
+  {
+    question: 'What do you wear to trade shows?',
+    answer: "I really, really, REALLY love my collection of suits. I can wear a typical business blue suit, or I could spice it up with a salmon-colored linen suit! I first take a look at the company's logo and make sure I'm not wearing the colors of their competitor's logo (yikes). If a trade show client has a wardrobe request, I'm happy to work with whatever they need.",
+  },
+  {
+    question: "We booked you for last year's booth. Will you have new tricks for us this year?",
+    answer: "Absolutely! I'm constantly rolling out new material, and I keep a pretty detailed log of what I did at each booking- that way I can ensure I'm not repeating anything when I come back. If you have the same products and message as last year's trade show, I can work them into a new set of magic and mind reading tricks. One of my past trade show clients loved my performance the first time so much, that they insisted I just duplicate exactly what I did for their second time hiring me. So I guess what I****",
+  },
+  {
+    question: 'Are you open to traveling to a trade show?',
+    answer: "As a travel enthusiast, I am more than happy to travel anywhere in the world for your trade show. As a full-time corporate magician, I've flown to countless events throughout the country, and I'll occasionally drive if I'm performing within 6 hours of where I live.",
+  },
 ];
 ---
 
@@ -70,18 +122,94 @@ const tradeShowGoals = [
     overlay="rgba(0,0,0,0.62)"
   />
 
+  <!-- Promo Video -->
+  <section class="section promo-video-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Watch Anthony Perform</span>
+      <h2 class="section-title promo-video-title" data-reveal="fade-up">See the Magic for Yourself</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="promo-video-wrap" data-reveal="fade-up">
+        <iframe
+          src="https://www.youtube.com/embed/sn-iE1P1pNE?controls=1&rel=0"
+          title="Trade Show Magician and Mentalist Anthony Dempsey"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="promo-video-cta" data-reveal="fade-up">
+        <a href={`${base}get-a-quote`} class="btn btn--primary">Get a FREE Quote</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Penn & Teller -->
   <PennTellerBadge />
 
-  <!-- Trade Show Goals -->
-  <section class="section">
+  <!-- Primary Intro Section -->
+  <section class="section primary-intro">
     <div class="container">
-      <span class="section-label" data-reveal="fade-up">Why It Works</span>
-      <h2 class="section-title" data-reveal="fade-up">Make the most out of your trade show investment with Anthony Dempsey</h2>
+      <h2 class="section-title" data-reveal="fade-up">Are You Looking For Exciting &amp; Professional Entertainment For Your Trade Show Exhibit?</h2>
       <div class="divider" data-reveal="fade-up"></div>
       <p class="section-sub" data-reveal="fade-up">
-        Anthony Dempsey is a sought-after trade show magician and mentalist who understands that a lot is riding on the success of your trade show experience. The bottom line: if people aren't stopping at your booth, you're not getting the best return on your investment. He can significantly increase traffic to your trade show exhibit, while promoting your products and services in a uniquely entertaining way, allowing you to generate quality leads.
+        Make the most out of your trade show investment with Anthony Dempsey.
       </p>
+      <p class="section-sub" data-reveal="fade-up">
+        Anthony Dempsey is a sought-after trade show magician and mentalist who understands that a lot is riding on the success of your trade show experience.
+      </p>
+      <p class="section-sub" data-reveal="fade-up">
+        He can significantly increase traffic to your trade show exhibit, while promoting your products and services in a uniquely entertaining way, allowing you to generate quality leads.
+      </p>
+      <p class="section-sub" data-reveal="fade-up">
+        The bottom line: if people aren't stopping at your booth, you're not getting the best return on your investment.
+      </p>
+    </div>
+  </section>
+
+  <!-- Past Trade Show Highlights -->
+  <section class="section past-highlights-section">
+    <div class="container">
+      <h3 class="section-title past-highlights-heading" data-reveal="fade-up">Past Trade Show Highlights</h3>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="past-highlights-video" data-reveal="fade-up">
+        <video
+          class="past-highlights-video__player"
+          src="https://video.wixstatic.com/video/40084f_47e1c1fd2d0d4da5be006b1b4778de93/1080p/mp4/file.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="none"
+        ></video>
+      </div>
+      <div class="past-highlights-cta" data-reveal="fade-up">
+        <a class="btn btn--outline" href="/media">SEE MORE VIDEOS</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Some Of My Past Trade Show Successes -->
+  <section class="section past-successes-section">
+    <div class="container">
+      <h2 class="section-title" data-reveal="fade-up">Some Of My Past Trade Show Successes!</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <img
+        class="past-successes-img"
+        src="https://static.wixstatic.com/media/40084f_eb51352fb5ca4936836704b22ee2a7d9~mv2.jpg/v1/fill/w_980,h_550,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Corporate-Magician.jpg"
+        alt="Corporate-Trade-Show-Magician.jpg"
+        loading="lazy"
+        width="980"
+        height="550"
+      />
+    </div>
+  </section>
+
+  <!-- Trade Show Goals -->
+  <section class="section goals-section">
+    <div class="container">
+      <h2 class="section-title" data-reveal="fade-up">Let Trade Show Magician &amp; Mentalist Anthony Dempsey help you achieve your key trade show goals:</h2>
+      <div class="divider" data-reveal="fade-up"></div>
 
       <ul class="goals-list" data-reveal-stagger>
         {tradeShowGoals.map((goal) => (
@@ -91,33 +219,134 @@ const tradeShowGoals = [
           </li>
         ))}
       </ul>
+
+      <p class="goals-footer" data-reveal="fade-up">
+        Ready to step up your trade show game with unforgettable magic and mentalism? Anthony will travel anywhere in the world for your trade show.
+      </p>
+      <div class="goals-cta" data-reveal="fade-up">
+        <a class="btn btn--primary" href={`${base}get-a-quote`}>PRICING &amp; AVAILABILITY</a>
+      </div>
     </div>
   </section>
 
   <!-- Service Options -->
-  <ServiceIntroSection
-    label="How Anthony Performs"
-    title="Trade Show Entertainment Services"
-    options={serviceOptions}
-  />
+  <section class="section service-options-section">
+    <div class="container">
+      <h4 class="section-title" data-reveal="fade-up">Trade Show Magician &amp; Mentalist Service Options</h4>
+      <div class="divider" data-reveal="fade-up"></div>
 
-  <!-- Guarantees -->
-  <ThreeGuarantees
-    label="The Key to a Truly Memorable Trade Show"
-    title="Anthony Guarantees:"
-  />
-
-  <!-- Benefits -->
-  <ServiceBenefits benefits={benefits} />
-
-  <!-- Testimonials -->
-  <TestimonialsSection
-    testimonials={homepageTestimonials}
-    title="Clients Who Love Anthony's Entertainment"
-  />
+      <div class="service-options" data-reveal-stagger>
+        {serviceOptions.map((opt) => (
+          <div class="service-option-card">
+            {opt.image && (
+              <img
+                class="service-option-card__img"
+                src={opt.image}
+                alt={opt.imageAlt}
+                loading="lazy"
+                width="435"
+                height="355"
+              />
+            )}
+            <h2 class="service-option-heading">{opt.heading}</h2>
+            {opt.paragraphs.map((para) => (
+              <p class="service-option-body">{para}</p>
+            ))}
+            {opt.blogLink && (
+              <p class="service-option-blog">
+                To read more about the impact of trade show magic and mentalism, give this blog post a read:{' '}
+                <a href={opt.blogLink}>{opt.blogLinkText}</a>
+              </p>
+            )}
+            {opt.useCases && opt.useCases.length > 0 && (
+              <ul class="service-option-uses">
+                {opt.useCases.map((uc) => <li>{uc}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Videos -->
   <VideoGrid />
+
+  <!-- Key Metrics / Benefits -->
+  <section class="section benefits-section">
+    <div class="container">
+      <h2 class="section-title" data-reveal="fade-up">Trade Show Entertainment That Delivers 3 Key Metrics...</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <div class="benefits-cta-top" data-reveal="fade-up">
+        <a class="btn btn--primary" href={`${base}get-a-quote`}>GET A FREE QUOTE</a>
+      </div>
+
+      <div class="benefits-grid" data-reveal-stagger>
+        {benefits.map((b) => (
+          <div class="benefit-card">
+            <h4 class="benefit-title">{b.title}</h4>
+            <p class="benefit-body">{b.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <img
+        class="benefits-crowd-img"
+        src="https://static.wixstatic.com/media/40084f_f9ac1e0b209747e0bc37fb3b4adaae75~mv2.jpg/v1/fill/w_980,h_409,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f9ac1e0b209747e0bc37fb3b4adaae75~mv2.jpg"
+        alt="Trade Show Magician Anthony Dempsey Entertaining Crowd"
+        loading="lazy"
+        width="980"
+        height="409"
+      />
+
+      <img
+        class="benefits-reviews-img"
+        src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/fill/w_775,h_436,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Reviews%20Web%20Image.png"
+        alt="Reviews Web Image.png"
+        loading="lazy"
+        width="775"
+        height="436"
+      />
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <h2 class="section-title" data-reveal="fade-up">TESTIMONIALS</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="testimonials-grid" data-reveal-stagger>
+        {pageTestimonials.map((t) => (
+          <article class="testimonial-card">
+            <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <h2 class="testimonial-card__name-heading">{t.name}{t.company ? `, ${t.company}` : ''}</h2>
+            <blockquote class="testimonial-card__quote">"{t.quote}"</blockquote>
+            <footer class="testimonial-card__footer">
+              {t.image && (
+                <img
+                  class="testimonial-card__photo"
+                  src={t.image}
+                  alt={t.name}
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                />
+              )}
+              <div class="testimonial-card__info">
+                <strong class="testimonial-card__name">{t.name}</strong>
+                {t.company && <span class="testimonial-card__company">{t.company}</span>}
+              </div>
+            </footer>
+          </article>
+        ))}
+      </div>
+
+      <div class="testimonials-cta" data-reveal="fade-up">
+        <a class="btn btn--primary" href={`${base}get-a-quote`}>GET A FREE QUOTE</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Contact -->
   <ContactForm
@@ -127,10 +356,74 @@ const tradeShowGoals = [
   />
 
   <!-- FAQ -->
-  <FAQSection faqs={tradeShowFaqs} />
+  <FAQSection faqs={pageFaqs} />
 </BaseLayout>
 
 <style>
+/* Promo Video Section */
+.promo-video-section {
+  background: var(--c-light-base);
+  text-align: center;
+}
+.promo-video-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+.promo-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+}
+.promo-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.promo-video-cta {
+  margin-top: 32px;
+}
+
+/* Past Trade Show Highlights */
+.past-highlights-heading {
+  font-size: 1.6rem;
+}
+
+.past-highlights-video {
+  width: 100%;
+  max-width: 700px;
+  margin: 32px auto 0;
+}
+
+.past-highlights-video__player {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.past-highlights-cta {
+  margin-top: 24px;
+  text-align: center;
+}
+
+/* Past Successes */
+.past-successes-img {
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  display: block;
+  margin: 32px auto 0;
+  object-fit: cover;
+}
+
+/* Goals */
 .goals-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -142,23 +435,262 @@ const tradeShowGoals = [
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
   border-radius: var(--radius-sm);
   padding: 14px 18px;
   font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text-muted);
+  font-weight: 400;
+  color: var(--c-dark-base);
 }
 
 .goal-dot {
-  color: var(--color-accent);
+  color: var(--c-dark-muted);
   font-size: 0.55rem;
   flex-shrink: 0;
 }
 
+.goals-footer {
+  margin-top: 32px;
+  font-size: 0.95rem;
+  color: var(--c-dark-base);
+  line-height: 1.7;
+  max-width: 780px;
+}
+
+.goals-cta {
+  margin-top: 32px;
+}
+
+/* Service Options (inline, not using shared component so we can add images + blog link) */
+.service-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.service-option-card {
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 36px 30px;
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .service-option-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.service-option-card__img {
+  width: 100%;
+  height: auto;
+  max-height: 355px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.service-option-heading {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.service-option-body {
+  font-size: 0.9rem;
+  color: var(--c-dark-base);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  max-width: none;
+}
+
+.service-option-blog {
+  font-size: 0.9rem;
+  color: var(--c-dark-base);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.service-option-blog a {
+  color: var(--c-brand-navy);
+  text-decoration: underline;
+}
+
+.service-option-uses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.service-option-uses li {
+  background: transparent;
+  border: 1px solid var(--c-card-border);
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  color: var(--c-dark-muted);
+  font-weight: 400;
+}
+
+/* Benefits / Key Metrics */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.benefit-card {
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 36px 30px;
+  text-align: center;
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .benefit-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.benefit-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  margin-bottom: 16px;
+}
+
+.benefit-body {
+  font-size: 0.9rem;
+  color: var(--c-dark-muted);
+  line-height: 1.8;
+  max-width: none;
+}
+
+.benefits-cta-top {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.benefits-crowd-img {
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  display: block;
+  margin: 40px auto 0;
+  object-fit: cover;
+}
+
+.benefits-reviews-img {
+  width: 100%;
+  max-width: 775px;
+  height: auto;
+  display: block;
+  margin: 32px auto 0;
+}
+
+.testimonials-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Testimonials (inline to support photos) */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .testimonial-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.testimonial-card__name-heading {
+  display: none; /* name shown in footer row instead */
+}
+
+.testimonial-card__stars { font-size: 0.85rem; }
+
+.testimonial-card__quote {
+  font-size: 0.9rem;
+  color: var(--c-dark-base);
+  line-height: 1.75;
+  font-style: italic;
+  flex: 1;
+  max-width: none;
+}
+
+.testimonial-card__footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testimonial-card__photo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.testimonial-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonial-card__name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+}
+.testimonial-card__company {
+  font-size: 0.78rem;
+  color: var(--c-dark-muted);
+  font-weight: 400;
+}
+
 @media (max-width: 768px) {
   .goals-list { grid-template-columns: repeat(2, 1fr); }
+  .benefits-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .testimonials-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .goals-list { grid-template-columns: 1fr; }

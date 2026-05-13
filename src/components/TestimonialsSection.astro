@@ -14,7 +14,16 @@ const {
 } = Astro.props;
 ---
 
-<section class="section" id="testimonials">
+<section class="section testimonials-section section--tinted" id="testimonials">
+  <img
+    src="https://static.wixstatic.com/media/4426f6c0a4304f2aaab4b9eb2e05c998.jpg"
+    alt=""
+    class="testimonials-bg-img"
+    aria-hidden="true"
+    loading="lazy"
+    width="1280"
+    height="837"
+  />
   <div class="container">
     <span class="section-label" data-reveal="fade-up">{label}</span>
     <h2 class="section-title" data-reveal="fade-up">{title}</h2>
@@ -34,10 +43,41 @@ const {
         </article>
       ))}
     </div>
+
+    <div class="testimonials-reviews-cta" data-reveal="fade-up">
+      <a
+        href="https://g.page/dallas-magician-anthony-dempsey?share"
+        class="testimonials-reviews-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Read More Reviews</a>
+    </div>
   </div>
 </section>
 
 <style>
+.testimonials-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.testimonials-section .container {
+  position: relative;
+  z-index: 1;
+}
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -45,26 +85,32 @@ const {
 }
 
 .testimonial-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: #ffffff;
+  border: 1px solid var(--c-card-border);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
   padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transition: transform var(--transition-mid), box-shadow var(--transition-mid), border-color var(--transition-mid);
+  transition:
+    background   var(--transition-fast),
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
 }
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
-  border-color: var(--color-border-light);
+@media (hover: hover) {
+  .testimonial-card:hover {
+    background: var(--c-card-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
 }
 
 .testimonial-card__stars { font-size: 0.85rem; }
 
 .testimonial-card__quote {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--c-dark-base);
   line-height: 1.75;
   font-style: italic;
   flex: 1;
@@ -82,19 +128,37 @@ const {
 .testimonial-card__name {
   font-family: var(--font-heading);
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--color-text);
+  font-weight: 400;
+  color: var(--c-brand-navy);
 }
 .testimonial-card__company {
-  font-size: 0.8rem;
-  color: var(--color-accent);
-  font-weight: 500;
+  font-size: 0.78rem;
+  color: var(--c-dark-muted);
+  font-weight: 400;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 540px) {
+@media (max-width: 768px) {
   .testimonials-grid { grid-template-columns: 1fr; }
 }
+
+.testimonials-reviews-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.testimonials-reviews-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-dark-muted);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: color var(--transition-fast);
+}
+.testimonials-reviews-link:hover { color: var(--c-brand-navy); }
 </style>

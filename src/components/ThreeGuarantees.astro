@@ -2,6 +2,8 @@
 export interface Props {
   title?: string;
   label?: string;
+  image?: string;
+  imageAlt?: string;
   items?: { heading: string; body?: string }[];
 }
 
@@ -14,62 +16,231 @@ const defaults = [
 const {
   title = 'Anthony Guarantees',
   label = 'Why Anthony',
+  image,
+  imageAlt = 'Anthony Dempsey — Dallas Magician & Mentalist',
   items = defaults,
 } = Astro.props;
 ---
 
-<section class="section section--darker guarantees-section">
+<section class="section guarantees-section section--tinted">
   <div class="container">
-    <span class="section-label" data-reveal="fade-up">{label}</span>
-    <h2 class="section-title" data-reveal="fade-up">{title}</h2>
-    <div class="divider" data-reveal="fade-up"></div>
 
-    <div class="guarantees-grid" data-reveal-stagger>
-      {items.map((item) => (
-        <div class="guarantee-card">
-          <h3 class="guarantee-heading">{item.heading}</h3>
-          {item.body && <p class="guarantee-body">{item.body}</p>}
+    {image && (
+      <div class="guarantees-layout">
+        <div class="guarantees-img-col" data-reveal="fade-left">
+          <img
+            src={image}
+            alt={imageAlt}
+            class="guarantees-photo"
+            loading="lazy"
+            width="640"
+            height="373"
+          />
         </div>
-      ))}
-    </div>
+        <div class="guarantees-content-col" data-reveal="fade-right" data-delay="150">
+          <span class="section-label">{label}</span>
+          {title && <h2 class="guarantees-title">{title}</h2>}
+          <ul class="guarantees-list">
+            {items.map((item, i) => (
+              <li class="guarantee-item">
+                <span class="guarantee-num">0{i + 1}</span>
+                <div class="guarantee-text">
+                  <h3 class="guarantee-heading">{item.heading}</h3>
+                  {item.body && <p class="guarantee-body">{item.body}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )}
+
+    {!image && (
+      <div>
+        <span class="section-label" data-reveal="fade-up">{label}</span>
+        {title && <h2 class="section-title" data-reveal="fade-up">{title}</h2>}
+        <div class="divider" data-reveal="fade-up"></div>
+        <div class="guarantees-grid" data-reveal-stagger>
+          {items.map((item) => (
+            <div class="guarantee-card">
+              <h3 class="guarantee-heading">{item.heading}</h3>
+              {item.body && <p class="guarantee-body">{item.body}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
   </div>
 </section>
 
 <style>
+/* ── Split layout (with image) ─────────────────────────────── */
+.guarantees-layout {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Portrait crop so the photo looks intentional, not oversized */
+.guarantees-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hover);
+}
+
+.guarantees-content-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.guarantees-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--c-brand-navy);
+  line-height: 1.15;
+  margin: 8px 0 40px;
+}
+
+.guarantees-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--c-card-border);
+}
+
+.guarantee-item:first-child {
+  border-top: 1px solid var(--c-card-border);
+}
+
+.guarantee-num {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--c-brand-navy);
+  opacity: 0.45;
+  flex-shrink: 0;
+  min-width: 28px;
+}
+
+.guarantee-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── Card layout (no image fallback) ──────────────────────── */
 .guarantees-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
+  counter-reset: guarantee;
+  margin-top: 48px;
 }
 
 .guarantee-card {
-  background: var(--color-surface);
-  border: 1px solid var(--c-light-15, var(--color-border));
+  counter-increment: guarantee;
+  background: #ffffff;
+  border: 1px solid var(--c-card-border);
+  border-top: 3px solid var(--c-brand-navy);
   border-radius: var(--radius-md);
-  padding: 36px 28px;
-  text-align: center;
-  transition: transform var(--transition-mid), box-shadow var(--transition-mid), border-color var(--transition-mid);
-}
-.guarantee-card:hover {
-  transform: translateY(-4px);
-  box-shadow: none;
-  border-color: var(--c-brand-gold, var(--color-accent));
+  box-shadow: var(--shadow-card);
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition:
+    transform    0.3s var(--ease-out-quint),
+    box-shadow   0.3s var(--ease-out-quint);
 }
 
+.guarantee-card::before {
+  content: counter(guarantee, decimal-leading-zero);
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--c-brand-navy);
+  opacity: 0.12;
+  display: block;
+}
+
+@media (hover: hover) {
+  .guarantee-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+/* ── Shared ────────────────────────────────────────────────── */
 .guarantee-heading {
-  font-size: 1.15rem;
-  color: var(--color-text);
-  margin-bottom: 12px;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  line-height: 1.2;
+  margin: 0;
 }
 
 .guarantee-body {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
-  line-height: 1.7;
+  color: var(--c-dark-muted);
+  line-height: 1.75;
   max-width: none;
+  margin: 0;
 }
 
-@media (max-width: 900px) {
-  .guarantees-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .guarantees-layout {
+    grid-template-columns: 320px 1fr;
+    gap: 56px;
+  }
+}
+
+@media (max-width: 860px) {
+  .guarantees-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .guarantees-photo {
+    aspect-ratio: 1 / 1;  /* square crop on tablet — keeps photo compact */
+  }
+}
+
+@media (max-width: 640px) {
+  .guarantees-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .guarantees-photo {
+    max-width: 360px;
+    aspect-ratio: 4 / 3;
+    margin: 0 auto;
+  }
+
+  .guarantees-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 32px auto 0;
+  }
 }
 </style>

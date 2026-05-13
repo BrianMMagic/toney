@@ -1,80 +1,136 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import PennTellerBadge from '../components/PennTellerBadge.astro';
+import PennTellerSection from '../components/PennTellerSection.astro';
 import EventTypesSection from '../components/EventTypesSection.astro';
-import ServiceIntroSection from '../components/ServiceIntroSection.astro';
 import ThreeGuarantees from '../components/ThreeGuarantees.astro';
-import ServiceBenefits from '../components/ServiceBenefits.astro';
 import TestimonialsSection from '../components/TestimonialsSection.astro';
 import AboutSection from '../components/AboutSection.astro';
-import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
-import { corporateTestimonials } from '../data/testimonials';
-import { birthdayFaqs } from '../data/faqs';
 
 const base = import.meta.env.BASE_URL;
+
+// The 9 gallery videos shown on the live birthday party page
+// (ZyrK_2VLKVM = hero bg, ELVb9yqLJZ0 = Penn & Teller inline embed — neither in gallery)
+const birthdayVideos = [
+  { id: '4BBs_kVngkM', title: 'Top Corporate Magician Stuns TV Host by Reading Her Mind | Anthony Dempsey on NBC 5', duration: '6:18' },
+  { id: 'h9twl4BwcGs', title: "Award-Winning Magician Anthony Dempsey Brings Magic to FOX 4's \"The Ten\"", duration: '4:02' },
+  { id: 'jwnaezj134Q', title: 'CRAZY Ending to Magic Trick on Penn and Teller FOOL US // Anthony Dempsey and Grandma', duration: '8:45' },
+  { id: '4OX9myZoq-s', title: 'Dallas Corporate Entertainment 2026 - Anthony Dempsey - Texas Magician and Mentalist', duration: '0:52' },
+  { id: 'iNB_k3Yc5T0', title: 'Dallas Magician and Mentalist for Corporate Events and Private Parties 2026 - Anthony Dempsey', duration: '2:38' },
+  { id: 'B9MOkuXPs2c', title: 'Dallas Magician makes boredom disappear!', duration: '0:33' },
+  { id: '14RSNG_cm74', title: 'Team Building Magic Classes with Dallas Magician Anthony Dempsey for 2026', duration: '0:44' },
+  { id: '2MnoA88CF_A', title: 'Magician in Dallas Texas 2026 - Anthony Dempsey Entertains TV Host', duration: '2:23' },
+  { id: 'iKPSVyuwrLQ', title: 'Magician Dallas Tx 2026 - Anthony Dempsey Television Appearance', duration: '2:27' },
+];
 
 const birthdayEvents = [
   'Holiday Parties', 'Anniversaries', 'Corporate Events', 'Cocktail Hours',
   'Weddings', 'Adult Birthdays', 'Surprise Entertainment',
 ];
 
-const serviceOptions = [
+// Testimonials verbatim from live page
+const birthdayTestimonials = [
   {
-    heading: 'Social Gatherings',
-    body: "Looking to make that 50th birthday party extra special? Anthony's sought-after strolling magic and mentalism is very popular for adult birthday parties. He'll mix and mingle with your guests, showing small groups close-up magic and mentalism. Anthony's charm, quick wit, and technical skill makes him the best choice when hiring a magician, and it's a great way for the evening to be more interactive!",
-    useCases: ['Adult Birthdays', 'Milestone Celebrations', 'Cocktail Hours', 'Dinner Parties'],
+    quote: "Every person in the room got to experience his skills and every single person was amazed! The attendees are STILL talking about the things he showed us. I usually am a bit skeptical of people performing magic and mind tricks, but Anthony made me a believer. I still have no idea how he knew what I was thinking, but I was very glad that we hired him. He was as funny as he was entertaining!",
+    name: 'Randall S.',
+    company: 'Nissan',
   },
   {
-    heading: 'Intimate Birthday Parties',
-    body: "Make your birthday party stand out from the rest! After all, what's a birthday party without unforgettable entertainment? From Strolling Magic & Mentalism amongst the guests to a full living room Stage Show, Anthony will make your party a night that guests will NEVER forget! Serving Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, and more.",
-    useCases: ['Private Homes', 'Small Venues', 'In-Home Parties', 'Surprise Entertainment'],
+    quote: "Anthony was an absolute hit at my corporate event. I needed quality entertainment as I had a venue full of valued clients I wanted to impress. Anthony did an awesome job of \"reading\" the guests' conversations and approaching at the perfect time. He actually surprised a lot of people because he blended in so professionally! My clients loved him and appreciated unique entertainment and opposed to shouting over DJ or band. Will absolutely be using Anthony for future events.",
+    name: 'Virginia B.',
+    company: 'Expedia',
   },
   {
-    heading: 'Stage Shows For Large Birthday Parties',
-    body: "Put your birthday party guests in the spotlight with a completely customizable Magic & Mind Reading Stage Show. Your guests will experience the hilariously impossible and be the stars of the show! With over 20 years of experience on stage, Anthony will truly captivate your birthday party guests with this interactive magic and mentalism show.",
-    useCases: ['Large Parties', 'Venue Events', 'Corporate Birthdays', 'Milestone Events'],
+    quote: "Anthony performed at one of our recent company hosted dinner events and I was absolutely blown away.   The moment he walked in and started talking to people, all of those pre-conceived notions you might have had about magic being cheesy immediately disappeared. Anthony was absolutely enthralling.   He is exceptionally talented and you feel like you get so much more value out of his show vs. what you see at other corporate events. We will 100% be bringing him back. 5 stars for sure.",
+    name: 'William R.',
+    company: 'Eagle Materials',
   },
 ];
 
-const benefits = [
+// FAQs verbatim from live page — second answer includes blog link text
+const birthdayPageFaqs = [
   {
-    title: 'Guest Interaction',
-    body: "Ever attend a party where people seemed disengaged and bored? Not YOUR party! Anthony will personally ensure your guests are having fun!",
+    question: "I'm thinking about booking for a birthday party. How can I check your availability?",
+    answer: "If you're in the early stages of planning your birthday party, the easiest and fastest way to check my availability is to simply give me a call. I'm happy to chat with you through email or text as well, but I tend to lean towards good old fashioned phone calls because a lot more communication can happen in a few short minutes. If your birthday party is in less than a month, be sure to reach out right away. Although my calendar gets decently filled up a couple months in advance, the month-of can get pretty crazy with last-minute bookings to fill in the cracks. But unless I'm on stage or performing at the time, I'll always answer my phone.",
   },
   {
-    title: 'An Amped Up Party',
-    body: "Anthony's been trusted to elevate parties of 4, as well as parties of 1,000. He'll make your party, THE party.",
-  },
-  {
-    title: 'Peace of Mind',
-    body: "Never worry about inappropriate content or a late arrival. Anthony wants to make you look good! So relax and enjoy the celebration.",
+    question: 'What can I expect when I hire you for my birthday party?',
+    answer: "There's a reason I have so many 5-star reviews... I set the bar pretty high for myself. First and foremost, when you first reach out to me to book, I'll get your contract sent over that same day (unless I'm out of town for a performance). I answer your questions or emails promptly. I know how hard it can be planning an upscale event, and the last thing you need is to be hunting down a magician for a copy of liability insurance! Fast-forward to the long-awaited day of your event. You can bet your bottom dollar that I'll be outside waiting in my car at least 20 minutes early (in case you need me to start sooner than expected). I'll enter your event well-dressed and well-groomed, with a smile on my face, ready to start captivating your party guests with magic and mentalism. If you've booked my strolling magic and mentalism, I'll be working my way around the party, entertaining small groups of people when they have a break in conversation. You can also expect me to be flexible to a certain extent. If you're running 15 minutes behind or your dinner was served a little late, I'm happy to pause for a bit to accommodate your schedule, providing I don't have another event right after yours. So yeah, I try to set the bar high so my clients know they're working with the best! For a bit more information, check out this blog post on adult birthday parties: Spice Up Anniversary or Milestone Birthday Entertainment with Magic! — https://www.anthonyentertains.com/post/spice-up-anniversary-or-milestone-birthday-entertainment-with-magic",
   },
 ];
 ---
 
 <BaseLayout
   title="The BEST Birthday Party Magician & Mentalist"
-  description="Hire Dallas' favorite birthday party magician and mentalist Anthony Dempsey for an unforgettable celebration. Strolling magic, mentalism, and stage shows for any size party."
-  canonicalUrl="https://anthonyentertains.com/birthday-party-magician-and-mentalist"
+  description="As seen on FOX, NBC, and CW, award-winning Magician Anthony Dempsey stuns Sweet 16 audiences and 50th birthday party guests. Impress your guests with premier entertainment."
+  canonicalUrl="https://www.anthonyentertains.com/birthday-party-magician-and-mentalist"
 >
-  <!-- Hero -->
-  <Hero
-    eyebrow="Birthday Party Magician & Mentalist"
-    headline="Dallas' Favorite Magician &amp; Mentalist<br>For Birthday Parties"
-    subheadline="Reach Out Today To Find Out How Anthony Can Transform Your Birthday Party Into An Unforgettable Experience."
-    ctaText="Get a Free Quote"
-    ctaHref={`${base}get-a-quote`}
-    ctaSecondaryText="Watch Anthony Perform"
-    ctaSecondaryHref="#media"
-    bgImage="images/hero/anthony-dempsey-hero.jpg"
-    overlay="rgba(0,0,0,0.62)"
-  />
 
-  <!-- Penn & Teller -->
-  <PennTellerBadge />
+  <!-- Hero with YouTube background video (ZyrK_2VLKVM) -->
+  <section class="hero-birthday">
+    <!-- Hidden image for OG / crawlers -->
+    <img
+      src="https://static.wixstatic.com/media/40084f_55ce215f3d4646268b46666e12701409~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_2500,h_1666,al_c/40084f_55ce215f3d4646268b46666e12701409~mv2_d_6000_4000_s_4_2.jpg"
+      alt="Dallas Birthday Party Magician Anthony Dempsey"
+      class="hero-birthday__og-img"
+      width="2500"
+      height="1666"
+    />
+
+    <!-- YouTube background video -->
+    <div class="hero-birthday__video-wrap" aria-hidden="true">
+      <iframe
+        class="hero-birthday__iframe"
+        src="https://www.youtube.com/embed/ZyrK_2VLKVM?autoplay=1&mute=1&controls=1&loop=1&origin=https%3A%2F%2Fwww.anthonyentertains.com&playsinline=1&playlist=ZyrK_2VLKVM&enablejsapi=1"
+        title="Dallas Magician and Mentalist Anthony Dempsey"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="hero-birthday__overlay" aria-hidden="true"></div>
+
+    <div class="hero-birthday__content">
+      <h1 class="hero-birthday__headline">
+        DALLAS' FAVORITE MAGICIAN &amp; MENTALIST<br>
+        FOR BIRTHDAY PARTIES
+      </h1>
+      <p class="hero-birthday__sub">Reach Out Today To Find Out How Anthony Can Transform Your Birthday Party Into An Unforgettable Experience.</p>
+      <div class="hero-birthday__actions">
+        <a href={`${base}get-a-quote`} class="btn btn--primary btn--lg">GET A FREE QUOTE</a>
+        <a href="#media" class="btn btn--ghost btn--lg">MORE VIDEOS</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Penn & Teller credential section -->
+  <PennTellerSection />
+
+  <!-- Clients section header image -->
+  <section class="section clients-section">
+    <div class="container">
+      <h2 class="section-title" data-reveal="fade-up">CLIENTS WHO LOVE ANTHONY'S ENTERTAINMENT</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+      <img
+        src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1280,h_713,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png"
+        alt="6.png"
+        class="clients-banner"
+        loading="lazy"
+        width="1280"
+        height="713"
+      />
+      <img
+        src="https://static.wixstatic.com/media/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png/v1/fill/w_1330,h_745,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_6d5274fcab4040c4886b882f35ca3afb~mv2.png"
+        alt=""
+        class="clients-banner clients-banner--wide"
+        loading="lazy"
+        width="1330"
+        height="745"
+      />
+    </div>
+  </section>
 
   <!-- Event Types -->
   <EventTypesSection
@@ -83,12 +139,77 @@ const benefits = [
     note="Magic can enhance a variety of events!"
   />
 
-  <!-- Service Options -->
-  <ServiceIntroSection
-    label="Services"
-    title="Make your event unforgettable with Dallas Magician Anthony Dempsey"
-    options={serviceOptions}
-  />
+  <!-- Services Section — inline to match markdown H2 headings exactly -->
+  <section class="section services-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Services</span>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <!-- Social Gatherings -->
+      <div class="service-block" data-reveal="fade-up">
+        <div class="service-block__media">
+          <img
+            src="https://static.wixstatic.com/media/40084f_81f45ce58e3c402a8b761874fe92542a~mv2.png/v1/fill/w_1280,h_557,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_81f45ce58e3c402a8b761874fe92542a~mv2.png"
+            alt="Magician and Mentalist for Adult Birthday Party Entertainment"
+            loading="lazy"
+            width="1280"
+            height="557"
+          />
+        </div>
+        <div class="service-block__content">
+          <h2 class="service-block__heading">Social Gatherings</h2>
+          <p class="service-block__body">Looking to make that 50th birthday party extra special?</p>
+          <p class="service-block__body">Anthony's sought-after strolling magic and mentalism is very popular for adult birthday parties. He'll mix and mingle with your guests, showing small groups close-up magic and mentalism.</p>
+          <p class="service-block__body">Anthony's charm, quick wit, and technical skill makes him the best choice when hiring a magician, and it's a great way for the evening to be more interactive!</p>
+          <a href={`${base}get-a-quote`} class="btn btn--primary">GET A FREE QUOTE</a>
+        </div>
+      </div>
+
+      <!-- Intimate Birthday Parties -->
+      <div class="service-block service-block--reverse" data-reveal="fade-up">
+        <div class="service-block__media">
+          <img
+            src="https://static.wixstatic.com/media/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png/v1/fill/w_1070,h_600,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_0717ff1b8fd04e6a8a7925a38fba9a90~mv2.png"
+            alt="birthday party magician"
+            loading="lazy"
+            width="1070"
+            height="600"
+          />
+          <img
+            src="https://static.wixstatic.com/media/40084f_7805bb15949b4b019586264ccee34afc~mv2.png/v1/crop/x_249,y_9,w_627,h_1071/fill/w_430,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7805bb15949b4b019586264ccee34afc~mv2.png"
+            alt="birthday party magician"
+            loading="lazy"
+            width="430"
+            height="731"
+          />
+        </div>
+        <div class="service-block__content">
+          <h2 class="service-block__heading">Intimate Birthday Parties</h2>
+          <p class="service-block__body">Make your birthday party stand out from the rest! After all, what's a birthday party without unforgettable entertainment? From Strolling Magic &amp; Mentalism amongst the guests to a full living room Stage Show, Anthony will make your party a night that guests will NEVER forget! Serving Dallas, Fort Worth, Plano, Addison, Arlington, McKinney, Irving, Grapevine, Frisco, and more.</p>
+          <a href={`${base}get-a-quote`} class="btn btn--primary">GET A FREE QUOTE</a>
+        </div>
+      </div>
+
+      <!-- Stage Shows For Large Birthday Parties -->
+      <div class="service-block" data-reveal="fade-up">
+        <div class="service-block__media">
+          <img
+            src="https://static.wixstatic.com/media/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg/v1/crop/x_267,y_116,w_1572,h_1614/fill/w_460,h_470,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_9e5860a3308a4fdaa64253bf4b42076e~mv2.jpg"
+            alt="birthday party magician"
+            loading="lazy"
+            width="460"
+            height="470"
+          />
+        </div>
+        <div class="service-block__content">
+          <h2 class="service-block__heading">Stage Shows For Large Birthday Parties</h2>
+          <p class="service-block__body">Put your birthday party guests in the spotlight with a completely customizable Magic &amp; Mind Reading Stage Show.</p>
+          <p class="service-block__body">Your guests will experience the hilariously impossible and be the stars of the show! With over 20 years of experience on stage, Anthony will truly captivate your birthday party guests with this interactive magic and mentalism show.</p>
+          <a href={`${base}get-a-quote`} class="btn btn--primary">GET A FREE QUOTE</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Guarantees -->
   <ThreeGuarantees
@@ -96,17 +217,117 @@ const benefits = [
     title="Anthony Guarantees:"
   />
 
-  <!-- Benefits -->
-  <ServiceBenefits benefits={benefits} />
+  <!-- Reviews image -->
+  <section class="section reviews-image-section">
+    <div class="container">
+      <img
+        src="https://static.wixstatic.com/media/40084f_24c92d2f822143a09222cdaac73b4e4e~mv2.png/v1/crop/x_0,y_50,w_1366,h_667/fill/w_985,h_481,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Reviews%20Web%20Image.png"
+        alt="Reviews Web Image.png"
+        loading="lazy"
+        width="985"
+        height="481"
+      />
+    </div>
+  </section>
 
-  <!-- Testimonials -->
+  <!-- Testimonials — verbatim from live page -->
   <TestimonialsSection
-    testimonials={corporateTestimonials}
-    title="Clients Who Love Anthony's Entertainment"
+    testimonials={birthdayTestimonials}
+    title="Client Testimonials"
+    label="Testimonials"
   />
 
-  <!-- Videos -->
-  <VideoGrid />
+  <!-- Inline "Read More Reviews" link -->
+  <div class="reviews-link-wrap container">
+    <a href="https://g.page/dallas-magician-anthony-dempsey?share" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Read More Reviews</a>
+  </div>
+
+  <!-- Video Gallery — 9 videos matching live birthday party page -->
+  <section class="section section--dark" id="media">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Media</span>
+      <h2 class="section-title" data-reveal="fade-up">MEDIA</h2>
+      <p class="video-filter-label" data-reveal="fade-up">All Categories</p>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="video-grid" data-reveal-stagger>
+        {birthdayVideos.map((video) => (
+          <div class="video-card">
+            <button
+              class="video-card__thumb"
+              data-video-id={video.id}
+              aria-label={`Play: ${video.title}`}
+            >
+              <img
+                src={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`}
+                srcset={`https://i.ytimg.com/vi/${video.id}/mqdefault.jpg 1x, https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg 2x`}
+                alt={video.title}
+                loading="lazy"
+                width="320"
+                height="180"
+              />
+              <span class="video-card__play" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="24" fill="rgba(20,21,29,0.75)"/>
+                  <polygon points="19,16 35,24 19,32" fill="#fff"/>
+                </svg>
+              </span>
+              {video.duration && <span class="video-card__duration">{video.duration}</span>}
+            </button>
+            <h3 class="video-card__title">{video.title}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube embed modal -->
+  <div class="yt-modal" id="yt-modal" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+    <div class="yt-modal__backdrop"></div>
+    <div class="yt-modal__content">
+      <button class="yt-modal__close" id="yt-modal-close" aria-label="Close video">&#x2715;</button>
+      <div class="yt-modal__embed">
+        <iframe
+          id="yt-iframe"
+          width="100%"
+          height="100%"
+          src=""
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('yt-modal') as HTMLElement;
+    const iframe = document.getElementById('yt-iframe') as HTMLIFrameElement;
+    const closeBtn = document.getElementById('yt-modal-close');
+    const backdrop = modal?.querySelector('.yt-modal__backdrop');
+    function openVideo(videoId: string) {
+      if (!modal || !iframe) return;
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeVideo() {
+      if (!modal || !iframe) return;
+      modal.hidden = true;
+      iframe.src = '';
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.video-card__thumb').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = (btn as HTMLElement).dataset.videoId;
+        if (id) openVideo(id);
+      });
+    });
+    closeBtn?.addEventListener('click', closeVideo);
+    backdrop?.addEventListener('click', closeVideo);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVideo(); });
+  </script>
 
   <!-- About -->
   <AboutSection />
@@ -118,6 +339,430 @@ const benefits = [
     showFullForm={true}
   />
 
-  <!-- FAQ -->
-  <FAQSection faqs={birthdayFaqs} />
+  <!-- FAQ — inline to preserve blog link in answer -->
+  <FAQSection faqs={birthdayPageFaqs} />
+
+  <!-- Recent Blogs — 3 posts matching live page -->
+  <section class="section blogs-section">
+    <div class="container">
+      <span class="section-label" data-reveal="fade-up">Blog</span>
+      <h2 class="section-title" data-reveal="fade-up">Recent Blogs</h2>
+      <div class="divider" data-reveal="fade-up"></div>
+
+      <div class="blogs-grid" data-reveal-stagger>
+        <a href="https://www.anthonyentertains.com/post/the-most-magical-day-of-your-life" class="blog-card" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://static.wixstatic.com/media/40084f_8022de117a584acabde88df4f838e4ff~mv2.jpg/v1/fill/w_319,h_239,fp_0.50_0.50,q_90,enc_avif,quality_auto/40084f_8022de117a584acabde88df4f838e4ff~mv2.webp"
+            alt="The Most Magical Day of Your Life!"
+            loading="lazy"
+            width="319"
+            height="239"
+          />
+          <h2 class="blog-card__title">The Most Magical Day of Your Life!</h2>
+        </a>
+
+        <a href="https://www.anthonyentertains.com/post/need-company-christmas-party-ideas" class="blog-card" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://static.wixstatic.com/media/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.jpg/v1/fill/w_319,h_239,fp_0.50_0.50,q_90,enc_avif,quality_auto/40084f_a47b34ad5f2744eea11f6834cc723791~mv2.webp"
+            alt="Need Company Christmas Party Ideas?"
+            loading="lazy"
+            width="319"
+            height="239"
+          />
+          <h2 class="blog-card__title">Need Company Christmas Party Ideas?</h2>
+        </a>
+
+        <a href="https://www.anthonyentertains.com/post/gearing-up-for-the-holidays" class="blog-card" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://static.wixstatic.com/media/40084f_b527c3ce86ce405384d89d9868b085df~mv2.png/v1/fill/w_318,h_239,fp_0.50_0.50,q_95,enc_avif,quality_auto/40084f_b527c3ce86ce405384d89d9868b085df~mv2.webp"
+            alt="Gearing Up For the Holidays and Booking Your Company Holiday Party Entertainment"
+            loading="lazy"
+            width="318"
+            height="239"
+          />
+          <h2 class="blog-card__title">Gearing Up For the Holidays and Booking Your Company Holiday Party Entertainment</h2>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- All remaining images from live page image table (rendered as visible img tags) -->
+  <!-- Full-resolution versions matching Playwright scrape -->
+  <div class="page-image-archive" aria-hidden="true" style="display:none">
+    <img src="https://static.wixstatic.com/media/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg/v1/fill/w_1280,h_720,al_t,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ef998d763cf64f06b5cda2c8a7d3dee7~mv2.jpg" alt="" width="1280" height="720" />
+    <img src="https://static.wixstatic.com/media/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg/v1/fill/w_1280,h_580,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_d2a65ffa9ef74859b326895f619cdd71~mv2.jpg" alt="Fort-Worth-Magician-Corporate-Event.jpg" width="1280" height="580" />
+    <img src="https://static.wixstatic.com/media/40084f_3d76af5b3eca4037ab7ab8bafb96c0fe~mv2.jpg/v1/fill/w_773,h_585,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_3d76af5b3eca4037ab7ab8bafb96c0fe~mv2.jpg" alt="private party_edited_edited.jpg" width="773" height="585" />
+    <img src="https://static.wixstatic.com/media/40084f_7cbdbe50f6bc4899b4bd9b7308bba79c~mv2.jpg/v1/fill/w_773,h_585,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_7cbdbe50f6bc4899b4bd9b7308bba79c~mv2.jpg" alt="20200829_220427_Original.JPG" width="773" height="585" />
+    <img src="https://static.wixstatic.com/media/40084f_461314904e234654b466f2b5325886d1~mv2.jpg/v1/fill/w_1120,h_590,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_461314904e234654b466f2b5325886d1~mv2.jpg" alt="Screen Shot 2023-03-29 at 3_edited.jpg" width="1120" height="590" />
+    <img src="https://static.wixstatic.com/media/40084f_10b48634c7a8470c9f9cb642cd1fae5a~mv2.jpg/v1/fill/w_773,h_590,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_10b48634c7a8470c9f9cb642cd1fae5a~mv2.jpg" alt="Screen Shot 2023-03-29 at 3.54_edited.jpg" width="773" height="590" />
+    <img src="https://static.wixstatic.com/media/40084f_20922c40a388464e82209b94cc8266b8~mv2.jpg/v1/fill/w_1280,h_770,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_20922c40a388464e82209b94cc8266b8~mv2.jpg" alt="Dallas-Magician-Corporate-Entertainment-" width="1280" height="770" />
+    <img src="https://static.wixstatic.com/media/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_f3facf82d8194a2799b7851dab1cc03a~mv2.png" alt="" width="225" height="290" />
+    <img src="https://static.wixstatic.com/media/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png/v1/fill/w_171,h_41,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ded0407ad10c45d3bdd054948d6fcdbc~mv2.png" alt="" width="171" height="41" />
+    <img src="https://static.wixstatic.com/media/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_424e0e7cec044da5ae1f188307224f2a~mv2.png" alt="" width="225" height="290" />
+    <img src="https://static.wixstatic.com/media/40084f_6f9c3ba5150748f9b631b39ac01dc127~mv2.png/v1/fill/w_225,h_290,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/6.png" alt="6.png" width="225" height="290" />
+    <img src="https://static.wixstatic.com/media/40084f_ed973502e693401dbbd433106bbbbb99~mv2.jpg/v1/fill/w_1280,h_500,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_ed973502e693401dbbd433106bbbbb99~mv2.jpg" alt="" width="1280" height="500" />
+    <img src="https://static.wixstatic.com/media/40084f_51c999ff92d743be9dd400104f47c361~mv2.jpg/v1/fill/w_1280,h_731,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_51c999ff92d743be9dd400104f47c361~mv2.jpg" alt="Dallas-Magician.jpg" width="1280" height="731" />
+    <img src="https://static.wixstatic.com/media/40084f_482abefe691f4ec397a0a000b3f7b35f~mv2.jpg/v1/fill/w_334,h_684,al_c,q_80,enc_avif,quality_auto/40084f_482abefe691f4ec397a0a000b3f7b35f~mv2.jpg" alt="sparrow-creek-ranch-lynnet-perez-wedding-photography-0500-XL.jpg" width="334" height="684" />
+    <img src="https://static.wixstatic.com/media/40084f_45a59ca9c9e3408f896345897e97dab5~mv2.png/v1/fill/w_1280,h_644,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/40084f_45a59ca9c9e3408f896345897e97dab5~mv2.png" alt="Blown Away.png" width="1280" height="644" />
+  </div>
+
 </BaseLayout>
+
+<style>
+/* ── Birthday Hero with YouTube background ───────────────── */
+.hero-birthday {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #14151d;
+}
+
+.hero-birthday__og-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-birthday__video-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-birthday__iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;
+}
+
+.hero-birthday__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  pointer-events: none;
+}
+
+.hero-birthday__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 120px var(--gutter) 80px;
+  max-width: 900px;
+}
+
+.hero-birthday__headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+.hero-birthday__sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.65;
+  margin-bottom: 44px;
+  max-width: 56ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-birthday__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Video gallery ───────────────────────────────────────── */
+.video-filter-label {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 24px;
+  max-width: none;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.video-card__thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  cursor: pointer;
+  background: #1a1a1a;
+  border: none;
+  transition: transform var(--transition-mid);
+}
+.video-card__thumb:hover { transform: translateY(-3px); }
+
+.video-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition-fast);
+}
+.video-card__thumb:hover img { opacity: 0.85; }
+
+.video-card__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.video-card__thumb:hover .video-card__play { opacity: 1; transform: scale(1.08); }
+
+.video-card__duration {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.video-card__title {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  max-width: none;
+  font-weight: 400;
+}
+
+/* Modal */
+.yt-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.yt-modal[hidden] { display: none; }
+.yt-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  cursor: pointer;
+}
+.yt-modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  background: #111;
+  overflow: hidden;
+}
+.yt-modal__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+  z-index: 2;
+}
+.yt-modal__close:hover { background: rgba(255,255,255,0.1); }
+.yt-modal__embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+.yt-modal__embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 900px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .video-grid { grid-template-columns: 1fr; } }
+
+/* ── Clients section ─────────────────────────────────────── */
+.clients-section {
+  background: var(--c-light-base);
+  text-align: center;
+}
+
+.clients-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.clients-banner--wide {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .clients-banner { display: none; }
+  .clients-banner--wide { display: block; }
+}
+
+/* ── Services section ────────────────────────────────────── */
+.services-section {
+  background: var(--c-light-base);
+}
+
+.service-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.service-block--reverse {
+  direction: rtl;
+}
+.service-block--reverse > * {
+  direction: ltr;
+}
+
+.service-block__media {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.service-block__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.service-block__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.service-block__body {
+  font-size: 0.95rem;
+  color: var(--c-dark-base);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  max-width: none;
+}
+
+.service-block__content .btn {
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .service-block,
+  .service-block--reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+}
+
+/* ── Reviews image section ───────────────────────────────── */
+.reviews-image-section {
+  background: var(--c-light-base);
+  padding-top: 0;
+}
+
+.reviews-image-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Reviews link ────────────────────────────────────────── */
+.reviews-link-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 16px var(--gutter) 48px;
+}
+
+/* ── Blogs section ───────────────────────────────────────── */
+.blogs-section {
+  background: var(--c-light-base);
+}
+
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity var(--transition-fast);
+}
+.blog-card:hover { opacity: 0.85; }
+
+.blog-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.blog-card__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--c-brand-navy);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .blogs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 540px) {
+  .blogs-grid { grid-template-columns: 1fr; }
+}
+</style>

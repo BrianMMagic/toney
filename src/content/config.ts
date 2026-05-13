@@ -10,6 +10,7 @@ const blog = defineCollection({
     author: z.string().default('Anthony Dempsey'),
     category: z.string().optional(),
     heroImage: z.string().optional(),
+    readTime: z.string().optional(),
   }),
 });
 

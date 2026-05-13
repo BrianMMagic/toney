@@ -21,25 +21,39 @@ const {
         <div class="divider"></div>
 
         <p class="contact-area">
-          Serving the Dallas - Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, & more.
+          Serving the Dallas- Fort Worth Area, Arlington, Addison, Irving, Plano, McKinney, Grapevine, &amp; more.
         </p>
 
         <div class="contact-details">
           <a href="mailto:Anthony@AnthonyEntertains.com" class="contact-detail-link">
-            <span class="contact-detail-icon" aria-hidden="true">✉</span>
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
             Anthony@AnthonyEntertains.com
           </a>
           <a href="tel:+19406540699" class="contact-detail-link">
-            <span class="contact-detail-icon" aria-hidden="true">✆</span>
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 2h3l1.5 3.5-1.75 1.25C6.5 8.5 7.5 9.5 8.25 10.25L9.5 8.5 13 10v3c0 .55-.45 1-1 1C5.55 14 2 10.45 2 6c0-.55.45-1 1-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </span>
             940-654-0699
           </a>
           <div class="contact-detail-link">
-            <span class="contact-detail-icon" aria-hidden="true">◷</span>
+            <span class="contact-detail-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 4.5V8l2.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
             Business Hours: Always Open
           </div>
         </div>
 
-        <p class="contact-note">Anthony will be in touch within 24 hours. Please be sure to check your junk mail for his reply.</p>
+        <p class="contact-note">Anthony will be in touch within 24 hours. Please check your junk folder if you don't see a quick reply.</p>
       </div>
 
       <div class="contact-form-wrap" data-reveal="fade-left">
@@ -69,9 +83,25 @@ const {
                   <input class="form-input" type="tel" id="phone" name="phone" required autocomplete="tel" />
                 </div>
               </div>
-              <div class="form-group">
-                <label class="form-label" for="company">Company</label>
-                <input class="form-input" type="text" id="company" name="company" autocomplete="organization" />
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="company">Company</label>
+                  <input class="form-input" type="text" id="company" name="company" autocomplete="organization" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="guest-count">Number of Guests</label>
+                  <input class="form-input" type="text" id="guest-count" name="guest-count" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="street-address">Street Address</label>
+                  <input class="form-input" type="text" id="street-address" name="street-address" autocomplete="street-address" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="city-state-zip">City, State &amp; Zip</label>
+                  <input class="form-input" type="text" id="city-state-zip" name="city-state-zip" autocomplete="address-level2" />
+                </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
@@ -90,9 +120,39 @@ const {
                   </select>
                 </div>
               </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="subject">Subject</label>
+                  <select class="form-input form-select" id="subject" name="subject">
+                    <option value="">Select…</option>
+                    <option value="book">I want to book you</option>
+                    <option value="packages">What are your packages/prices/services?</option>
+                    <option value="availability">Is my date available?</option>
+                    <option value="call">Can you call me?</option>
+                    <option value="message">I have a message for you</option>
+                    <option value="feedback">Feedback from an event</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="how-heard">How did you find us?</label>
+                  <select class="form-input form-select" id="how-heard" name="how-heard">
+                    <option value="">Select…</option>
+                    <option value="google">Google search</option>
+                    <option value="online">Online</option>
+                    <option value="word-of-mouth">Word of Mouth</option>
+                    <option value="repeat">I'm a Repeat Customer!</option>
+                    <option value="met-at-event">I met you at an event</option>
+                    <option value="advertisement">I saw your advertisement</option>
+                    <option value="mailing">A mailing you sent me</option>
+                    <option value="business-card">I have your business card</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
               <div class="form-group">
                 <label class="form-label" for="message-full">Tell us about your event <span aria-hidden="true">*</span></label>
-                <textarea class="form-input form-textarea" id="message-full" name="message" rows="5" required></textarea>
+                <textarea class="form-input form-textarea" id="message-full" name="message" rows="3" required></textarea>
               </div>
             </>
           ) : (
@@ -118,112 +178,120 @@ const {
 <style>
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 56px;
   align-items: start;
 }
 
 .contact-area {
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
 }
 
 .contact-details {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .contact-detail-link {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  gap: 10px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
   transition: color var(--transition-fast);
 }
-a.contact-detail-link:hover { color: var(--color-accent-light); }
+a.contact-detail-link:hover { color: var(--dark-text); }
 
 .contact-detail-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: rgba(123,47,247,0.12);
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
-  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.4);
   flex-shrink: 0;
 }
 
 .contact-note {
-  font-size: 0.8rem;
-  color: var(--color-text-dim);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
   font-style: italic;
 }
 
 /* Form */
 .contact-form-wrap {
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: 24px 28px;
 }
 
-.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.contact-form { display: flex; flex-direction: column; gap: 10px; }
 
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: end; }
 
-.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 
 .form-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
 }
-.form-label span { color: var(--color-accent); }
+.form-label span { color: rgba(255, 255, 255, 0.65); }
 
 .form-input {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border-light);
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-sm);
-  padding: 12px 16px;
+  padding: 8px 10px;
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--color-text);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  transition: border-color var(--transition-fast);
   width: 100%;
 }
 .form-input:focus {
   outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(123,47,247,0.15);
+  border-color: rgba(255, 255, 255, 0.7);
 }
-.form-input::placeholder { color: var(--color-text-dim); }
+.form-input::placeholder { color: #999; }
 
 .form-select {
   appearance: none;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 14px center;
-  padding-right: 36px;
+  background-position: right 10px center;
+  padding-right: 28px;
 }
 
-.form-textarea { resize: vertical; min-height: 120px; }
+.form-textarea { resize: vertical; min-height: 72px; }
 
-.form-submit { align-self: flex-start; margin-top: 4px; }
-
-@media (max-width: 900px) {
-  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-  .form-row { grid-template-columns: 1fr; }
+input[type="date"].form-input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 38px;
 }
-@media (max-width: 540px) {
-  .contact-form-wrap { padding: 24px; }
+
+.form-submit { align-self: flex-start; margin-top: 6px; }
+
+@media (max-width: 960px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  .contact-form-wrap { padding: 20px 16px; }
+  .contact-form { gap: 8px; }
+  .form-row { gap: 8px; }
+  .form-input { font-size: 16px; }
 }
 </style>
