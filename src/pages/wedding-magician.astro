@@ -10,7 +10,7 @@ import FAQSection from '../components/FAQSection.astro';
 import { weddingTestimonials } from '../data/testimonials';
 import { weddingFaqs } from '../data/faqs';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 
 <BaseLayout

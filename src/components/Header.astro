@@ -1,6 +1,6 @@
 ---
 import { services, locations, mainNav } from '../data/nav';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 
 <header class="site-header" id="site-header">

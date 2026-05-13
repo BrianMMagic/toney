@@ -12,7 +12,7 @@ import ContactForm from '../components/ContactForm.astro';
 import { corporateTestimonials } from '../data/testimonials';
 import { corporateFaqs } from '../data/faqs';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
 // Only the 9 videos that appear on the live corporate-magician page
 const corporateVideos = [

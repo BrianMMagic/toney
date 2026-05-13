@@ -18,7 +18,7 @@ const {
   ogImage = '/images/hero/anthony-dempsey-hero.jpg',
 } = Astro.props;
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const fullOg = ogImage.startsWith('http') ? ogImage : `https://brianmmagic.github.io${base}${ogImage.replace(/^\//, '')}`;
 ---
 <!doctype html>

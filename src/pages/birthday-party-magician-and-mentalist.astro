@@ -8,7 +8,7 @@ import AboutSection from '../components/AboutSection.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
 // The 9 gallery videos shown on the live birthday party page
 // (ZyrK_2VLKVM = hero bg, ELVb9yqLJZ0 = Penn & Teller inline embed — neither in gallery)

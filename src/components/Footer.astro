@@ -1,6 +1,6 @@
 ---
 import { services, locations } from '../data/nav';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 
 <footer class="site-footer" data-header-dark>

@@ -8,7 +8,7 @@ import AboutSection from '../components/AboutSection.astro';
 import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
 const grapevineEvents = [
   'Dinner Parties', 'Cocktail Hours', 'Weddings', 'Adult Birthdays',

@@ -14,7 +14,7 @@ import { homepageTestimonials } from '../data/testimonials';
 import { generalFaqs } from '../data/faqs';
 import { videos as allVideos } from '../data/videos';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 ---
 
 <BaseLayout

@@ -25,7 +25,7 @@ const {
   align = 'left',
 } = Astro.props;
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const resolvedCta = ctaHref ?? `${base}get-a-quote`;
 const resolvedBg = bgImage.startsWith('http') ? bgImage : `${base}${bgImage.replace(/^\//, '')}`;
 

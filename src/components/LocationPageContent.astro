@@ -40,7 +40,7 @@ export interface Props {
   aboutBioParagraphs?: string[];
 }
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
 const {
   pageTitle,

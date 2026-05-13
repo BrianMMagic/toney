@@ -9,7 +9,7 @@ import VideoGrid from '../components/VideoGrid.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { homepageTestimonials } from '../data/testimonials';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
 const allEvents = [
   'Team Building', 'Sales Meetings', 'Conventions', 'Trade Shows',

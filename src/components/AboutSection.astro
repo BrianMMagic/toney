@@ -3,7 +3,7 @@ export interface Props {
   bioParagraphs?: string[];
 }
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const {
   bioParagraphs,
 } = Astro.props;
